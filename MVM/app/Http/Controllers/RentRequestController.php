@@ -16,6 +16,8 @@ class RentRequestController extends Controller
     public function index()
     {
         return('Ese es un mensjae de el index de el request controller');
+
+
     }
 
     /**
@@ -36,46 +38,62 @@ class RentRequestController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->input('submit') != null ){
 
-            // Update record
-            if($request->input('editid') !=null ){
-              $name = $request->input('name');
-              $email = $request->input('email');
-              $editid = $request->input('editid');
-
-              if($name !='' && $email != ''){
-                 $data = array('name'=>$name,"email"=>$email);
-
-                 // Update
-                 Renta::updateData($editid, $data);
-
-                 Session::flash('message','Update successfully.');
-
-              }
-
-            }else{ // Insert record
                $first = $request->input('first_name');
                $last = $request->input('last_name');
                $machinery = $request->input('machinery');
-               $client= $first+$last;
-               if($first !='' && $last !='' && $machinery != ''){
-                  $data = array('name'=>$first,"username"=>$last,"email"=>$machinery);
+               $client= $first.$last;
+               $attachment = $request->input('attachment');
+               $address1= $request -> input('address_1');
+               $address2 = $request -> input('address_2');
+               $address_cli= $address1." ".$address2;
+               $city=$request->input('city');
+               $state = $request ->input('state');
+//               $start_date = $request ->input('start_date');
+               $time = strtotime('10/16/2003');  //SETEADO HASTA QUE SE TOQUE FRONT
+               $cli_id=$request -> input('cli_id');
+               $newformat = date('Y-m-d',$time);
+               $end_date= $request -> input('end_date');
+               $start_date = $newformat;
+               $start_time= '15:25:22' ;  //SETEADO HASTA QUE SE TOQUE FRONT
+               $driver= $request-> input('driver');
+               $duracion= 4; //SE RESTARA FECHA DE PICKUP DE LA DE ENTREGA
+               $rental_cost = $request->input('rental_cost');
+               $phone = $request -> input('phone');
+               $email = $request -> input('email');
+
+                $custom="";
+
+                $users = DB::table('clientes')->where('client_id', '=', $cli_id)->get();
+                if (empty($users)){
+                    $custom='1';
+                }else{
+
+                    foreach ($users as $post) {
+                        $custom=$post->client_id;
+                    }
+                }
 
 
-                  // Insert
-                  $value = DB::table('rentas')->insert(['cliente'=>$client,"maquina"=>$machinery]);
-                  if($value){
-                    Session::flash('message','Insert successfully.');
-                  }else{
-                    Session::flash('message','Username already exists.');
-                  }
+                if($custom==$cli_id){
 
-               }
-            }
+                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery,  "fecha" => $start_date, "driver" => $driver, "duracion"=>$duracion, 'rental_cost'=>$rental_cost]);
 
-          }
-          return redirect()->action('RentRequestController@index',['id'=>0]);
+                }else{
+//                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery,  "fecha" => $start_date, "driver" => $driver, "duracion"=>$duracion, 'rental_cost'=>$rental_cost]);
+
+                    $cli= DB::table('clientes')->insert(["First_name"=>$first, 'Last_name'=>$last, 'Address' => $address_cli, 'Phone_num'=>$phone, 'email'=>$email, 'id_comp'=>2, 'client_id'=>$cli_id]);
+
+                }
+
+
+                return redirect()->action('delivery_driver@index');
+
+//               }
+
+
+
+//
     }
 
     /**

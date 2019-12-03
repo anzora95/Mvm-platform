@@ -21,7 +21,7 @@
 
 <div class="container">
 
-    <form class="well form-horizontal" action='/save' method="post"  id="contact_form">
+    <form class="well form-horizontal" action='save' method="post"  id="contact_form">
  @csrf
 <fieldset>
 
@@ -51,6 +51,17 @@
     </div>
   </div>
 </div>
+
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" >Client ID</label>
+        <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="cli_id" placeholder="Last Name" class="form-control"  type="text" >
+            </div>
+        </div>
+    </div>
 
 {{--Machinery--}}
 
@@ -129,7 +140,7 @@
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                 <select name="state" class="form-control selectpicker">
-                    <option value="">Select your Attachment</option>
+                    <option value="">Select your State</option>
                     <option>State1</option>
                     <option>State2</option>
                     <option>State3</option>
@@ -140,6 +151,7 @@
                 </select>
             </div>
         </div>
+    </div>
 
 <!-- Text input-->
 
@@ -217,7 +229,7 @@
             <div class="col-md-4 selectContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select name="Driver" class="form-control selectpicker">
+                    <select name="driver" class="form-control selectpicker">
                         <option value="">Select your Driver</option>
                         <option>Marvin</option>
                         <option>Driver 1</option>
@@ -226,6 +238,7 @@
                     </select>
                 </div>
             </div>
+        </div>
 
 <!-- Text input-->
 
@@ -235,22 +248,43 @@
                 <label class="col-md-4 control-label">Operator</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
                         <input name="operator" type="checkbox" checked data-toggle="toggle">
                     </div>
                     </div>
                 </div>
-            </div>
+
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Rental Cost</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-bitcoin"></i></span>
                         <input  name="rental_cost" placeholder="Username" class="form-control"  type="text">
                     </div>
                 </div>
             </div>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label">Phone number</label>
+        <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                <input  name="phone" placeholder="Username" class="form-control"  type="text">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label">Email</label>
+        <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input  name="email" placeholder="Username" class="form-control"  type="text">
+            </div>
+        </div>
+    </div>
+{{--        <p>{{$users}}</p>--}}
 
 
 <!-- Success message -->

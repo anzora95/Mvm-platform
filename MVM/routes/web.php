@@ -31,3 +31,8 @@ Route::resource('renta', 'RentRequestController');
 
 Route::get('/', 'RentRequestController@index'); // localhost:8000/
 Route::post('/save', 'RentRequestController@store');
+
+//Route::get('dashboard', function(){
+//    return view('DispachCenter/daily_delivery_dashboard');
+//});
+Route::get('/dashboard', 'delivery_driver@index'); // localhost:8000/
