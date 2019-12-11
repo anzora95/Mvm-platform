@@ -6,19 +6,19 @@
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+  src: url('../fonts/poppins/Poppins-Bold.ttf');
 }
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
@@ -112,7 +112,7 @@ iframe {
 }
 
 .wrap-table100 {
-  width: 960px;
+  width: 1200px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -236,7 +236,7 @@ iframe {
     padding-right: 15px;
     margin: 0;
   }
-  
+
   .row .cell {
     border: none;
     padding-left: 30px;
@@ -246,7 +246,7 @@ iframe {
   .row .cell:nth-child(1) {
     padding-left: 30px;
   }
-  
+
   .row .cell {
     font-family: Poppins-Regular;
     font-size: 18px;
@@ -258,4 +258,55 @@ iframe {
   .table, .row, .cell {
     width: 100% !important;
   }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+
+}
+/*    toggle rent_request*/
+.material-switch > input[type="checkbox"] {
+    display: none;
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative;
+    width: 40px;
+}
+
+.material-switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
 }

@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    {{--    {{HTML::asset('images/icons/favicon.ico')}}--}}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     {{HTML::style('vendor/bootstrap/css/bootstrap.min.css')}}
     {{HTML::style('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}
@@ -15,7 +18,10 @@
     {{HTML::style('css/util.css')}}
     {{HTML::style('css/main.css')}}
     {{HTML::style('css/main.css')}}
-{{--    {{HTML::asset('images/icons/favicon.ico')}}--}}
+
+
+
+
 
 
 </head>
@@ -30,49 +36,53 @@
                     <div class="cell">
                         Maquina
                     </div>
-                    <div class="cell" style="text: center">
+                    <div class="cell" >
                         Cliente
                     </div>
                     <div class="cell">
                         Email
                     </div>
-                    <div class="cell" style="text: center">
+                    <div class="cell" >
                         Phone Number
                     </div>
-                    <div class="cell" style="text: center">
-                        Email
+                    <div class="cell" >
+                        First Name
                     </div>
-                    <div class="cell" style="text: center">
-                        Button
+                    <div class="cell" >
+                        Empezar
                     </div>
+
                 </div>
 
-                @foreach($rents as $renta)
-                <div class="row">
-                    <div class="cell" data-title="Maquina" >
+                @foreach($rentas as $renta)
+                <div class="row btn btn-primary clickable"  data-target="#staticBackdrop"  data-value="{{$renta->id}}">
+                    <div class="cell" data-title="Maquina">
                         {{$renta->maquina}}
-                    </div>
-
+                        </div>
                     <div class="cell" data-title="Cliente">
-                        lol
+                        {{$renta->fecha}}
                     </div>
                     <div class="cell" data-title="Job Title">
-                   lol
+                        {{$renta->clientes->email}}
                     </div>
                     <div class="cell" data-title="Location">
-                    lol
+                        {{$renta->clientes->Phone_num}}
                     </div>
                     <div class="cell" data-title="Location">
-                     lol
+                        {{$renta->clientes->First_name}}
                     </div>
                     <div class="cell" data-title="Location">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Modal</button>
+                        <button class="row btn btn-primary clickable" style="color: #6f1C00" onclick="window.location='{{ url("/delivery_data") }}'">Entregar</button>
                     </div>
+
+
                 </div>
                 @endforeach
 
+
+
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
@@ -81,7 +91,12 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ...
+{{--                            <h5>Popover in a modal</h5>--}}
+                            <button class="btn btn-primary clickable">Notificar entrega</button>
+                            <button class="btn btn-primary clickable">Entregar</button>
+                            <hr>
+                            <h5>Tooltips in a modal</h5>
+                            <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -92,16 +107,12 @@
             </div>
 
 
-                <br>
-                <br>
-                <input type="file" accept="image/*" capture="camera" />
-
-
             </div>
 
         </div>
     </div>
 </div>
+
 
 
 

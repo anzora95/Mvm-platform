@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
+    protected $table = 'clientes';
+
     public $timestamps= false;
 
-    public function user()
+    public $primaryKey= 'client_id';
+
+    public function renta()
 {
-    return $this->belongsTo('App\Compañia', 'foreign_key');
+    return $this->hasMany('App\Renta');
 }
 
 }

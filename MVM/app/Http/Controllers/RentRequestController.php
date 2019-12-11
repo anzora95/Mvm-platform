@@ -77,12 +77,14 @@ class RentRequestController extends Controller
 
                 if($custom==$cli_id){
 
-                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery,  "fecha" => $start_date, "driver" => $driver, "duracion"=>$duracion, 'rental_cost'=>$rental_cost]);
+                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery, "driver" => $driver, 'rental_cost'=>$rental_cost]);
 
                 }else{
-//                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery,  "fecha" => $start_date, "driver" => $driver, "duracion"=>$duracion, 'rental_cost'=>$rental_cost]);
 
                     $cli= DB::table('clientes')->insert(["First_name"=>$first, 'Last_name'=>$last, 'Address' => $address_cli, 'Phone_num'=>$phone, 'email'=>$email, 'id_comp'=>2, 'client_id'=>$cli_id]);
+
+                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery, "driver" => $driver, 'rental_cost'=>$rental_cost]);
+
 
                 }
 

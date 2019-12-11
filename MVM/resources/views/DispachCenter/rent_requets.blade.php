@@ -19,6 +19,11 @@
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+{{HTML::style('css/main.css')}}
+
 <div class="container">
 
     <form class="well form-horizontal" action='save' method="post"  id="contact_form">
@@ -29,13 +34,14 @@
 <legend><center><h2><b>Machinery Rent</b></h2></center></legend><br>
 
 <!-- Text input-->
+<!-- Text input-->
 
 <div class="form-group">
   <label class="col-md-4 control-label">Client First Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+  <input  name="first_name" placeholder="First Name" class="form-control"  type="text" required>
     </div>
   </div>
 </div>
@@ -47,7 +53,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+  <input name="last_name" placeholder="Last Name" class="form-control"  type="text" required>
     </div>
   </div>
 </div>
@@ -58,7 +64,7 @@
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="cli_id" placeholder="Last Name" class="form-control"  type="text" >
+                <input name="cli_id" placeholder="Client id" class="form-control"  type="text"  maxlength="8" required>
             </div>
         </div>
     </div>
@@ -70,7 +76,7 @@
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-    <select name="machinery" class="form-control selectpicker">
+    <select name="machinery" class="form-control selectpicker" required>
       <option value="">Select your Machinery</option>
       <option>Mini excavator 303-E</option>
       <option>Skid Steer Loader 232-D</option>
@@ -86,7 +92,7 @@
         <div class="col-md-4 selectContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                <select name="attachment" class="form-control selectpicker">
+                <select name="attachment" class="form-control selectpicker" required>
                     <option value="">Select your Attachment</option>
                     <option>Pala 1</option>
                     <option>Pala 2</option>
@@ -108,7 +114,7 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="address_1" placeholder="Username" class="form-control"  type="text">
+  <input  name="address_1" placeholder="Address 1" class="form-control"  type="text" required>
     </div>
   </div>
 </div>
@@ -118,7 +124,7 @@
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input  name="address_2" placeholder="Username" class="form-control"  type="text">
+                <input  name="address_2" placeholder="Address 2" class="form-control"  type="text" required>
             </div>
         </div>
     </div>
@@ -128,7 +134,7 @@
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input  name="city" placeholder="Username" class="form-control"  type="text">
+                <input  name="city" placeholder="City" class="form-control"  type="text" required>
             </div>
         </div>
     </div>
@@ -139,7 +145,7 @@
         <div class="col-md-4 selectContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                <select name="state" class="form-control selectpicker">
+                <select name="state" class="form-control selectpicker" required>
                     <option value="">Select your State</option>
                     <option>State1</option>
                     <option>State2</option>
@@ -158,49 +164,8 @@
 
 <!-- Text input-->
 
-<div class="form-group">
-  <label class="col-md-4 control-label" >Start Date</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
-            <div class='input-group date' id='datetimepicker1'>
-                <input type='text' class="form-control" name="start_date" />
-                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-            </div>
-            <script type="text/javascript">
-                $(function () {
-                    $('#datetimepicker1').datetimepicker();
-                });
-            </script>
 
-    </div>
-  </div>
-</div>
-
-        <div class="form-group">
-            <label class="col-md-4 control-label" >End Date</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" name="end_date" />
-                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker1').datetimepicker();
-                        });
-                    </script>
-
-                </div>
-            </div>
-        </div>
 
         <div class="form-group">
             <label class="col-md-4 control-label" >Start Time</label>
@@ -229,7 +194,7 @@
             <div class="col-md-4 selectContainer">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select name="driver" class="form-control selectpicker">
+                    <select name="driver" class="form-control selectpicker" required>
                         <option value="">Select your Driver</option>
                         <option>Marvin</option>
                         <option>Driver 1</option>
@@ -248,8 +213,10 @@
                 <label class="col-md-4 control-label">Operator</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-scale"></i></span>
-                        <input name="operator" type="checkbox" checked data-toggle="toggle">
+                        <div class="material-switch ">
+                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                            <label style="margin-left: 35px; margin-top: 20px;" for="someSwitchOptionPrimary" class="label-primary "></label>
+                        </div>
                     </div>
                     </div>
                 </div>
@@ -259,8 +226,8 @@
                 <label class="col-md-4 control-label">Rental Cost</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-bitcoin"></i></span>
-                        <input  name="rental_cost" placeholder="Username" class="form-control"  type="text">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+                        <input  name="rental_cost"  class="form-control"  type="text" required>
                     </div>
                 </div>
             </div>
@@ -270,7 +237,7 @@
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input  name="phone" placeholder="Username" class="form-control"  type="text">
+                <input  name="phone"  class="form-control"  type="text" required>
             </div>
         </div>
     </div>
@@ -280,7 +247,7 @@
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                <input  name="email" placeholder="Username" class="form-control"  type="text">
+                <input  name="email"  class="form-control"  type="email" required>
             </div>
         </div>
     </div>

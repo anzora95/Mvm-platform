@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use App\Cliente;
-use App\Renta;
 use App\Entrega;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use  App\Renta;
+use Illuminate\View\View;
+use DB;
 
 
-class delivery_driver extends Controller
+class pickup_machinery extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +18,9 @@ class delivery_driver extends Controller
      */
     public function index()
     {
-        $rents=Renta::with('clientes')->get();
-        return View('DispachCenter.daily_delivery_dashboard')->with('rentas', $rents);
+        $deliver=Entrega::with('rentas')->get();
+        return View('DispachCenter.pickup_machinery')->with('deliver', $deliver);
+
     }
 
     /**
@@ -41,12 +41,11 @@ class delivery_driver extends Controller
      */
     public function store(Request $request)
     {
-        $machinery_time=$request->input('machinery_time');
-        $gas=$request->input('gas');
-        $delivery_time = date("h:i:s");
-        $trade=DB::table('entregas')->insert(["Delivery_time" =>$delivery_time, "Machine_time"=>$machinery_time, "Gas" =>$gas]);
+        $p_u_mach_time= $request->input('machinery_time_pickup');
+        $p_u_gas= $request->input('gas_pickup');
 
-        return View('DispachCenter.document_contract');
+
+//        $pick_up=DB::table('entregas')->where('','=',)->;
     }
 
     /**
