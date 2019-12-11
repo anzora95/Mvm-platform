@@ -33,23 +33,21 @@
             <div class="table">
 
                 <div class="row header">
-                    <div class="cell">
-                        Maquina
+                    <div class="cell"><center>
+                        Direccion</center>
                     </div>
-                    <div class="cell" >
-                        Cliente
+                    <div class="cell" ><center>
+                        Phone Number</center>
                     </div>
-                    <div class="cell">
-                        Email
+                    <div class="cell"><center>
+                        Nombre</center>
                     </div>
-                    <div class="cell" >
-                        Phone Number
+                    <div class="cell" ><center>
+                        Maquina</center>
                     </div>
-                    <div class="cell" >
-                        First Name
-                    </div>
-                    <div class="cell" >
-                        Empezar
+
+                    <div class="cell" ><center>
+                        Empezar</center>
                     </div>
 
                 </div>
@@ -57,22 +55,20 @@
                 @foreach($rentas as $renta)
                 <div class="row btn btn-primary clickable"  data-target="#staticBackdrop"  data-value="{{$renta->id}}">
                     <div class="cell" data-title="Maquina">
-                        {{$renta->maquina}}
+                        {{$renta->clientes->Address}}
                         </div>
                     <div class="cell" data-title="Cliente">
-                        {{$renta->fecha}}
-                    </div>
-                    <div class="cell" data-title="Job Title">
-                        {{$renta->clientes->email}}
-                    </div>
-                    <div class="cell" data-title="Location">
                         {{$renta->clientes->Phone_num}}
                     </div>
-                    <div class="cell" data-title="Location">
-                        {{$renta->clientes->First_name}}
+                    <div class="cell" data-title="Job Title">
+                        {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}
                     </div>
                     <div class="cell" data-title="Location">
-                        <button class="row btn btn-primary clickable" style="color: #6f1C00" onclick="window.location='{{ url("/delivery_data") }}'">Entregar</button>
+                        {{$renta->maquina}}
+                    </div>
+
+                    <div class="cell" data-title="Location">
+                        <button class="row btn btn-primary "  style="color: #6f1C00; width: 25px;" onclick="window.location='{{ url("/delivery_data") }}'" >Entregar</button>
                     </div>
 
 

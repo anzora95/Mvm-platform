@@ -40,7 +40,7 @@ Route::get('contract', function(){
     return view('DispachCenter/document_contract');
 });
 
-Route::get('deliver2',function (){
+    Route::get('deliver2',function (){
     return view('DispachCenter/pickup_machinery');
 });
 
