@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Machiney extends Model
 {
-    //
+    protected $tablex ='machinery';
 }
