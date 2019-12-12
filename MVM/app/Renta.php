@@ -22,4 +22,10 @@ class Renta extends Model
     public function entregas(){
         return $this->hasOne('App\Entrega');
     }
+
+    public function machinery(){
+        return $this->belongsTo('App\Machinery', 'maquina');
+    }
+
+
 }

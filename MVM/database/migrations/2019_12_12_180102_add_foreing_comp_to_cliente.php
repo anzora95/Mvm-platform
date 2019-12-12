@@ -13,8 +13,8 @@ class AddForeingCompToCliente extends Migration
      */
     public function up()
     {
-        Schema::table('cliente', function (Blueprint $table) {
-            //
+        Schema::table('clientes', function (Blueprint $table) {
+            $table->foreign('id_comp')->references('id_comp')->on('compañias');
         });
     }
 
@@ -25,7 +25,7 @@ class AddForeingCompToCliente extends Migration
      */
     public function down()
     {
-        Schema::table('cliente', function (Blueprint $table) {
+        Schema::table('clientes', function (Blueprint $table) {
             //
         });
     }

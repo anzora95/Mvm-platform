@@ -4,7 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Machiney extends Model
+class Machinery extends Model
 {
-    protected $tablex ='machinery';
+    protected $table ='machinery';
+
+    public $primaryKey='id_machinery';
+
+    public function rentas(){
+
+        return $this->hasOne('App\Renta');
+    }
 }

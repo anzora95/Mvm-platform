@@ -13,8 +13,8 @@ class AddForeingToRenta extends Migration
      */
     public function up()
     {
-        Schema::table('renta', function (Blueprint $table) {
-            //
+        Schema::table('rentas', function (Blueprint $table) {
+            $table->foreign('maquina')->references('id_machinery')->on('machinery');
         });
     }
 

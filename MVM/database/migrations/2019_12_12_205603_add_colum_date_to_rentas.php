@@ -14,7 +14,8 @@ class AddColumDateToRentas extends Migration
     public function up()
     {
         Schema::table('rentas', function (Blueprint $table) {
-            //
+            $table->date('date');
+            $table->date('pick_up_date');
         });
     }
 

@@ -17,5 +17,9 @@ class Cliente extends Model
     return $this->hasMany('App\Renta');
 }
 
+    public function compañia(){
+        return $this->belongsTo('App\Compañia', 'id_comp');
+    }
+
 }
 

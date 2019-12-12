@@ -14,7 +14,8 @@ class AddColumnToMachinery extends Migration
     public function up()
     {
         Schema::table('machinery', function (Blueprint $table) {
-            //
+            $table ->integer('availability');
+            $table ->integer('place');
         });
     }
 
