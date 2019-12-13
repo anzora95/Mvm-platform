@@ -52,6 +52,10 @@ Route::get('rent_requets', function(){
     return view('DispachCenter/rent_requets');
 });
 
+//Route::get('calendar', function(){
+//    return view('MachineryAvailability/AvailabilityCalendar');
+//});
+
             //POST
 Route::post('/save', 'RentRequestController@store');
 
@@ -60,7 +64,9 @@ Route::post('/store_delivery','delivery_driver@store');
 
             //INDEX
 
-Route::get('/dashboard', 'delivery_driver@index'); // localhost:8000/
+Route::get('/dashboard', 'delivery_driver@index');
+
+Route::get('/calendar', 'Calendar_Controller@index');// localhost:8000/
 
 Route::get('/', 'RentRequestController@index'); // localhost:8000/
 
