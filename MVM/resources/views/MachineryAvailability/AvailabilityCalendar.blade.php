@@ -113,7 +113,7 @@
                         <div>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6 col-12">Direccion: {{$renta->clientes->Address}}</div>
+                                    <div class="col-md-6 col-12">Direccion: {{$renta->delivery_site}}</div>
                                     <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
                                     <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
@@ -146,7 +146,7 @@
                         <div>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6 col-12">Direccion: {{$renta->clientes->Address}}</div>
+                                    <div class="col-md-6 col-12">Direccion: {{$renta->delivery_site}}</div>
                                     <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
                                     <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
