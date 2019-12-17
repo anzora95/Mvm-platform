@@ -52,9 +52,9 @@ Route::get('rent_requets', function(){
     return view('DispachCenter/rent_requets');
 });
 
-//Route::get('calendar', function(){
-//    return view('MachineryAvailability/AvailabilityCalendar');
-//});
+Route::get('form', function(){
+    return view('DispachCenter/form_beta');
+});
 
             //POST
 Route::post('/save', 'RentRequestController@store');

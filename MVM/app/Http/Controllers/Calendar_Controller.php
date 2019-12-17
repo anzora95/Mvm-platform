@@ -21,7 +21,12 @@ class Calendar_Controller extends Controller
         $today=date("Y-m-d");
         $re=Renta::with('clientes')->get();
         $machi= DB::table('machinery')->get();
-        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format);
+        $dispo = DB::table('disponibilidads')->get();
+        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo);
+    }
+
+    public function indice (){
+
     }
 
     /**

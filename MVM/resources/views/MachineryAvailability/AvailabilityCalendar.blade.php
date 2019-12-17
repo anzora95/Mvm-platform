@@ -40,9 +40,11 @@
                         <div class="container text-center ">
                             <div class="row text-center">
                                 <div class="container">
-                                @foreach($machin as $mach)
-                                    @if($mach->place==2)
-                                        <h3><span class="badge badge-danger"> {{$mach->id_machinery}}</span></h3>
+                                @foreach($dispo as $mach)
+                                    @if($mach->date==$today)
+                                        @if($mach->estado==1)
+                                        <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
+                                            @endif
                                     @endif
 
 
@@ -62,12 +64,18 @@
                         <div class="container text-center">
                             <div class="row text-center">
                                 <div class="container">
-                                    @foreach($machin as $mach)
-                                        @if($mach->place==1)
-                                        <h3><span class="badge badge-secondary"> {{$mach->id_machinery}}</span></h3>
-                                            @elseif($mach->place==3)
-                                            <h3><span class="badge badge-success"> {{$mach->id_machinery}}</span></h3>
+                                    @foreach($dispo as $mach)
+                                        @if($mach->date==$today)
+                                                @foreach($machin as $mak)
+                                            @if($mach->maquina!=$mak->id_machinery)
+                                                <h3><span class="badge badge-secondary"> {{$mak->id_machinery}}</span></h3>
+{{--                                            @elseif($mak->place==3)--}}
+{{--                                                <h3><span class="badge badge-success"> {{$mak->id_machinery}}</span></h3>--}}
+                                            @endif
+                                                @endforeach
                                         @endif
+
+
 
                                     @endforeach
                             </div>
@@ -117,11 +125,11 @@
                                     <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
                                     <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
-{{--                                    @if($renta->clientes->compañias->Name == @null)--}}
-{{--                                        <div class="col">Empresa: </div>--}}
-{{--                                        @else--}}
+                                    @if($renta->clientes->id_comp == null)
+                                        <div class="col-md-6 col-12">Empresa: </div>
+                                        @else
                                         <div class="col-md-6 col-12">Empresa: {{$renta->clientes->compañia->Name}}</div>
-{{--                                    @endif--}}
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -150,11 +158,11 @@
                                     <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
                                     <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
-                                    {{--                                    @if($renta->clientes->compañias->Name == @null)--}}
-                                    {{--                                        <div class="col">Empresa: </div>--}}
-                                    {{--                                        @else--}}
+                                    @if($renta->clientes->id_comp == null)
+                                        <div class="col">Empresa: </div>
+                                    @else
                                     <div class="col-md-6 col-12">Empresa: {{$renta->clientes->compañia->Name}}</div>
-                                    {{--                                    @endif--}}
+                                    @endif
                                 </div>
                             </div>
                         </div>

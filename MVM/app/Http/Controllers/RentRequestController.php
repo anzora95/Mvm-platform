@@ -17,8 +17,9 @@ class RentRequestController extends Controller
     {
         return('Ese es un mensjae de el index de el request controller');
 
-
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -43,53 +44,107 @@ class RentRequestController extends Controller
                $last = $request->input('last_name');
                $machinery = $request->input('machinery');
                $client= $first.$last;
-               $attachment = $request->input('attachment');
                $address1= $request -> input('address_1');
                $address2 = $request -> input('address_2');
-               $address_cli= $address1." ".$address2;
                $city=$request->input('city');
-               $state = $request ->input('state');
-//               $start_date = $request ->input('start_date');
+               $address_rent= $address1." ".$address2." ".$city;
+               $start_date = $request ->input('start_date');
                $time = strtotime('10/16/2003');  //SETEADO HASTA QUE SE TOQUE FRONT
                $cli_id=$request -> input('cli_id');
-               $newformat = date('Y-m-d',$time);
-               $end_date= $request -> input('end_date');
-               $start_date = $newformat;
+//               $newformat = date('Y-m-d',$time);
+               $end_date= $request -> input('pick_up_date');
+//               $start_date = $newformat;
                $start_time= '15:25:22' ;  //SETEADO HASTA QUE SE TOQUE FRONT
-               $driver= $request-> input('driver');
-               $duracion= 4; //SE RESTARA FECHA DE PICKUP DE LA DE ENTREGA
+//               $driver= $request-> input('driver');
+               $driver= 'Marvin';
                $rental_cost = $request->input('rental_cost');
                $phone = $request -> input('phone');
                $email = $request -> input('email');
+               $compa=$request->input('compa');
 
                 $custom="";
 
-                $users = DB::table('clientes')->where('client_id', '=', $cli_id)->get();
-                if (empty($users)){
-                    $custom='1';
-                }else{
 
-                    foreach ($users as $post) {
-                        $custom=$post->client_id;
-                    }
-                }
+//                $same= DB::table('rentas')->where('date','=',$start_date)->get();
+//                echo $same;
+//                 if(empty($same)){
+
+                     $users = DB::table('clientes')->where('client_id', '=', $cli_id)->get();
+                     if (empty($users)){
+                         $custom='1';
+                     }else{
+
+                         foreach ($users as $post) {
+                             $custom=$post->client_id;
+                         }
+                     }
+
+                     if($custom==$cli_id){
+//                         ---------------------------------------------------------------------------------------------------
+
+//                         SI EL CLIENTE YA XISTE
+                         $mach_id = DB::table('machinery')->select('id_machinery')->where('name', '=', $machinery)->get();
+
+                         foreach ($mach_id as $post) {
+
+                             $maquina_id = $post->id_machinery;
+                         }
+
+                         $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent]);
 
 
-                if($custom==$cli_id){
 
-                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery, "driver" => $driver, 'rental_cost'=>$rental_cost]);
+                     }else{
 
-                }else{
+//                         EL CLIENTE NO EXISTE Y SE AGREGA SU COMPAÑIA TAMBIEN
 
-                    $cli= DB::table('clientes')->insert(["First_name"=>$first, 'Last_name'=>$last, 'Address' => $address_cli, 'Phone_num'=>$phone, 'email'=>$email, 'id_comp'=>2, 'client_id'=>$cli_id]);
+//                    $compa= DB::table('compañias')->insert(['Name'=>$compa]);
 
-                    $value = DB::table('rentas')->insert(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$machinery, "driver" => $driver, 'rental_cost'=>$rental_cost]);
+                         if (empty($compa)){
+
+                             $cli= DB::table('clientes')->insert(["First_name"=>$first, 'Last_name'=>$last, 'Address' => $address_rent, 'Phone_num'=>$phone, 'email'=>$email, 'client_id'=>$cli_id]);
+
+                         }else{
+
+                             $id_fisrt_comp = DB::table('compañias')->insertGetId(['Name'=>$compa]);
+
+                             $cli= DB::table('clientes')->insert(["First_name"=>$first, 'Last_name'=>$last, 'Address' => $address_rent, 'Phone_num'=>$phone, 'email'=>$email, 'id_comp'=>$id_fisrt_comp, 'client_id'=>$cli_id]);
+
+                         }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+//                    Busqueda de maquinaria segun nombre
+
+                         $mach_id = DB::table('machinery')->select('id_machinery')->where('name', '=', $machinery)->get();
+
+                         foreach ($mach_id as $post) {
+
+                             $maquina_id = $post->id_machinery;
+                         }
+
+                         $value = DB::table('rentas')->insert([]);
+//---------------------------------------------------------------------------------------------------------------
+//                          INSERCCION DE LA TABLA DISPONIBILIDADS
+
+                         $id_renta_first = DB::table('rentas')->insertGetId(["hora_solicitada" =>$start_time,'cliente'=>$cli_id,"maquina"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent]);
+
+                         $val_rent_disponible= DB::table('disponibilidads')->insert(["maquina"=>$maquina_id,"estado"=>1,'id_renta'=>$id_renta_first, 'date'=>$start_date]);
+                     }
+
+                     return redirect()->action('delivery_driver@index');
+
+//                 }
+//                 else{
+//
+//                     return redirect()->action('delivery_driver@index');
+//
+//                 }
 
 
-                }
 
 
-                return redirect()->action('delivery_driver@index');
+
+
 
 //               }
 

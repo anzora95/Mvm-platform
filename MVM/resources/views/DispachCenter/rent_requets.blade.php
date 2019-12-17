@@ -60,11 +60,41 @@
 
 
     <div class="form-group">
-        <label class="col-md-4 control-label" >Client ID</label>
+        <label class="col-md-4 control-label" >ID Number</label>
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="cli_id" placeholder="Client id" class="form-control"  type="text"  maxlength="8" required>
+                <input name="cli_id" placeholder="Client ID" class="form-control"  type="text"  required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label">Client Phone Number</label>
+        <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                <input  name="phone"  class="form-control"  type="text" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label">Client Email</label>
+        <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input  name="email"  class="form-control"  type="email" >
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label">Company</label>
+        <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input  name="compa"  class="form-control"  type="text">
             </div>
         </div>
     </div>
@@ -87,24 +117,24 @@
 </div>
 </div>
 {{--Attachment--}}
-    <div class="form-group">
-        <label class="col-md-4 control-label">Attachment</label>
-        <div class="col-md-4 selectContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                <select name="attachment" class="form-control selectpicker" required>
-                    <option value="">Select your Attachment</option>
-                    <option>Pala 1</option>
-                    <option>Pala 2</option>
-                    <option>Pala 3</option>
-                    <option>Pala 4</option>
-                    <option>Taladro 1</option>
-                    <option>Taladro 2</option>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label">Attachment</label>--}}
+{{--        <div class="col-md-4 selectContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>--}}
+{{--                <select name="attachment" class="form-control selectpicker" required>--}}
+{{--                    <option value="">Select your Attachment</option>--}}
+{{--                    <option>Pala 1</option>--}}
+{{--                    <option>Pala 2</option>--}}
+{{--                    <option>Pala 3</option>--}}
+{{--                    <option>Pala 4</option>--}}
+{{--                    <option>Taladro 1</option>--}}
+{{--                    <option>Taladro 2</option>--}}
 
-                </select>
-            </div>
-        </div>
-    </div>
+{{--                </select>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 
 <!-- Text input-->
@@ -113,7 +143,7 @@
   <label class="col-md-4 control-label">Address 1</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
   <input  name="address_1" placeholder="Address 1" class="form-control"  type="text" required>
     </div>
   </div>
@@ -123,7 +153,7 @@
         <label class="col-md-4 control-label">Address 2</label>
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                 <input  name="address_2" placeholder="Address 2" class="form-control"  type="text" required>
             </div>
         </div>
@@ -133,50 +163,52 @@
         <label class="col-md-4 control-label">City</label>
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
                 <input  name="city" placeholder="City" class="form-control"  type="text" required>
             </div>
         </div>
     </div>
 
     {{--Attachment--}}
-    <div class="form-group">
-        <label class="col-md-4 control-label">State</label>
-        <div class="col-md-4 selectContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                <select name="state" class="form-control selectpicker" required>
-                    <option value="">Select your State</option>
-                    <option>State1</option>
-                    <option>State2</option>
-                    <option>State3</option>
-                    <option>State4</option>
-                    <option>State5</option>
-                    <option>State6</option>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label">State</label>--}}
+{{--        <div class="col-md-4 selectContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>--}}
+{{--                <select name="state" class="form-control selectpicker" required>--}}
+{{--                    <option value="">Select your State</option>--}}
+{{--                    <option>State1</option>--}}
+{{--                    <option>State2</option>--}}
+{{--                    <option>State3</option>--}}
+{{--                    <option>State4</option>--}}
+{{--                    <option>State5</option>--}}
+{{--                    <option>State6</option>--}}
 
-                </select>
-            </div>
-        </div>
-    </div>
-
-<!-- Text input-->
-
+{{--                </select>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 <!-- Text input-->
 
 
+<!-- Text input-->
 
 
+
+{{--    <div class="container">--}}
         <div class="form-group">
-            <label class="col-md-4 control-label" >Start Time</label>
+
+            <label class="col-md-4 control-label" >Start Date</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
 
                     <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" name="start_time" />
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input type='text' class="form-control" placeholder="yyyy-mm-dd" name="start_date" />
                         <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
+
                     </span>
                     </div>
                     <script type="text/javascript">
@@ -188,38 +220,68 @@
                 </div>
             </div>
         </div>
+{{--    </div>--}}
 
+{{--   pickup date --}}
+
+{{--    <div class="container">--}}
         <div class="form-group">
-            <label class="col-md-4 control-label">Driver</label>
-            <div class="col-md-4 selectContainer">
+            <label class="col-md-4 control-label" >Pick up Date</label>
+            <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select name="driver" class="form-control selectpicker" required>
-                        <option value="">Select your Driver</option>
-                        <option>Marvin</option>
-                        <option>Driver 1</option>
 
 
-                    </select>
+                    <div class='input-group date' id='datetimepicker1'>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input type='text' class="form-control" placeholder="yyyy-mm-dd" name="pick_up_date" />
+                        <span class="input-group-addon">
+
+                    </span>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker();
+                        });
+                    </script>
+
                 </div>
             </div>
         </div>
+{{--    </div>--}}
+
+{{--    driver   --}}
+
+{{--        <div class="form-group">--}}
+{{--            <label class="col-md-4 control-label">Driver</label>--}}
+{{--            <div class="col-md-4 selectContainer">--}}
+{{--                <div class="input-group">--}}
+{{--                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>--}}
+{{--                    <select name="driver" class="form-control selectpicker" required>--}}
+{{--                        <option value="">Select your Driver</option>--}}
+{{--                        <option>Marvin</option>--}}
+{{--                        <option>Driver 1</option>--}}
+
+
+{{--                    </select>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 <!-- Text input-->
 
 
 <!-- Select Basic -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">Operator</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <div class="material-switch ">
-                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                            <label style="margin-left: 35px; margin-top: 20px;" for="someSwitchOptionPrimary" class="label-primary "></label>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+{{--            <div class="form-group">--}}
+{{--                <label class="col-md-4 control-label">Operator</label>--}}
+{{--                <div class="col-md-4 inputGroupContainer">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <div class="material-switch ">--}}
+{{--                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>--}}
+{{--                            <label style="margin-left: 35px; margin-top: 20px;" for="someSwitchOptionPrimary" class="label-primary "></label>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
             <div class="form-group">
@@ -232,25 +294,9 @@
                 </div>
             </div>
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">Phone number</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input  name="phone"  class="form-control"  type="text" required>
-            </div>
-        </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">Email</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                <input  name="email"  class="form-control"  type="email" required>
-            </div>
-        </div>
-    </div>
+
+
 {{--        <p>{{$users}}</p>--}}
 
 

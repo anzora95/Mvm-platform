@@ -27,5 +27,11 @@ class Renta extends Model
         return $this->belongsTo('App\Machinery', 'maquina');
     }
 
+    public function disponibilidads(){
+
+        return $this->hasOne('App\Disponibilidads');
+
+    }
+
 
 }

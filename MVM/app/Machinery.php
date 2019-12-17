@@ -14,4 +14,10 @@ class Machinery extends Model
 
         return $this->hasOne('App\Renta');
     }
+
+    public function disponibilidad(){
+
+        return $this->hasMany('App\Disponibilidads');
+
+    }
 }
