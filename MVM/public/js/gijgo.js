@@ -253,7 +253,7 @@ gj.core = {
     messages: {
         'en-us': {
             monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            monthShortNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],            
+            monthShortNames: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             weekDaysMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
             weekDaysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
             weekDays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -265,7 +265,7 @@ gj.core = {
         }
     },
 
-    /** 
+    /**
      * @method
      * @example String.1
      * <div id="date"></div>
@@ -350,7 +350,7 @@ gj.core = {
         return result;
     },
 
-    /** 
+    /**
      * @method
      * @example Sample.1
      * <div id="date"></div>
@@ -597,7 +597,7 @@ gj.core = {
                 oSel.moveStart('character', elemLen);
                 oSel.moveEnd('character', 0);
                 oSel.select();
-            } else if (elem.selectionStart || elem.selectionStart == '0') { // Firefox/Chrome                
+            } else if (elem.selectionStart || elem.selectionStart == '0') { // Firefox/Chrome
                 elem.selectionStart = elemLen;
                 elem.selectionEnd = elemLen;
                 elem.focus();
@@ -763,8 +763,8 @@ gj.picker.widget.prototype.destroy = function (type) {
     return this;
 };
 /* global window alert jQuery */
-/** 
- * @widget Dialog 
+/**
+ * @widget Dialog
  * @plugin Base
  */
 gj.dialog = {
@@ -1202,8 +1202,8 @@ gj.dialog.config = {
         }
     }
 };
-/** 
-  * @widget Dialog 
+/**
+  * @widget Dialog
   * @plugin Base
   */
 gj.dialog.events = {
@@ -1553,7 +1553,7 @@ gj.dialog.methods = {
             $dialog.on('opened', function () {
                 var $body = $dialog.children('div[data-role="body"]');
                 $body.css('height', data.height - $header.outerHeight() - ($footer.length ? $footer.outerHeight() : 0));
-            });            
+            });
         }
 
         gj.core.center($dialog);
@@ -1703,7 +1703,7 @@ gj.dialog.methods = {
         if (result) {
             gj.dialog.events.resize($dialog);
         }
-        
+
         return result;
     },
 
@@ -1763,13 +1763,13 @@ gj.dialog.methods = {
                 $dialog.find('[data-role="body"]').removeClass(data.style.body);
                 $dialog.find('[data-role="footer"]').removeClass(data.style.footer);
             }
-            
+
         }
         return $dialog;
     }
 };
-/** 
-  * @widget Dialog 
+/**
+  * @widget Dialog
   * @plugin Base
   */
 gj.dialog.widget = function ($element, jsConfig) {
@@ -1865,7 +1865,7 @@ gj.dialog.widget = function ($element, jsConfig) {
      * <button onclick="dialog.destroy()" class="gj-button-md">Destroy</button>
      * <script>
      *     var dialog;
-     *     function create() { 
+     *     function create() {
      *         dialog = $('#dialog').dialog();
      *     }
      * </script>
@@ -1923,8 +1923,8 @@ gj.dialog.messages['en-us'] = {
     DefaultTitle: 'Dialog'
 };
 /* global window alert jQuery */
-/** 
- * @widget Draggable 
+/**
+ * @widget Draggable
  * @plugin Base
  */
 gj.draggable = {
@@ -2262,8 +2262,8 @@ gj.draggable.widget.constructor = gj.draggable.widget;
     };
 })(jQuery);
 /* global window alert jQuery */
-/** 
- * @widget Droppable 
+/**
+ * @widget Droppable
  * @plugin Base
  */
 gj.droppable = {
@@ -2296,11 +2296,11 @@ gj.droppable.methods = {
 
         gj.widget.prototype.init.call(this, jsConfig, 'droppable');
         $dropEl.attr('data-droppable', 'true');
-        
+
         gj.documentManager.subscribeForEvent('mousedown', $dropEl.data('guid'), gj.droppable.methods.createMouseDownHandler($dropEl));
         gj.documentManager.subscribeForEvent('mousemove', $dropEl.data('guid'), gj.droppable.methods.createMouseMoveHandler($dropEl));
         gj.documentManager.subscribeForEvent('mouseup', $dropEl.data('guid'), gj.droppable.methods.createMouseUpHandler($dropEl));
-        
+
         return $dropEl;
     },
 
@@ -2407,7 +2407,7 @@ gj.droppable.events = {
      * <script>
      *     $('#draggable').draggable();
      *     $('#droppable').droppable({
-     *         over: function() { 
+     *         over: function() {
      *             $(this).addClass('hover')
      *         },
      *         out: function() {
@@ -2725,7 +2725,7 @@ gj.grid.config = {
              *         { 'ID': 3, 'Value1': 'moo', 'Value2': 'moo' },
              *         { 'ID': 4, 'Value1': null, 'Value2': undefined }
              *     ];
-             *     var caseSensitiveSort = function (direction, column) { 
+             *     var caseSensitiveSort = function (direction, column) {
              *         return function (recordA, recordB) {
              *             var a = recordA[column.field] || '',
              *                 b = recordB[column.field] || '';
@@ -3178,8 +3178,8 @@ gj.grid.config = {
              * @example sample <!-- grid -->
              * <table id="grid" data-source="/Players/Get"></table>
              * <script>
-             *     var nameRenderer = function (value, record, $cell, $displayEl) { 
-             *         $cell.css('font-style', 'italic'); 
+             *     var nameRenderer = function (value, record, $cell, $displayEl) {
+             *         $cell.css('font-style', 'italic');
              *         $displayEl.css('background-color', '#EEE');
              *         $displayEl.text(value);
              *     };
@@ -3213,7 +3213,7 @@ gj.grid.config = {
              *             { 'ID': 3, 'Value1': 'moo', 'Value2': 'moo' },
              *             { 'ID': 4, 'Value1': null, 'Value2': undefined }
              *         ],
-             *         caseSensitiveFilter = function (value, searchStr) { 
+             *         caseSensitiveFilter = function (value, searchStr) {
              *             return value.indexOf(searchStr) > -1;
              *         };
              *     grid = $('#grid').grid({
@@ -3568,7 +3568,7 @@ gj.grid.config = {
          */
         fontSize: undefined,
 
-        /** Name of column that contains the record id. 
+        /** Name of column that contains the record id.
          * @additionalinfo If you set primary key, we assume that this number is unique for each records presented in the grid.<br/>
          * For example this should contains the column with primary key from your relation db table.<br/>
          * If the primaryKey is undefined, we autogenerate id for each record in the table by starting from 1.
@@ -3585,11 +3585,11 @@ gj.grid.config = {
          *     $('#grid').grid({
          *         dataSource: data,
          *         primaryKey: 'ID',
-         *         columns: [ 
+         *         columns: [
          *             { field: 'ID', width: 70 },
          *             { field: 'Name' },
          *             { field: 'PlaceOfBirth' } ,
-         *             { tmpl: '<a href="#">click me</a>', events: { click: function(e) { alert('Your id is ' + e.data.id); } }, width: 100, stopPropagation: true } 
+         *             { tmpl: '<a href="#">click me</a>', events: { click: function(e) { alert('Your id is ' + e.data.id); } }, width: 100, stopPropagation: true }
          *         ]
          *     });
          * </script>
@@ -3603,11 +3603,11 @@ gj.grid.config = {
          *     ];
          *     $('#grid').grid({
          *         dataSource: data,
-         *         columns: [ 
+         *         columns: [
          *             { field: 'ID', width: 70 },
          *             { field: 'Name' },
          *             { field: 'PlaceOfBirth' } ,
-         *             { tmpl: '<a href="#">click me</a>', events: { click: function(e) { alert('Your id is ' + e.data.id); } }, width: 100, stopPropagation: true } 
+         *             { tmpl: '<a href="#">click me</a>', events: { click: function(e) { alert('Your id is ' + e.data.id); } }, width: 100, stopPropagation: true }
          *         ]
          *     });
          * </script>
@@ -3624,7 +3624,7 @@ gj.grid.config = {
          *         dataSource: '/Players/Get',
          *         uiLibrary: 'bootstrap',
          *         locale: 'de-de',
-         *         columns: [ 
+         *         columns: [
          *             { field: 'ID', width: 34 },
          *             { field: 'Name', title: 'Name' },
          *             { field: 'PlaceOfBirth', title: 'Geburtsort' }
@@ -3640,7 +3640,7 @@ gj.grid.config = {
          *         dataSource: '/Players/Get',
          *         uiLibrary: 'materialdesign',
          *         locale: 'fr-fr',
-         *         columns: [ 
+         *         columns: [
          *             { field: 'ID', width: 56 },
          *             { field: 'Name', title: 'Prénom' },
          *             { field: 'PlaceOfBirth', title: 'Lieu de naissance' }
@@ -4116,7 +4116,7 @@ gj.grid.methods = {
         }
         return result;
     },
-    
+
     initialize: function ($grid) {
         var data = $grid.data(),
             $wrapper = $grid.parent('div[data-role="wrapper"]');
@@ -4162,7 +4162,7 @@ gj.grid.methods = {
                 stopPropagation: true
             });
         }
-        
+
         if ($grid.children('tbody').length === 0) {
             $grid.append($('<tbody/>'));
         }
@@ -5485,7 +5485,7 @@ gj.grid.widget = function ($grid, jsConfig) {
      *             { 'ID': 2, 'Name': 'Ronaldo Luis Nazario de Lima', 'PlaceOfBirth': 'Rio de Janeiro, Brazil' },
      *             { 'ID': 3, 'Name': 'David Platt', 'PlaceOfBirth': 'Chadderton, Lancashire, England' }
      *         ],
-     *         columns: [ 
+     *         columns: [
      *             { field: 'ID', width: 56 },
      *             { field: 'Name' },
      *             { field: 'PlaceOfBirth' },
@@ -5671,7 +5671,7 @@ gj.grid.plugins.fixedHeader = {
              *         dataSource: '/Players/Get',
              *         fixedHeader: true,
              *         height: 200,
-             *         columns: [ 
+             *         columns: [
              *             { field: 'ID', width: 34 },
              *             { field: 'Name' },
              *             { field: 'PlaceOfBirth' }
@@ -5686,10 +5686,10 @@ gj.grid.plugins.fixedHeader = {
              *         dataSource: '/Players/Get',
              *         fixedHeader: true,
              *         height: 200,
-             *         columns: [ 
-             *             { field: 'ID', width: 34 }, 
-             *             { field: 'Name' }, 
-             *             { field: 'PlaceOfBirth' } 
+             *         columns: [
+             *             { field: 'ID', width: 34 },
+             *             { field: 'Name' },
+             *             { field: 'PlaceOfBirth' }
              *         ],
              *         pager: { limit: 5 }
              *     });
@@ -5701,10 +5701,10 @@ gj.grid.plugins.fixedHeader = {
              *         uiLibrary: 'bootstrap4',
              *         dataSource: '/Players/Get',
              *         fixedHeader: true,
-             *         columns: [ 
-             *             { field: 'ID', width: 42 }, 
-             *             { field: 'Name' }, 
-             *             { field: 'PlaceOfBirth' } 
+             *         columns: [
+             *             { field: 'ID', width: 42 },
+             *             { field: 'Name' },
+             *             { field: 'PlaceOfBirth' }
              *         ],
              *         pager: { limit: 5 }
              *     });
@@ -5808,8 +5808,8 @@ gj.grid.plugins.fixedHeader = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Expand Collapse Rows
  */
 gj.grid.plugins.expandCollapseRows = {
@@ -6003,7 +6003,7 @@ gj.grid.plugins.expandCollapseRows = {
             if ($cells && $cells.length) {
                 $cells.attr('colspan', gj.grid.methods.countVisibleColumns($grid));
             }
-        }        
+        }
     },
 
     'public': {
@@ -6028,7 +6028,7 @@ gj.grid.plugins.expandCollapseRows = {
          */
         collapseAll: function () {
             var $grid = this, data = $grid.data(), position;
-                
+
 
             if (typeof (data.detailTemplate) !== 'undefined') {
                 position = gj.grid.methods.getColumnPositionByRole($grid, 'expander');
@@ -6105,7 +6105,7 @@ gj.grid.plugins.expandCollapseRows = {
          *
          * @event detailExpand
          * @param {object} e - event data
-         * @param {object} detailWrapper - the detail wrapper as jQuery object 
+         * @param {object} detailWrapper - the detail wrapper as jQuery object
          * @param {string} id - the id of the record
          * @example sample <!-- grid -->
          * <table id="grid"></table>
@@ -6131,7 +6131,7 @@ gj.grid.plugins.expandCollapseRows = {
          *
          * @event detailCollapse
          * @param {object} e - event data
-         * @param {object} detailWrapper - the detail wrapper as jQuery object 
+         * @param {object} detailWrapper - the detail wrapper as jQuery object
          * @param {string} id - the id of the record
          * @example sample <!-- grid -->
          * <table id="grid"></table>
@@ -6220,8 +6220,8 @@ gj.grid.plugins.expandCollapseRows = {
         }
     }
 };
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Inline Editing
  */
 gj.grid.plugins.inlineEditing = {
@@ -6428,7 +6428,7 @@ gj.grid.plugins.inlineEditing.config = {
              * </script>
              */
             mode: 'click',
-                
+
             /** If set to true, add column with buttons for edit, delete, update and cancel at the end of the grid.
              * @alias inlineEditing.managementColumn
              * @type Boolean
@@ -6843,9 +6843,9 @@ gj.grid.plugins.inlineEditing.public = {
      *         primaryKey: 'ID',
      *         dataSource: '/Players/Get',
      *         inlineEditing: { mode: 'command', managementColumn: false },
-     *         columns: [ 
+     *         columns: [
      *             { field: 'ID', width: 56 },
-     *             { field: 'Name', editor: true }, 
+     *             { field: 'Name', editor: true },
      *             { field: 'PlaceOfBirth', editor: true },
      *             { width: 56, align: 'center', renderer: renderer }
      *         ]
@@ -6860,7 +6860,7 @@ gj.grid.plugins.inlineEditing.public = {
         for (i = 0; i < $cells.length; i++) {
             gj.grid.plugins.inlineEditing.private.editMode(this, $($cells[i]), columns[i], record);
         }
-            
+
         return this;
     },
 
@@ -6894,9 +6894,9 @@ gj.grid.plugins.inlineEditing.public = {
      *         primaryKey: 'ID',
      *         dataSource: '/Players/Get',
      *         inlineEditing: { mode: 'command', managementColumn: false },
-     *         columns: [ 
+     *         columns: [
      *             { field: 'ID', width: 56 },
-     *             { field: 'Name', editor: true }, 
+     *             { field: 'Name', editor: true },
      *             { field: 'PlaceOfBirth', editor: true },
      *             { width: 56, align: 'center', renderer: renderer }
      *         ]
@@ -6946,9 +6946,9 @@ gj.grid.plugins.inlineEditing.public = {
      *         primaryKey: 'ID',
      *         dataSource: '/Players/Get',
      *         inlineEditing: { mode: 'command', managementColumn: false },
-     *         columns: [ 
+     *         columns: [
      *             { field: 'ID', width: 56 },
-     *             { field: 'Name', editor: true }, 
+     *             { field: 'Name', editor: true },
      *             { field: 'PlaceOfBirth', editor: true },
      *             { width: 56, align: 'center', renderer: renderer }
      *         ]
@@ -6974,7 +6974,7 @@ gj.grid.plugins.inlineEditing.events = {
      *
      * @event cellDataChanged
      * @param {object} e - event data
-     * @param {object} $cell - the cell presented as jquery object 
+     * @param {object} $cell - the cell presented as jquery object
      * @param {object} column - the column configuration data
      * @param {object} record - the data of the row record
      * @param {object} newValue - the new cell value
@@ -7051,8 +7051,8 @@ gj.grid.plugins.inlineEditing.configure = function ($grid, fullConfig, clientCon
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Optimistic Persistence
  */
 gj.grid.plugins.optimisticPersistence = {
@@ -7292,8 +7292,8 @@ gj.grid.plugins.pagination = {
                  *                 stateDisabled: 'icon-disabled'
                  *             }
                  *         },
-                 *         pager: { 
-                 *             limit: 2, 
+                 *         pager: {
+                 *             limit: 2,
                  *             sizes: [2, 5, 10, 20],
                  *             leftControls: [
                  *                 $('<div title="First" data-role="page-first" class="custom-item"><i class="fa fa-fast-backward" aria-hidden="true" /></div>'),
@@ -7667,7 +7667,7 @@ gj.grid.plugins.pagination = {
                 $cell.attr('colspan', gj.grid.methods.countVisibleColumns($grid));
             }
         },
-        
+
         isLastRecordVisible: function ($grid) {
             var result = true,
                 data = $grid.data(),
@@ -7687,7 +7687,7 @@ gj.grid.plugins.pagination = {
             if ($.isArray(data.dataSource)) {
                 if (includeAllRecords) {
                     return data.dataSource;
-                } else if (data.params[data.paramNames.limit] && data.params[data.paramNames.page]) {                    
+                } else if (data.params[data.paramNames.limit] && data.params[data.paramNames.page]) {
                     limit = parseInt(data.params[data.paramNames.limit], 10);
                     page = parseInt(data.params[data.paramNames.page], 10);
                     start = (page - 1) * limit;
@@ -7779,8 +7779,8 @@ gj.grid.plugins.pagination = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Responsive Design
  */
 gj.grid.plugins.responsiveDesign = {
@@ -7852,7 +7852,7 @@ gj.grid.plugins.responsiveDesign = {
              * </script>
              * @example Local.Data.Source <!-- bootstrap, grid, grid.expandCollapseRows, grid.responsiveDesign -->
              * <table id="grid"></table>
-             * <script>             
+             * <script>
              *     var data = [
              *         { 'ID': 1, 'Name': 'Hristo Stoichkov', 'PlaceOfBirth': 'Plovdiv, Bulgaria' },
              *         { 'ID': 2, 'Name': 'Ronaldo Luis Nazario de Lima', 'PlaceOfBirth': 'Rio de Janeiro, Brazil' },
@@ -7957,8 +7957,8 @@ gj.grid.plugins.responsiveDesign = {
             }
             return result;
         },
-        
-        updateDetails: function ($grid) {      
+
+        updateDetails: function ($grid) {
             var rows, data, i, j, $row, details, $placeholder, column, tmp;
             rows = $grid.find('tbody > tr[data-role="row"]');
             data = $grid.data();
@@ -8116,8 +8116,8 @@ gj.grid.plugins.responsiveDesign = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Toolbar
  */
 gj.grid.plugins.toolbar = {
@@ -8225,7 +8225,7 @@ gj.grid.plugins.toolbar = {
         }
     },
 
-    public: {        
+    public: {
         /**
          * Get or set grid title.
          * @additionalinfo When you pass value in the text parameter this value with be in use for the new title of the grid and the method will return grid object.<br/>
@@ -8281,8 +8281,8 @@ gj.grid.plugins.toolbar = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Resizable Columns
  */
 gj.grid.plugins.resizableColumns = {
@@ -8415,8 +8415,8 @@ gj.grid.plugins.resizableColumns = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Row Reorder
  */
 gj.grid.plugins.rowReorder = {
@@ -8557,7 +8557,7 @@ gj.grid.plugins.rowReorder = {
                 $dragEl.draggable({
                     stop: gj.grid.plugins.rowReorder.private.createDragStopHandler($grid, $trSource)
                 });
-                $dragEl.css({ 
+                $dragEl.css({
                     position: 'absolute', top: $trSource.offset().top, left: $trSource.offset().left, width: $trSource.width(), zIndex: 1
                 });
                 if ($trSource.attr('data-droppable') === 'true') {
@@ -8587,7 +8587,7 @@ gj.grid.plugins.rowReorder = {
                         sourcePosition = $trSource.data('position'),
                         data = $grid.data(),
                         $rows, $row, i, record, id;
-                        
+
                     if ($trTarget.droppable('isOver', mousePosition)) {
                         if (targetPosition < sourcePosition) {
                             $trTarget.before($trSource);
@@ -8650,8 +8650,8 @@ gj.grid.plugins.rowReorder = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Export
  */
 gj.grid.plugins.export = {
@@ -8713,7 +8713,7 @@ gj.grid.plugins.export = {
                         if (gj.grid.plugins.export.public.isColumnApplicable(columns[j])) {
                             line += '"' + records[i][columns[j].field] + '",';
                         }
-                    }                    
+                    }
                     str += line.slice(0, line.length - 1) + '\r\n';
                 }
             }
@@ -8760,7 +8760,7 @@ gj.grid.plugins.export = {
         downloadCSV: function (filename, includeAllRecords) {
             var link = document.createElement('a');
             document.body.appendChild(link);
-            link.download = filename || 'griddata.csv'; 
+            link.download = filename || 'griddata.csv';
             if (window.navigator.userAgent.indexOf("Edge") > -1) {
                 link.href = URL.createObjectURL(new Blob([this.getCSV(includeAllRecords)], { type: 'text/csv;charset=utf-8;' }));
             } else {
@@ -8781,8 +8781,8 @@ gj.grid.plugins.export = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Column Reorder
  */
 gj.grid.plugins.columnReorder = {
@@ -8934,7 +8934,7 @@ gj.grid.plugins.columnReorder = {
                     $row.find('td:eq(' + targetPosition + ')').before($row.find('td:eq(' + sourcePosition + ')'));
                 } else {
                     $row.find('td:eq(' + targetPosition + ')').after($row.find('td:eq(' + sourcePosition + ')'));
-                }                
+                }
             }
         },
 
@@ -9043,10 +9043,10 @@ gj.grid.plugins.headerFilter = {
              *     $('#grid').grid({
              *         dataSource: data,
              *         headerFilter: true,
-             *         columns: [ 
-             *             { field: 'ID', width: 56, filterable: false }, 
-             *             { field: 'Name' }, 
-             *             { field: 'PlaceOfBirth' } 
+             *         columns: [
+             *             { field: 'ID', width: 56, filterable: false },
+             *             { field: 'Name' },
+             *             { field: 'PlaceOfBirth' }
              *         ],
              *         pager: { limit: 5 }
              *     });
@@ -9143,8 +9143,8 @@ gj.grid.plugins.headerFilter = {
     }
 };
 
-/** 
- * @widget Grid 
+/**
+ * @widget Grid
  * @plugin Grouping
  */
 gj.grid.plugins.grouping = {
@@ -9892,7 +9892,7 @@ gj.tree.config = {
              * <script>
              *     var tree = $('#tree').tree({
              *         dataSource: '/Locations/Get',
-             *         icons: { 
+             *         icons: {
              *             expand: '<i class="material-icons">add</i>',
              *             collapse: '<i class="material-icons">remove</i>'
              *         }
@@ -9910,7 +9910,7 @@ gj.tree.config = {
              * <script>
              *     var tree = $('#tree').tree({
              *         dataSource: '/Locations/Get',
-             *         icons: { 
+             *         icons: {
              *             expand: '<i class="material-icons">add</i>',
              *             collapse: '<i class="material-icons">remove</i>'
              *         }
@@ -9992,8 +9992,8 @@ gj.tree.events = {
      *             alert('initialized is fired.');
      *         }
      *     });
-     *     $('#reload').on('click', function() { 
-     *         tree.reload(); 
+     *     $('#reload').on('click', function() {
+     *         tree.reload();
      *     });
      * </script>
      */
@@ -10452,7 +10452,7 @@ gj.tree.methods = {
             }
         }
     },
-    
+
     unselectAll: function ($tree) {
         var i, $nodes = $tree.find('ul>li');
         for (i = 0; i < $nodes.length; i++) {
@@ -10802,7 +10802,7 @@ gj.tree.widget = function ($element, jsConfig) {
      * @method
      * @param {object} data - The node data.
      * @param {object} parentNode - Parent node as jquery object.
-     * @param {Number} position - Position where the new node need to be added. 
+     * @param {Number} position - Position where the new node need to be added.
      * @return jQuery object
      * @example Append.ToRoot <!-- tree -->
      * <button onclick="append()" class="gj-button-md">Append To Root</button>
@@ -11216,7 +11216,7 @@ gj.tree.widget = function ($element, jsConfig) {
      *     tree = $('#tree').tree({
      *         primaryKey: 'id',
      *         dataBound: function () {
-     *             northAmerica = tree.getNodeByText('North America');  
+     *             northAmerica = tree.getNodeByText('North America');
      *         },
      *         unselect: function (e, node, id) {
      *             alert('unselect is fired for node with id=' + id);
@@ -11512,8 +11512,8 @@ gj.tree.widget.constructor = gj.tree.widget;
         }
     };
 })(jQuery);
-/** 
- * @widget Tree 
+/**
+ * @widget Tree
  * @plugin Checkboxes
  */
 gj.tree.plugins.checkboxes = {
@@ -12207,8 +12207,8 @@ gj.tree.plugins.dragAndDrop = {
 	}
 };
 
-/** 
- * @widget Tree 
+/**
+ * @widget Tree
  * @plugin Lazy Loading
  */
 gj.tree.plugins.lazyLoading = {
@@ -12310,8 +12310,8 @@ gj.tree.plugins.lazyLoading = {
 };
 
 /* global window alert jQuery */
-/** 
- * @widget Checkbox 
+/**
+ * @widget Checkbox
  * @plugin Base
  */
 gj.checkbox = {
@@ -12320,7 +12320,7 @@ gj.checkbox = {
 
 gj.checkbox.config = {
     base: {
-        /** The name of the UI library that is going to be in use. Currently we support only Material Design and Bootstrap. 
+        /** The name of the UI library that is going to be in use. Currently we support only Material Design and Bootstrap.
          * @additionalinfo The css files for Bootstrap should be manually included to the page if you use bootstrap as uiLibrary.
          * @type string (materialdesign|bootstrap|bootstrap4)
          * @default 'materialdesign'
@@ -12366,7 +12366,7 @@ gj.checkbox.config = {
          * </script>
          */
         uiLibrary: 'materialdesign',
-        
+
         /** The name of the icons library that is going to be in use. Currently we support Material Icons, Font Awesome and Glyphicons.
          * @additionalinfo If you use Bootstrap 3 as uiLibrary, then the iconsLibrary is set to Glyphicons by default.<br/>
          * If you use Material Design as uiLibrary, then the iconsLibrary is set to Material Icons by default.<br/>
@@ -12395,7 +12395,7 @@ gj.checkbox.config = {
             wrapperCssClass: 'gj-checkbox-md',
             spanCssClass: undefined
         }
-        
+
     },
 
     bootstrap: {
@@ -12617,7 +12617,7 @@ gj.checkbox.widget.constructor = gj.checkbox.widget;
     };
 })(jQuery);
 /* global window alert jQuery */
-/** 
+/**
  * @widget Editor
  * @plugin Base
  */
@@ -12656,7 +12656,7 @@ gj.editor.config = {
          */
         width: undefined,
 
-        /** The name of the UI library that is going to be in use. Currently we support only Material Design and Bootstrap. 
+        /** The name of the UI library that is going to be in use. Currently we support only Material Design and Bootstrap.
          * @additionalinfo The css files for Bootstrap should be manually included to the page if you use bootstrap as uiLibrary.
          * @type string (materialdesign|bootstrap|bootstrap4)
          * @default 'materialdesign'
@@ -13314,7 +13314,7 @@ gj.dropdown.config = {
              *         dataSource: '/Locations/Get',
              *         valueField: 'id',
              *         width: 200,
-             *         icons: { 
+             *         icons: {
              *             dropdown: '<i class="material-icons">keyboard_arrow_down</i>'
              *         }
              *     });
@@ -13327,7 +13327,7 @@ gj.dropdown.config = {
              *         valueField: 'id',
              *         uiLibrary: 'bootstrap',
              *         width: 200,
-             *         icons: { 
+             *         icons: {
              *             dropdown: '<span class="glyphicon glyphicon-triangle-bottom" />'
              *         }
              *     });
@@ -13473,7 +13473,7 @@ gj.dropdown.methods = {
                 if (mainElRect.top + listHeight + presenterHeight > window.innerHeight) {
                     newHeight = window.innerHeight - mainElRect.top - presenterHeight - 3;
                 }
-            } else { // The list is located above the main element                
+            } else { // The list is located above the main element
                 if (mainElRect.top - listHeight - 3 > 0) {
                     list.style.top = Math.round(mainElRect.top + scrollY - listHeight - 3) + 'px';
                 } else {
@@ -13547,7 +13547,7 @@ gj.dropdown.methods = {
                     gj.dropdown.methods.select($dropdown, value);
                 });
                 $list.append($item);
-                
+
                 $dropdown.append('<option value="' + value + '">' + text + '</option>');
 
                 if (selected) {
@@ -13847,7 +13847,7 @@ gj.datepicker.config = {
          * @example True <!-- datepicker -->
          * <input id="datepicker" width="312" />
          * <script>
-         *    var datepicker = $('#datepicker').datepicker({ 
+         *    var datepicker = $('#datepicker').datepicker({
          *        showOtherMonths: true
          *    });
          * </script>
@@ -13876,7 +13876,7 @@ gj.datepicker.config = {
          * @example False <!-- datepicker -->
          * <input id="datepicker" width="312" />
          * <script>
-         *     $('#datepicker').datepicker({ 
+         *     $('#datepicker').datepicker({
          *        showOtherMonths: true,
          *        selectOtherMonths: false
          *     });
@@ -13961,7 +13961,7 @@ gj.datepicker.config = {
          * @example Tomorrow <!-- datepicker -->
          * <input id="datepicker" width="312" />
          * <script>
-         *     $('#datepicker').datepicker({ 
+         *     $('#datepicker').datepicker({
          *        maxDate: function() {
          *            var date = new Date();
          *            date.setDate(date.getDate()+1);
@@ -14280,7 +14280,7 @@ gj.datepicker.config = {
              * <input id="datepicker" width="312" />
              * <script>
              *     $('#datepicker').datepicker({
-             *         icons: { 
+             *         icons: {
              *             rightIcon: '<i class="material-icons">date_range</i>'
              *         }
              *     });
@@ -14516,7 +14516,7 @@ gj.datepicker.methods = {
         $datepicker.val(data.value).addClass(data.style.input).attr('role', 'input');
 
         data.fontSize && $datepicker.css('font-size', data.fontSize);
-        
+
         if (data.uiLibrary === 'bootstrap' || data.uiLibrary === 'bootstrap4') {
             if (data.size === 'small') {
                 $wrapper.addClass('input-group-sm');
@@ -14586,7 +14586,7 @@ gj.datepicker.methods = {
     createCalendar: function ($datepicker, data) {
         var date, $body, $footer, $btnCancel, $btnOk,
             $calendar = $('<div role="calendar" type="month"/>').addClass(data.style.calendar).attr('guid', $datepicker.attr('data-guid'));
-        
+
         data.fontSize && $calendar.css('font-size', data.fontSize);
 
         date = gj.core.parseDate(data.value, data.format, data.locale);
@@ -14676,7 +14676,7 @@ gj.datepicker.methods = {
         $navigator.append($('<div role="period"></div>').on('click', gj.datepicker.methods.changePeriod($datepicker, data)));
         $navigator.append($('<div>' + data.icons.nextMonth + '</div>').on('click', gj.datepicker.methods.next($datepicker, data)));
         $body.append($navigator);
-        
+
         $row = $('<tr role="week-days" />');
         if (data.calendarWeeks) {
             $row.append('<th><div>&nbsp;</div></th>');
@@ -14698,10 +14698,10 @@ gj.datepicker.methods = {
             $table = $('<table/>'),
             $tbody = $('<tbody/>'),
             period = gj.core.messages[data.locale].titleFormat;
-        
+
         $body.off().empty();
         gj.datepicker.methods.createNavigation($datepicker, $body, $table, data);
-        
+
         month = parseInt($calendar.attr('month'), 10);
         year = parseInt($calendar.attr('year'), 10);
 
@@ -14753,17 +14753,27 @@ gj.datepicker.methods = {
                     $row.append('<td class="calendar-week"><div>' + gj.datepicker.methods.getWeekNumber(date) + '</div></td>');
                 }
             }
-            $cell = $('<td day="' + i + '" month="' + month + '" year="' + year + '" />');
+            $cell = $('<a><td day="' + i + '" month="' + month + '" year="' + year + '" /></a>');
             if (year === now.getFullYear() && month === now.getMonth() && i === now.getDate()) {
                 $cell.addClass('today');
             } else {
                 $cell.addClass('current-month');
+                $cell.addClass('jose_class');
             }
-            $day = $('<div>' + i + '</div>');
+            $dat2=new Date(year, month, i);
+            $dateString = new Date($dat2.getTime() - ($dat2.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];
+             // $day = $('<div><a href="/date_confirm/${dat2}">' + i + '</a></div>');
+            // $day = $(`<div><a href="/date_confirm/${dat2}">${i}</a></div>`);
+            $day = $('<a>' + i + '</a>');
+
+
             if (gj.datepicker.methods.isSelectable(data, date)) {
                 $cell.addClass('gj-cursor-pointer');
+                $url='/date_confirm/'+$dateString;
+                $day.attr('href', $url);
                 $day.on('click', gj.datepicker.methods.dayClickHandler($datepicker, $calendar, data, date));
                 $day.on('mousedown', function (e) { e.stopPropagation() });
+                // $day.attr('href', 'https://github.com/atatanasov/gijgo/issues');
             } else {
                 $cell.addClass('disabled');
             }
@@ -14814,7 +14824,7 @@ gj.datepicker.methods = {
         var year, i, m, $month,
             $table = $calendar.find('>[role="body"]>table'),
             $tbody = $table.children('tbody');
-        
+
         $table.children('thead').hide();
 
         year = parseInt($calendar.attr('year'), 10);
@@ -14840,7 +14850,7 @@ gj.datepicker.methods = {
         var year, decade, i, y, $year,
             $table = $calendar.find('>[role="body"]>table'),
             $tbody = $table.children('tbody');
-        
+
         $table.children('thead').hide();
 
         year = parseInt($calendar.attr('year'), 10);
@@ -14867,7 +14877,7 @@ gj.datepicker.methods = {
         var year, century, i, d, $decade,
             $table = $calendar.find('>[role="body"]>table'),
             $tbody = $table.children('tbody');
-        
+
         $table.children('thead').hide();
 
         year = parseInt($calendar.attr('year'), 10);
@@ -15817,7 +15827,7 @@ gj.timepicker.methods = {
             }
             $clock.append($header);
         }
-        
+
         $clock.append($body);
 
         if (data.footer) {
@@ -16065,7 +16075,7 @@ gj.timepicker.methods = {
 
         $clock.find('[role="header"] [role="hour"]').removeClass('selected');
         $clock.find('[role="header"] [role="minute"]').addClass('selected');
-        
+
         data.dialMode = 'minutes';
 
         gj.timepicker.methods.update($timepicker, $clock, data);
@@ -16494,7 +16504,7 @@ gj.datetimepicker.config = {
          * </script>
          */
         size: 'default',
-        
+
         /** The language that needs to be in use.
          * @type string
          * @default 'en-us'
@@ -16624,7 +16634,7 @@ gj.datetimepicker.methods = {
         data.timepicker.mode = '24hr';
         data.timepicker.autoClose = false;
 
-        // Init header        
+        // Init header
         $header = $('<div role="header" />');
         $date = $('<div role="date" class="selected" />');
         $date.on('click', gj.datetimepicker.methods.createShowDateHandler($datetimepicker, $picker, data));
@@ -17062,7 +17072,7 @@ gj.slider.methods = {
         if (data.width) {
             wrapper.style.width = data.width + 'px';
         }
-        
+
         gj.core.addClasses(wrapper, data.style.wrapper);
 
         track = $slider[0].querySelector('[role="track"]');
@@ -17092,7 +17102,7 @@ gj.slider.methods = {
             data.value = data.min;
         }
         gj.slider.methods.value($slider, data, data.value);
-        
+
         gj.documentManager.subscribeForEvent('mouseup', $slider.data('guid'), gj.slider.methods.createMouseUpHandler($slider, handle, data));
         handle.addEventListener('mousedown', gj.slider.methods.createMouseDownHandler(handle, data));
         gj.documentManager.subscribeForEvent('mousemove', $slider.data('guid'), gj.slider.methods.createMouseMoveHandler($slider, track, handle, progress, data));

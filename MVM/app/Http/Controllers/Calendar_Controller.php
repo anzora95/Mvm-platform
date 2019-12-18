@@ -25,9 +25,14 @@ class Calendar_Controller extends Controller
         return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo);
     }
 
-    public function getAjax (){
+    public function getAjax ($date_incoming){
 
-        $id= $_GET['date'];
+        $today=date("Y-m-d",strtotime($date_incoming));
+        $today_format=date('l dS F Y ',strtotime($today));
+        $re=Renta::with('clientes')->get();
+        $machi= DB::table('machinery')->get();
+        $dispo = DB::table('disponibilidads')->get();
+        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo);
 
 
 
