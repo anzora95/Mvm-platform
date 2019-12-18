@@ -74,6 +74,9 @@ Route::resource('renta', 'RentRequestController');
 
 Route::get('/deliver2','pickup_machinery@index');
 
+//          ROUTES WITH AJAX
+Route::get('date_confirm/{date}','Calendar_Controller@getAjax');
+
 
 
 

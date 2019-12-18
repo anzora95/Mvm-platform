@@ -25,7 +25,11 @@ class Calendar_Controller extends Controller
         return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo);
     }
 
-    public function indice (){
+    public function getAjax (){
+
+        $id= $_GET['date'];
+
+
 
     }
 

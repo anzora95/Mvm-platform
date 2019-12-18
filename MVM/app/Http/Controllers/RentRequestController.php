@@ -131,7 +131,7 @@ class RentRequestController extends Controller
                          $val_rent_disponible= DB::table('disponibilidads')->insert(["maquina"=>$maquina_id,"estado"=>1,'id_renta'=>$id_renta_first, 'date'=>$start_date]);
                      }
 
-                     return redirect()->action('delivery_driver@index');
+                     return redirect()->action('Calendar_Controller@index');
 
 //                 }
 //                 else{
