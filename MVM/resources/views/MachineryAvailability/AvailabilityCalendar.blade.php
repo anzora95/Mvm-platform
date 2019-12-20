@@ -67,8 +67,12 @@
                                 <div class="container">
                                 @foreach($dispo as $mach)
                                     @if($mach->date==$today)
-                                        @if($mach->estado==1)
-                                        <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
+                                            @if($mach->estado==1)
+                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
+                                            @endif
+                                    @elseif($today <= $mach->pickup_date and $mach->date <=$today)
+                                            @if($mach->estado==1)
+                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
                                             @endif
                                     @endif
                                 @endforeach
@@ -147,7 +151,7 @@
                                     <div class="col-md-6 col-12">Direccion: {{$renta->delivery_site}}</div>
                                     <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
-                                    <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
+                                    <div class="col-md-6 col-12">Contacto: {{$renta->clientes->Full_name}}</div>
                                     @if($renta->clientes->id_comp == null)
                                         <div class="col-md-6 col-12">Empresa: </div>
                                         @else
@@ -180,7 +184,7 @@
                                     <div class="col-md-6 col-12">Direccion: {{$renta->delivery_site}}</div>
                                     <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
-                                    <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
+                                    <div class="col-md-6 col-12">Contacto: {{$renta->clientes->Full_name}}</div>
                                     @if($renta->clientes->id_comp == null)
                                         <div class="col">Empresa: </div>
                                     @else

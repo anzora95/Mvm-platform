@@ -22,7 +22,13 @@
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHrRpn0FGYLAZ0bi1UTHPCmGClIZo8diA&libraries=places&callback=initAutocomplete" async defer></script>
+{{--<style>--}}
+{{--    <link type="text/css" rel = "stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"></style>--}}
+
 {{HTML::style('css/main.css')}}
+{{HTML::style('css/gmap.css')}}
+{{HTML::script('js/gmap.js')}}
 
 <div class="container">
 
@@ -37,37 +43,37 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Client First Name</label>
+  <label class="col-md-4 control-label">Full Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="First Name" class="form-control"  type="text" required>
+  <input  name="full_name"  class="form-control"  type="text" required>
     </div>
   </div>
 </div>
 
 <!-- Text input-->
 
-<div class="form-group">
-  <label class="col-md-4 control-label" >Client Last Name</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" placeholder="Last Name" class="form-control"  type="text" required>
-    </div>
-  </div>
-</div>
-
 
     <div class="form-group">
-        <label class="col-md-4 control-label" >ID Number</label>
+        <label class="col-md-4 control-label">Company Name</label>
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="cli_id" placeholder="Client ID" class="form-control"  type="text"  required>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input  name="compa"  class="form-control"  type="text">
             </div>
         </div>
     </div>
+
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label" >ID Number</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--}}
+{{--                <input name="cli_id" placeholder="Client ID" class="form-control"  type="text"  required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="form-group">
         <label class="col-md-4 control-label">Client Phone Number</label>
@@ -89,25 +95,25 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">Company</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                <input  name="compa"  class="form-control"  type="text">
-            </div>
-        </div>
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label" >Client Last Name</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--}}
+{{--                <input name="last_name" placeholder="Last Name" class="form-control"  type="text" required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 {{--Machinery--}}
 
   <div class="form-group">
-  <label class="col-md-4 control-label">Machinery</label>
+  <label class="col-md-4 control-label">Equipment</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="machinery" class="form-control selectpicker" required>
-      <option value="">Select your Machinery</option>
+      <option value="">Select your Equipment</option>
       <option>Mini excavator 303-E</option>
       <option>Skid Steer Loader 232-D</option>
       <option>Skid Steer Loader 262-D</option>
@@ -140,34 +146,38 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Address 1</label>
+  <label class="col-md-4 control-label">Address</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input  name="address_1" placeholder="Address 1" class="form-control"  type="text" required>
-    </div>
+{{--  <input  name="address_1" placeholder="Address 1" class="form-control"  type="text" required>--}}
+      <div id="locationField">
+          <input name="address_1" id="autocomplete"  onFocus="geolocate()" type="text" class="form-control" required/>
+      </div>
+
+  </div>
   </div>
 </div>
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">Address 2</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <input  name="address_2" placeholder="Address 2" class="form-control"  type="text" required>
-            </div>
-        </div>
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label">Address 2</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>--}}
+{{--                <input  name="address_2" placeholder="Address 2" class="form-control"  type="text" required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">City</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <input  name="city" placeholder="City" class="form-control"  type="text" required>
-            </div>
-        </div>
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label">City</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>--}}
+{{--                <input  name="city" placeholder="City" class="form-control"  type="text" required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     {{--Attachment--}}
 {{--    <div class="form-group">--}}
