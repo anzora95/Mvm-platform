@@ -100,16 +100,28 @@
 {{--                                                <h3><span class="badge badge-success"> {{$mak->id_machinery}}</span></h3>--}}
                                             @endif
                                                 @endforeach
+                                        @elseif($today <= $mach->pickup_date and $mach->date <=$today)
+                                            @foreach($machin as $mak)
+                                                @if($mach->maquina!=$mak->id_machinery)
+                                                    <h3><span class="badge badge-secondary">{{$mak->id_machinery}}</span></h3>
+                                                    {{--                                            @elseif($mak->place==3)--}}
+                                                    {{--                                                <h3><span class="badge badge-success"> {{$mak->id_machinery}}</span></h3>--}}
+                                                @endif
+                                            @endforeach
+                                        @elseif($today > $mach->pickup_date or $mach->date >$today)
+                                            @foreach($machin as $mak)
+                                                @if($mach->maquina!=$mak->id_machinery)
+                                                    <h3><span class="badge badge-secondary"> {{$mak->id_machinery}}</span></h3>
+                                                    {{--                                            @elseif($mak->place==3)--}}
+                                                    {{--                                                <h3><span class="badge badge-success"> {{$mak->id_machinery}}</span></h3>--}}
+                                                @endif
+                                            @endforeach
                                         @endif
-
-
-
                                     @endforeach
                             </div>
                             </div>
                         </div>
                     </div>
-
 {{--                    <div class="col-md-4 col-sm-4 col-12" >--}}
 {{--                        <h2 class="text-center">--}}
 {{--                            AVAILABLE--}}
@@ -130,14 +142,10 @@
 
                 </div>
             </div>
-
             <br>
-
             <div class="container" >
                 <h2 class="text-center"> EQUIPMENT TO DELIVER:</h2>
-
                 @foreach($rentas as $renta)
-
                 <div class="row no-gutters" >
                     @if($renta->date==$today)
                     <div class="col-sm-3">
