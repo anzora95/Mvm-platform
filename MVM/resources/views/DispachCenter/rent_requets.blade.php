@@ -54,7 +54,10 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend><center><h2><b>Machinery Rent</b></h2></center></legend><br>
+    <a href="/"><button class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span> BACK</button></a>
+<center><h2><b>Machinery Rent</b></h2></center><br>
+    <br>
+
 
 <!-- Text input-->
 <!-- Text input-->
@@ -131,9 +134,12 @@
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="machinery" class="form-control selectpicker" required>
       <option value="">Select your Equipment</option>
-      <option>Mini excavator 303-E</option>
-      <option>Skid Steer Loader 232-D</option>
-      <option>Skid Steer Loader 262-D</option>
+        @foreach($equip as $bobcat)
+            <option> {{ $bobcat -> name }} </option>
+
+{{--            <option>Skid Steer Loader 232-D</option>--}}
+{{--            <option>Skid Steer Loader 262-D</option>--}}
+        @endforeach
 
     </select>
   </div>

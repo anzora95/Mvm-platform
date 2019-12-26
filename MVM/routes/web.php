@@ -48,12 +48,16 @@ Route::get('index1',function (){
     return view('DispachCenter/test_toggle');
 });
 
-Route::get('/', function(){
-    return view('DispachCenter/rent_requets');
-});
+//Route::get('/new_dispatch', function(){
+//    return view('DispachCenter/rent_requets');
+//});
 
 Route::get('form', function(){
     return view('DispachCenter/form_beta');
+});
+
+Route::get('/', function(){
+    return view('index');
 });
 
             //POST
@@ -64,7 +68,7 @@ Route::post('/store_delivery','delivery_driver@store');
 
             //INDEX
 
-Route::get('/dashboard', 'delivery_driver@index');
+Route::get('/new_dispatch', 'RentRequestController@index');
 
 Route::get('/calendar', 'Calendar_Controller@index');// localhost:8000/
 

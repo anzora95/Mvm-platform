@@ -15,7 +15,8 @@ class RentRequestController extends Controller
      */
     public function index()
     {
-        return('Ese es un mensjae de el index de el request controller');
+        $machi= DB::table('machinery')->get();
+        return View('DispachCenter.rent_requets')->with('equip', $machi);
 
     }
 
