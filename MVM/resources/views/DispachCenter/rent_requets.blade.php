@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Machinery Rent</title>
+
 </head>
 <body>
 
@@ -22,8 +23,30 @@
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-{{HTML::style('css/main.css')}}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
+{{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
+
+
+{{HTML::style('css/calendar/gijgo.css')}}
+{{HTML::script('js/calendar/gijgo.js')}}
+
+
+{{HTML::style('css/main.css')}}
+{{HTML::style('css/gmap.css')}}
+{{HTML::script('js/gmap.js')}}
+
+{{--BOWER CSS--}}
+{{HTML::style('bower_components/bootstrap/dist/css/bootstrap.min.css')}}
+{{HTML::style('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}
+
+{{--BOWER SCRIPTS--}}
+{{HTML::script('bower_components/jquery/dist/jquery.min.js')}}
+{{HTML::script('bower_components/moment/min/moment.min.js')}}
+{{HTML::script('bower_components/bootstrap/dist/js/bootstrap.min.js')}}
+{{HTML::script('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHrRpn0FGYLAZ0bi1UTHPCmGClIZo8diA&libraries=places&callback=initAutocomplete" async defer></script>
 <div class="container">
 
     <form class="well form-horizontal" action='save' method="post"  id="contact_form">
@@ -37,37 +60,37 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Client First Name</label>
+  <label class="col-md-4 control-label">Full Name</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="first_name" placeholder="First Name" class="form-control"  type="text" required>
+  <input  name="full_name"  class="form-control"  type="text" required>
     </div>
   </div>
 </div>
 
 <!-- Text input-->
 
-<div class="form-group">
-  <label class="col-md-4 control-label" >Client Last Name</label>
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="last_name" placeholder="Last Name" class="form-control"  type="text" required>
-    </div>
-  </div>
-</div>
-
 
     <div class="form-group">
-        <label class="col-md-4 control-label" >ID Number</label>
+        <label class="col-md-4 control-label">Company Name</label>
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input name="cli_id" placeholder="Client ID" class="form-control"  type="text"  required>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+                <input  name="compa"  class="form-control"  type="text">
             </div>
         </div>
     </div>
+
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label" >ID Number</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--}}
+{{--                <input name="cli_id" placeholder="Client ID" class="form-control"  type="text"  required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <div class="form-group">
         <label class="col-md-4 control-label">Client Phone Number</label>
@@ -89,25 +112,25 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">Company</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
-                <input  name="compa"  class="form-control"  type="text">
-            </div>
-        </div>
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label" >Client Last Name</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>--}}
+{{--                <input name="last_name" placeholder="Last Name" class="form-control"  type="text" required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
 {{--Machinery--}}
 
   <div class="form-group">
-  <label class="col-md-4 control-label">Machinery</label>
+  <label class="col-md-4 control-label">Equipment</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="machinery" class="form-control selectpicker" required>
-      <option value="">Select your Machinery</option>
+      <option value="">Select your Equipment</option>
       <option>Mini excavator 303-E</option>
       <option>Skid Steer Loader 232-D</option>
       <option>Skid Steer Loader 262-D</option>
@@ -140,34 +163,38 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Address 1</label>
+  <label class="col-md-4 control-label">Address</label>
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-  <input  name="address_1" placeholder="Address 1" class="form-control"  type="text" required>
-    </div>
+{{--  <input  name="address_1" placeholder="Address 1" class="form-control"  type="text" required>--}}
+      <div id="locationField">
+          <input name="address_1" id="autocomplete"  onFocus="geolocate()" type="text" class="form-control" required/>
+      </div>
+
+  </div>
   </div>
 </div>
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">Address 2</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <input  name="address_2" placeholder="Address 2" class="form-control"  type="text" required>
-            </div>
-        </div>
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label">Address 2</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>--}}
+{{--                <input  name="address_2" placeholder="Address 2" class="form-control"  type="text" required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-    <div class="form-group">
-        <label class="col-md-4 control-label">City</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <input  name="city" placeholder="City" class="form-control"  type="text" required>
-            </div>
-        </div>
-    </div>
+{{--    <div class="form-group">--}}
+{{--        <label class="col-md-4 control-label">City</label>--}}
+{{--        <div class="col-md-4 inputGroupContainer">--}}
+{{--            <div class="input-group">--}}
+{{--                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>--}}
+{{--                <input  name="city" placeholder="City" class="form-control"  type="text" required>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     {{--Attachment--}}
 {{--    <div class="form-group">--}}
@@ -202,51 +229,46 @@
             <label class="col-md-4 control-label" >Start Date</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
-
-
                     <div class='input-group date' id='datetimepicker1'>
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type='text' class="form-control" placeholder="yyyy-mm-dd" name="start_date" />
                         <span class="input-group-addon">
-
-                    </span>
+                        <span><i class="glyphicon glyphicon-calendar"></i></span>
+                        </span>
+                        <input type='text' class="form-control" name="start_date"  required>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker1').datetimepicker();
-                        });
-                    </script>
-
                 </div>
+
             </div>
         </div>
-{{--    </div>--}}
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker1').datetimepicker({
+                        format: 'DD-MM-YYYY'
+                    });
+                });
+            </script>
 
-{{--   pickup date --}}
-
-{{--    <div class="container">--}}
         <div class="form-group">
             <label class="col-md-4 control-label" >Pick up Date</label>
             <div class="col-md-4 inputGroupContainer">
                 <div class="input-group">
 
-
-                    <div class='input-group date' id='datetimepicker1'>
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type='text' class="form-control" placeholder="yyyy-mm-dd" name="pick_up_date" />
+                    <div class='input-group date' id='datetimepicker2'>
                         <span class="input-group-addon">
-
-                    </span>
+                        <span><i class="glyphicon glyphicon-calendar"></i></span>
+                        </span>
+                        <input type='text' class="form-control" name="pick_up_date" required>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker1').datetimepicker();
-                        });
-                    </script>
 
                 </div>
             </div>
         </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker2').datetimepicker({
+                format: 'DD-MM-YYYY'
+            });
+        });
+    </script>
 {{--    </div>--}}
 
 {{--    driver   --}}
@@ -284,15 +306,15 @@
 {{--                </div>--}}
 
 
-            <div class="form-group">
-                <label class="col-md-4 control-label">Rental Cost</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-                        <input  name="rental_cost"  class="form-control"  type="text" required>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="form-group">--}}
+{{--                <label class="col-md-4 control-label">Rental Cost</label>--}}
+{{--                <div class="col-md-4 inputGroupContainer">--}}
+{{--                    <div class="input-group">--}}
+{{--                        <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>--}}
+{{--                        <input  name="rental_cost"  class="form-control"  type="text" required>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
 
 

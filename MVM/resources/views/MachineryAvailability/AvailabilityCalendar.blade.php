@@ -11,8 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 
-
-
+    {{HTML::style('css/gijgo.css')}}
+    {{HTML::script('js/gijgo.js')}}
 
 
 
@@ -20,12 +20,39 @@
 
 <body>
 
-<div class="card col-md-12 col-sm-12">
-    <div class="card-body">
+<div class="card col-md-12 col-sm-12" >
+{{--    <div class="card-body">--}}
 
-        <div class="card-header col-sm-12">
-            <h2 class="text-center">  <strong> {{$today_f}} </strong>  </h2>
+        <div class="card-header col-sm-12" >
+            <a><h2 class="text-center">  <strong> {{$today_f}} </strong> </h2></a>
         </div>
+{{--   DATA  PICKER  SCRIPTS TO DISPLAY CALENDAR    --}}
+
+    <div class="text-center">
+
+            <Button id="datepicker" class="btn btn-primary">Calendar click here</Button>
+
+    </div>
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+{{--    END DATA PICKER JAVASCRIPTS--}}
+
+    <script>
+        $(function(){
+            $('#button').click(function() {
+                var date= $("#datetimepicker1").data("datetimepicker").getDate();
+                $.ajax({
+                    url: 'date_confirm/{date}',
+                    type: 'GET',
+                    // data: { id: 1 },
+
+                });
+            });
+        });
+    </script>
 
         <div class="card-body">
 
@@ -37,17 +64,19 @@
                         <h2 class="text-center ">
                             OUT ON FIELD
                         </h2>
-                        <div class="container text-center ">
+                        <div class="container text-center">
                             <div class="row text-center">
                                 <div class="container">
                                 @foreach($dispo as $mach)
                                     @if($mach->date==$today)
-                                        @if($mach->estado==1)
-                                        <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
+                                            @if($mach->estado==1)
+                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
+                                            @endif
+                                    @elseif($today <= $mach->pickup_date and $mach->date <=$today)
+                                            @if($mach->estado==1)
+                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
                                             @endif
                                     @endif
-
-
                                 @endforeach
                                 </div>
                             </div>
@@ -64,25 +93,17 @@
                         <div class="container text-center">
                             <div class="row text-center">
                                 <div class="container">
-                                    @foreach($dispo as $mach)
-                                        @if($mach->date==$today)
-                                                @foreach($machin as $mak)
-                                            @if($mach->maquina!=$mak->id_machinery)
-                                                <h3><span class="badge badge-secondary"> {{$mak->id_machinery}}</span></h3>
-{{--                                            @elseif($mak->place==3)--}}
-{{--                                                <h3><span class="badge badge-success"> {{$mak->id_machinery}}</span></h3>--}}
+                                    @foreach($inyard as $yard)
+                                        @foreach($machin as $makina)
+                                            @if($yard->maquina!=$makina->id_machinery)
+                                            <h3><span class="badge badge-secondary"> {{$makina->id_machinery}}</span></h3>
                                             @endif
-                                                @endforeach
-                                        @endif
-
-
-
+                                        @endforeach
                                     @endforeach
                             </div>
                             </div>
                         </div>
                     </div>
-
 {{--                    <div class="col-md-4 col-sm-4 col-12" >--}}
 {{--                        <h2 class="text-center">--}}
 {{--                            AVAILABLE--}}
@@ -103,14 +124,10 @@
 
                 </div>
             </div>
-
             <br>
-
             <div class="container" >
                 <h2 class="text-center"> EQUIPMENT TO DELIVER:</h2>
-
                 @foreach($rentas as $renta)
-
                 <div class="row no-gutters" >
                     @if($renta->date==$today)
                     <div class="col-sm-3">
@@ -121,14 +138,14 @@
                         <div>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6 col-12">Direccion: {{$renta->delivery_site}}</div>
-                                    <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
+                                    <div class="col-md-6 col-12">Addres: {{$renta->delivery_site}}</div>
+                                    <div class="col-md-6 col-12">Equipment: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
-                                    <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
+                                    <div class="col-md-6 col-12">Contact: {{$renta->clientes->Full_name}}</div>
                                     @if($renta->clientes->id_comp == null)
-                                        <div class="col-md-6 col-12">Empresa: </div>
+                                        <div class="col-md-6 col-12">Business: </div>
                                         @else
-                                        <div class="col-md-6 col-12">Empresa: {{$renta->clientes->compañia->Name}}</div>
+                                        <div class="col-md-6 col-12">Business: {{$renta->clientes->compañia->Name}}</div>
                                     @endif
                                 </div>
                             </div>
@@ -154,14 +171,14 @@
                         <div>
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6 col-12">Direccion: {{$renta->delivery_site}}</div>
-                                    <div class="col-md-6 col-12">Maquina: {{$renta->machinery->name}} </div>
+                                    <div class="col-md-6 col-12">Address: {{$renta->delivery_site}}</div>
+                                    <div class="col-md-6 col-12">Equipment: {{$renta->machinery->name}} </div>
                                     <div class="w-100"></div>
-                                    <div class="col-md-6 col-12">Contacto: {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}</div>
+                                    <div class="col-md-6 col-12">Contact: {{$renta->clientes->Full_name}}</div>
                                     @if($renta->clientes->id_comp == null)
-                                        <div class="col">Empresa: </div>
+                                        <div class="col">Business: </div>
                                     @else
-                                    <div class="col-md-6 col-12">Empresa: {{$renta->clientes->compañia->Name}}</div>
+                                    <div class="col-md-6 col-12">Business: {{$renta->clientes->compañia->Name}}</div>
                                     @endif
                                 </div>
                             </div>
@@ -176,7 +193,7 @@
 
         </div>
 
-    </div>
+{{--    </div>--}}
 
 </div>
 </body>

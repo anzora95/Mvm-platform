@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('saludo', function(){
     return view('saludo');
@@ -48,7 +48,7 @@ Route::get('index1',function (){
     return view('DispachCenter/test_toggle');
 });
 
-Route::get('rent_requets', function(){
+Route::get('/', function(){
     return view('DispachCenter/rent_requets');
 });
 
@@ -68,11 +68,14 @@ Route::get('/dashboard', 'delivery_driver@index');
 
 Route::get('/calendar', 'Calendar_Controller@index');// localhost:8000/
 
-Route::get('/', 'RentRequestController@index'); // localhost:8000/
+//Route::get('/', 'RentRequestController@index'); // localhost:8000/
 
 Route::resource('renta', 'RentRequestController');
 
 Route::get('/deliver2','pickup_machinery@index');
+
+//          ROUTES WITH AJAX
+Route::get('date_confirm/{date}','Calendar_Controller@getAjax');
 
 
 
