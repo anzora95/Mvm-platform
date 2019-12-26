@@ -22,7 +22,8 @@ class Calendar_Controller extends Controller
         $re=Renta::with('clientes')->get();
         $machi= DB::table('machinery')->get();
         $dispo = DB::table('disponibilidads')->get();
-        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo);
+        $inyard= DB::table('disponibilidads')->where('date','=','2019-12-23')->get();
+        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard);
     }
 
     public function getAjax ($date_incoming){
@@ -32,9 +33,9 @@ class Calendar_Controller extends Controller
         $re=Renta::with('clientes')->get();
         $machi= DB::table('machinery')->get();
         $dispo = DB::table('disponibilidads')->get();
-        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo);
-
-
+        $inyard= DB::table('disponibilidads')->where('date','=','2019-12-23')->get();
+        $inyard= DB::table('disponibilidads')->where('date','=','2019-12-23')->get();
+        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard);
 
     }
 

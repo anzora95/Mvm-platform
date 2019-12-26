@@ -46,13 +46,13 @@ class RentRequestController extends Controller
                $address2 = $request -> input('address_2');
                $city=$request->input('city');
                $address_rent= $request->input('address_1');
-               $start_date = $request ->input('start_date');
+               $start_date=date("Y-m-d",strtotime($request->input('start_date')));
                $time = strtotime('10/16/2003');  //SETEADO HASTA QUE SE TOQUE FRONT
                $cli_id=$request -> input('cli_id');
-               $end_date= $request -> input('pick_up_date');
+               $end_date=date("Y-m-d",strtotime($request->input('pick_up_date')));
                $start_time= '15:25:22' ;  //SETEADO HASTA QUE SE TOQUE FRONT
                $driver= 'Marvin';
-               $rental_cost = $request->input('rental_cost');
+               $rental_cost = 300;
                $phone = $request -> input('phone');
                $email = $request -> input('email');
                $compa=$request->input('compa');
