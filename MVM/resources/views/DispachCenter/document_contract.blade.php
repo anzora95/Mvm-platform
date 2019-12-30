@@ -30,5 +30,21 @@
 <p>si la firma digital y el contrato son imagenes via css se puede crear una sola imagen</p>
 <button class="btn button-primary" > ok </button>
 
+
+
+<p> this is a date format Y-M</p>
+{{$like}}
+<br><br>
+<br><br><br>
+{{--<p>{{$fil}}</p>--}}
+
+{{--@foreach($resu as $filter)--}}
+{{--    <p>--}}
+{{--        {{$filter}}--}}
+{{--        <br>--}}
+
+{{--    <p>hola mundo</p>--}}
+{{--    </p>--}}
+{{--@endforeach--}}
 </body>
 </html>

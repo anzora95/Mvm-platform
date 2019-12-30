@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Renta;
 use DB;
+use Illuminate\Support\Facades\Log;
+use PhpParser\Node\Stmt\Else_;
 
 class RentRequestController extends Controller
 {
@@ -36,7 +38,7 @@ class RentRequestController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store(Request $request)
     {
@@ -58,8 +60,91 @@ class RentRequestController extends Controller
                $email = $request -> input('email');
                $compa=$request->input('compa');
 
-                $custom="";
+               $like_valid=date("Y-m",strtotime($request->input('start_date')));
 
+//               $date_validation=DB::table('disponibilidads')->where(['date', $start_date])->orWhere('pickup_date',$end_date )->orWhere(['date','>' ,$start_date],['pickup_date', '<',$start_date ])->exists();
+                $filter = DB::table('disponibilidads')->where('date','LIKE','%'.$like_valid.'%')->orderBy('date','asc')->get();
+
+//        $quer=array($filter);
+//        $res=explode("}", $quer[0]);
+//        array_pop($res);
+
+//               FOR EACH DE TRANSFORMACION A ARREGLO DE OBJETOS
+//
+//               foreach ($filter as $fi)
+//               {
+//                   $quer=array();
+//                   array_push($quer, $fi);
+//               }
+//        parse_str($filter,$resu);
+
+//         $fin=array();
+//
+//
+//        for ($i = 0; $i <= count($res)-1; $i++) {
+//            $row=list($id_m, $maquina,$estado,$id_renta,$date,$pickup_date)=explode(",", $res[$i]);
+//            $fin[]=$row;
+//
+//        }
+//
+//        if ($quer){
+//
+//            return View('DispachCenter.document_contract')->with('resu',$res);
+//
+//        }
+                foreach ($filter as $fil){
+                    $next=next($filter);
+//                    if ($next){
+//
+//
+//                   return View('DispachCenter.document_contract')->with('fil',$next)->with('like',$like_valid);
+//
+//               }else{
+//                        $next='NO data en NEXT';
+//                        return View('DispachCenter.document_contract')->with('fil',$next)->with('like',$like_valid);
+//                    }
+                    if ($start_date > $fil->date){
+
+                        if ($start_date < $fil->pickup_date){
+                            $code_no='DATE del primer loop no valido queda dento de otra renta';
+
+                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no);
+
+                        }elseif($end_date < $next-> date){
+
+                            $code_no2='DATE Y EL PICKUP del SEGUNDO loop ES VALIDO Esta despues y antes de una renta';
+
+                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no2);
+
+                        }else{
+
+                                $code_no2='PICKUP del SEGUNDO loop NO VALIDO entra en otra renta ';
+
+                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no2);
+
+                        }
+
+                    }elseif ($end_date < $fil->date){
+
+                        $code_vali='Date del segundo valido';
+
+                        return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_vali);
+
+                    }else{
+                        $code_vali='Date del segundo no valido cae en otra renta ';
+
+                        return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_vali);
+
+                    }
+
+                }
+
+//                $custom="";
+//for($i = 0; $i < $length - 1; ++$i) {
+//    if (current($items) === next($items)) {
+//        // they match
+//    }
+//}
 
 
 //                     $users = DB::table('clientes')->where('Full_name', '=', $full)->get();
@@ -140,7 +225,12 @@ class RentRequestController extends Controller
                          }
 
                          $id_renta_first = DB::table('rentas')->insertGetId(["hora_solicitada" =>$start_time,"maquina"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'cliente'=> $user3]);
+
+
+
                          $val_rent_disponible= DB::table('disponibilidads')->insert(["maquina"=>$maquina_id,"estado"=>1,'id_renta'=>$id_renta_first, 'date'=>$start_date, 'pickup_date'=>$end_date]);
+
+
 
 //                     }
 
