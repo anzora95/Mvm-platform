@@ -64,17 +64,25 @@
                         <div class="container text-center">
                             <div class="row text-center">
                                 <div class="container">
-                                @foreach($dispo as $mach)
-                                    @if($mach->date==$today)
-                                            @if($mach->estado==1)
-                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
-                                            @endif
-                                    @elseif($today <= $mach->pickup_date and $mach->date <=$today)
-                                            @if($mach->estado==1)
-                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>
-                                            @endif
-                                    @endif
-                                @endforeach
+{{--                                @foreach($dispo as $mach)--}}
+{{--                                    @if($mach->date==$today)--}}
+{{--                                            @if($mach->estado==1)--}}
+{{--                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>--}}
+{{--                                            @endif--}}
+{{--                                    @elseif($today <= $mach->pickup_date and $mach->date <=$today)--}}
+{{--                                            @if($mach->estado==1)--}}
+{{--                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>--}}
+{{--                                            @endif--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+
+{{--                                    @for ($i = 0; $i < count($out)-1; $i++)--}}
+{{--                                        <h3><span class="badge badge-danger"> {{$out}}</span></h3>--}}
+{{--                                    @endfor--}}
+
+                                    @foreach($out as $equip)
+                                    <h3><span class="badge badge-danger"> {{$equip}}</span></h3>
+                                    @endforeach
                                 </div>
                             </div>
 

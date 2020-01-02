@@ -21,9 +21,37 @@ class Calendar_Controller extends Controller
         $today=date("Y-m-d");
         $re=Renta::with('clientes')->get();
         $machi= DB::table('machinery')->get();
+        $condi_rents = DB::table('rentas')->where('date','like','2020-01')->get();  // PARA CONDICIONARLO A LAS RENTAS
         $dispo = DB::table('disponibilidads')->get();
         $inyard= DB::table('disponibilidads')->where('date','=','2019-12-23')->get();
-        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard);
+
+        $rents_today=array();
+        foreach ($condi_rents as $rent){
+
+            if ($today < $rent ->date ){
+//                hoy no esta en esta renta
+
+            }elseif($today >= $rent->date and $today <= $rent->pick_up_date){
+
+                array_push($rents_today,$rent);
+
+
+            }
+
+            else{
+                return View('index');
+//                hoy no esta en esta
+
+
+            }
+        }
+        $out=array();
+        for ($i = 0; $i <= count($rents_today)-1; $i++) {
+        $data=$rents_today[i]->maquina;
+        array_push($out,$data);
+        }
+        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard)->with('out',$out);
+
     }
 
     public function getAjax ($date_incoming){
@@ -32,10 +60,44 @@ class Calendar_Controller extends Controller
         $today_format=date('l dS F Y ',strtotime($today));
         $re=Renta::with('clientes')->get();
         $machi= DB::table('machinery')->get();
+        $condi_rents = DB::table('rentas')->where('date','like','%2020-01%')->get();  // PARA CONDICIONARLO A LAS RENTAS
         $dispo = DB::table('disponibilidads')->get();
         $inyard= DB::table('disponibilidads')->where('date','=','2019-12-23')->get();
         $inyard= DB::table('disponibilidads')->where('date','=','2019-12-23')->get();
-        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard);
+//        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard);
+
+        $rents_today=array();
+//        return View('index');
+//        return View('DispachCenter.document_contract')->with('fil',$condi_rents)->with('like',$condi_rents);
+        foreach ($condi_rents as $rent){
+
+            if ($today < $rent ->date ){
+//                hoy no esta en esta renta
+
+            }elseif($today >= $rent->date and $today <= $rent->pick_up_date){
+
+                array_push($rents_today,$rent->maquina);
+//                return View('DispachCenter.document_contract')->with('like',$condi_rents);
+
+//                return View('index');
+
+            }
+
+            else{
+
+//                hoy no esta en esta
+
+
+            }
+        }
+//        $out=array();
+//        for ($i = 0; $i <= count($rents_today)-1; $i++) {
+//            $data=$rents_today[$i]->maquina;
+//            array_push($out,$data);
+//        }
+//        return View('DispachCenter.document_contract')->with('like',$rents_today);
+        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard)->with('out',$rents_today);
+//
 
     }
 

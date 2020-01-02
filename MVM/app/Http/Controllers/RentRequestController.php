@@ -92,52 +92,52 @@ class RentRequestController extends Controller
 //            return View('DispachCenter.document_contract')->with('resu',$res);
 //
 //        }
-                foreach ($filter as $fil){
-                    $next=next($filter);
-//                    if ($next){
+//                foreach ($filter as $fil){
+//                    $next=next($filter);
+////                    if ($next){
+////
+////
+////                   return View('DispachCenter.document_contract')->with('fil',$next)->with('like',$like_valid);
+////
+////               }else{
+////                        $next='NO data en NEXT';
+////                        return View('DispachCenter.document_contract')->with('fil',$next)->with('like',$like_valid);
+////                    }
+//                    if ($start_date > $fil->date){
 //
+//                        if ($start_date < $fil->pickup_date){
+//                            $code_no='DATE del primer loop no valido queda dento de otra renta';
 //
-//                   return View('DispachCenter.document_contract')->with('fil',$next)->with('like',$like_valid);
+//                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no);
 //
-//               }else{
-//                        $next='NO data en NEXT';
-//                        return View('DispachCenter.document_contract')->with('fil',$next)->with('like',$like_valid);
+//                        }elseif($end_date < $next-> date){
+//
+//                            $code_no2='DATE Y EL PICKUP del SEGUNDO loop ES VALIDO Esta despues y antes de una renta';
+//
+//                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no2);
+//
+//                        }else{
+//
+//                                $code_no2='PICKUP del SEGUNDO loop NO VALIDO entra en otra renta ';
+//
+//                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no2);
+//
+//                        }
+//
+//                    }elseif ($end_date < $fil->date){
+//
+//                        $code_vali='Date del segundo valido';
+//
+//                        return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_vali);
+//
+//                    }else{
+//                        $code_vali='Date del segundo no valido cae en otra renta ';
+//
+//                        return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_vali);
+//
 //                    }
-                    if ($start_date > $fil->date){
-
-                        if ($start_date < $fil->pickup_date){
-                            $code_no='DATE del primer loop no valido queda dento de otra renta';
-
-                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no);
-
-                        }elseif($end_date < $next-> date){
-
-                            $code_no2='DATE Y EL PICKUP del SEGUNDO loop ES VALIDO Esta despues y antes de una renta';
-
-                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no2);
-
-                        }else{
-
-                                $code_no2='PICKUP del SEGUNDO loop NO VALIDO entra en otra renta ';
-
-                            return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_no2);
-
-                        }
-
-                    }elseif ($end_date < $fil->date){
-
-                        $code_vali='Date del segundo valido';
-
-                        return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_vali);
-
-                    }else{
-                        $code_vali='Date del segundo no valido cae en otra renta ';
-
-                        return View('DispachCenter.document_contract')->with('fil',$filter)->with('like',$code_vali);
-
-                    }
-
-                }
+//
+//                }
 
 //                $custom="";
 //for($i = 0; $i < $length - 1; ++$i) {

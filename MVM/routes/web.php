@@ -76,7 +76,7 @@ Route::get('/new_dispatch', 'RentRequestController@index');
 
 Route::get('/calendar', 'Calendar_Controller@index');// localhost:8000/
 
-Route::get('/', 'RentRequestController@index'); // localhost:8000/
+//Route::get('/', 'RentRequestController@index'); // localhost:8000/
 
 Route::resource('renta', 'RentRequestController');
 
