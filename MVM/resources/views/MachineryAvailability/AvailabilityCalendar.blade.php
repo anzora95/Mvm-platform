@@ -98,13 +98,17 @@
                         <div class="container text-center">
                             <div class="row text-center">
                                 <div class="container">
+{{--                                    @foreach($inyard as $yard)--}}
+{{--                                        @foreach($machin as $makina)--}}
+{{--                                            @if($yard->maquina!=$makina->id_machinery)--}}
+{{--                                            <h3><span class="badge badge-secondary"> {{$makina->id_machinery}}</span></h3>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+{{--                                    @endforeach--}}
                                     @foreach($inyard as $yard)
-                                        @foreach($machin as $makina)
-                                            @if($yard->maquina!=$makina->id_machinery)
-                                            <h3><span class="badge badge-secondary"> {{$makina->id_machinery}}</span></h3>
-                                            @endif
-                                        @endforeach
+                                        <h3><span class="badge badge-secondary"> {{$yard}}</span></h3>
                                     @endforeach
+
                             </div>
                             </div>
                         </div>

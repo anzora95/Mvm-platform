@@ -95,8 +95,23 @@ class Calendar_Controller extends Controller
 //            $data=$rents_today[$i]->maquina;
 //            array_push($out,$data);
 //        }
+        $no_rents_today=array();
+        foreach ($machi as $maquin){
+
+            if (in_array($maquin->id_machinery,$rents_today)){
+
+//                array_push($no_rents_today, );
+
+            }else{
+                array_push($no_rents_today, $maquin->id_machinery);
+
+            }
+
+
+
+        }
 //        return View('DispachCenter.document_contract')->with('like',$rents_today);
-        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$inyard)->with('out',$rents_today);
+        return View('MachineryAvailability.AvailabilityCalendar')->with('rentas',$re)->with('machin', $machi)->with('today',$today)->with('today_f', $today_format)->with('dispo',$dispo)->with('inyard',$no_rents_today)->with('out',$rents_today)->with('yard');
 //
 
     }
