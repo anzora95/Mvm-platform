@@ -20,7 +20,7 @@ class delivery_driver extends Controller
     public function index()
     {
         $rents=Renta::with('clientes')->get();
-        return View('DispachCenter.daily_delivery_dashboard')->with('rentas', $rents);
+        return View('dataTable')->with('rentas', $rents);
     }
 
     /**

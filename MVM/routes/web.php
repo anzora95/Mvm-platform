@@ -60,6 +60,10 @@ Route::get('/', function(){
     return view('index');
 });
 
+//Route::get('table', function(){
+//    return view('dataTable');
+//});
+
             //POST
 Route::post('/save', 'RentRequestController@store');
 
@@ -72,11 +76,11 @@ Route::get('/new_dispatch', 'RentRequestController@index');
 
 Route::get('/calendar', 'Calendar_Controller@index');// localhost:8000/
 
-//Route::get('/', 'RentRequestController@index'); // localhost:8000/
+Route::get('/', 'RentRequestController@index'); // localhost:8000/
 
 Route::resource('renta', 'RentRequestController');
 
-Route::get('/deliver2','pickup_machinery@index');
+Route::get('/table','delivery_driver@index');
 
 //          ROUTES WITH AJAX
 Route::get('date_confirm/{date}','Calendar_Controller@getAjax');
