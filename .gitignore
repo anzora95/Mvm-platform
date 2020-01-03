@@ -6,3 +6,7 @@ MVM PLATFORM SKETCH.pdf
 MVM/public/bower_components/
 
 bugs/
+
+MVM/package.json
+
+MVM/package-lock.json

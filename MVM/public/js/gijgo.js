@@ -14765,7 +14765,7 @@ gj.datepicker.methods = {
                 $cell.addClass('today');
             } else {
                 $cell.addClass('current-month');
-                $cell.addClass('jose_class');
+                $cell.addClass('mvm_class');
             }
             $dat2=new Date(year, month, i);
             $dateString = new Date($dat2.getTime() - ($dat2.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];

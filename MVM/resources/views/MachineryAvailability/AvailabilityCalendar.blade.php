@@ -10,16 +10,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
-{{--material design components--}}
-{{--    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">--}}
-{{--    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>--}}
-{{--material design icons--}}
-{{--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">--}}
 
-    <script src="https://kit.fontawesome.com/8640e74f92.js" crossorigin="anonymous"></script>
-
+{{--    <script src="https://kit.fontawesome.com/8640e74f92.js" crossorigin="anonymous"></script>--}}
     {{HTML::style('css/gijgo.css')}}
     {{HTML::script('js/gijgo.js')}}
+
+    {{--material design components--}}
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    {{--material design icons--}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 
@@ -38,13 +38,19 @@
 {{--                        <div class="row">--}}
                         <div class="row">
                             <div class="col" style="margin: auto">
-                                <a href="/date_confirm/+{{$previous}}"><i class="fas fa-chevron-left fa-2x"></i></a>
+                                <a href="/date_confirm/+{{$previous}}"><svg id="i-chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                        <path d="M20 30 L8 16 20 2" />
+                                    </svg></a>
+{{--                                <a href="/"><i class="fas fa-chevron-left fa-2x"></i></a>--}}
                             </div>
-                            <div class="col-8">
+                            <div class="col-10">
                                 <a><h2 ><strong> {{$today_f}} </strong></h2></a>
                             </div>
                             <div class="col" style="margin: auto">
-                                <a href="/date_confirm/+{{$next}}"><i class="fas fa-chevron-right fa-2x"></i></a>
+                                <a href="/date_confirm/+{{$next}}"><svg id="i-chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                        <path d="M12 30 L24 16 12 2" />
+                                    </svg></a>
+{{--                                <a href="/"><i class="fas fa-chevron-right fa-2x"></i></a>--}}
 {{--                                {{ HTML::image('images/chevron_right.svg', 'right') }}--}}
                             </div>
                         </div>

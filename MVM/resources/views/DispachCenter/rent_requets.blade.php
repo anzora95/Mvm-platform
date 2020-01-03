@@ -54,7 +54,7 @@
 <fieldset>
 
 <!-- Form Name -->
-    <a href="/dispatch_center"><div class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span>BACK</div></a>
+    <a href="/dispatch_center"><div class="btn btn-danger" >Back</div></a>
 <center><h2><b>Machinery Rent</b></h2></center><br>
     <br>
 

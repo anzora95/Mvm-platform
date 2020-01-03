@@ -34,7 +34,7 @@
         <div class="card">
             <div class="card-header">
                 <a href="/dispatch_center">
-                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
+                    {{ HTML::image('images/dispatch_center.png', 'dispatch', array('class' => 'card-img')) }}
                 </a>
             </div>
             <div class="card-body">
@@ -56,7 +56,7 @@
     <div class="col-sm-3">
         <div class="card">
             <div class="card-header">
-                {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
+                {{ HTML::image('images/equipment_calendar.png', 'calendar', array('class' => 'card-img')) }}
             </div>
             <div class="card-body">
                 <h5 class="card-title text-center">Equipment Calendar</h5>
