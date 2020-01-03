@@ -54,7 +54,7 @@
 <fieldset>
 
 <!-- Form Name -->
-    <a href="/"><div class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span> BACK</div></a>
+    <a href="/dispatch_center"><div class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span>BACK</div></a>
 <center><h2><b>Machinery Rent</b></h2></center><br>
     <br>
 
@@ -100,7 +100,7 @@
         <div class="col-md-4 inputGroupContainer">
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input  name="phone"  class="form-control"  type="text" required>
+                <input  name="phone"  class="form-control"  type="text">
             </div>
         </div>
     </div>
@@ -239,7 +239,7 @@
                         <span class="input-group-addon">
                         <span><i class="glyphicon glyphicon-calendar"></i></span>
                         </span>
-                        <input type='text' class="form-control" name="start_date"  required>
+                        <input type='text' class="form-control input-group-addon" name="start_date" style="background-color: #ffffff"  required>
                     </div>
                 </div>
 
@@ -268,7 +268,7 @@
                         <span class="input-group-addon">
                         <span><i class="glyphicon glyphicon-calendar"></i></span>
                         </span>
-                        <input type='text' class="form-control" name="pick_up_date" required>
+                        <input type='text' class="form-control input-group-addon" name="pick_up_date" style="background-color: #ffffff" required>
                     </div>
 
                 </div>

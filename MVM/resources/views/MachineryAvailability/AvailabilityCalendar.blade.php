@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Calendar</title>
+    <title>Dispatch Center</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -9,6 +9,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+{{--material design components--}}
+{{--    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">--}}
+{{--    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>--}}
+{{--material design icons--}}
+{{--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">--}}
+
+    <script src="https://kit.fontawesome.com/8640e74f92.js" crossorigin="anonymous"></script>
+
     {{HTML::style('css/gijgo.css')}}
     {{HTML::script('js/gijgo.js')}}
 
@@ -20,9 +29,38 @@
 {{--    <div class="card-body">--}}
 
         <div class="card-header col-sm-12" >
-            <a href="/"><div class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span>Dashboard</div></a>
-            <a><h2 class="text-center">  <strong> {{$today_f}} </strong> </h2></a>
+            <div class="row">
+                <div class="col-md-3 col-sm-3">
+                    <a href="/"><div class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span>Back</div></a>
+                </div>
+                <div class="col-md-6 col-sm-6 text-center">
+                    <div class="col-md-12 col-sm-12">
+{{--                        <div class="row">--}}
+                        <div class="row">
+                            <div class="col" style="margin: auto">
+                                <a href="/date_confirm/+{{$previous}}"><i class="fas fa-chevron-left fa-2x"></i></a>
+                            </div>
+                            <div class="col-8">
+                                <a><h2 ><strong> {{$today_f}} </strong></h2></a>
+                            </div>
+                            <div class="col" style="margin: auto">
+                                <a href="/date_confirm/+{{$next}}"><i class="fas fa-chevron-right fa-2x"></i></a>
+{{--                                {{ HTML::image('images/chevron_right.svg', 'right') }}--}}
+                            </div>
+                        </div>
+{{--                            --}}
+{{--                           --}}
+{{--                           --}}
+                            </div>
+{{--                        </div>--}}
+
+                </div>
+                <div class="col-md-3 col-sm-3 text-right">
+                    <a href="/new_dispatch"><div class="btn btn-danger" ><span class="glyphicon glyphicon-chevron-left"></span>New Dispatch</div></a>
+                </div>
+            </div>
         </div>
+
 {{--   DATA  PICKER  SCRIPTS TO DISPLAY CALENDAR    --}}
 
     <div class="text-center">
@@ -64,24 +102,9 @@
                         <div class="container text-center">
                             <div class="row text-center">
                                 <div class="container">
-{{--                                @foreach($dispo as $mach)--}}
-{{--                                    @if($mach->date==$today)--}}
-{{--                                            @if($mach->estado==1)--}}
-{{--                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>--}}
-{{--                                            @endif--}}
-{{--                                    @elseif($today <= $mach->pickup_date and $mach->date <=$today)--}}
-{{--                                            @if($mach->estado==1)--}}
-{{--                                                <h3><span class="badge badge-danger"> {{$mach->maquina}}</span></h3>--}}
-{{--                                            @endif--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
-
-{{--                                    @for ($i = 0; $i < count($out)-1; $i++)--}}
-{{--                                        <h3><span class="badge badge-danger"> {{$out}}</span></h3>--}}
-{{--                                    @endfor--}}
 
                                     @foreach($out as $equip)
-                                    <h3><span class="badge badge-danger"> {{$equip}}</span></h3>
+                                        <h3><span class="badge badge-danger"> {{$equip}}</span></h3>
                                     @endforeach
                                 </div>
                             </div>
@@ -98,13 +121,7 @@
                         <div class="container text-center">
                             <div class="row text-center">
                                 <div class="container">
-{{--                                    @foreach($inyard as $yard)--}}
-{{--                                        @foreach($machin as $makina)--}}
-{{--                                            @if($yard->maquina!=$makina->id_machinery)--}}
-{{--                                            <h3><span class="badge badge-secondary"> {{$makina->id_machinery}}</span></h3>--}}
-{{--                                            @endif--}}
-{{--                                        @endforeach--}}
-{{--                                    @endforeach--}}
+
                                     @foreach($inyard as $yard)
                                         <h3><span class="badge badge-secondary"> {{$yard}}</span></h3>
                                     @endforeach

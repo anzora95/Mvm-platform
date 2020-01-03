@@ -74,7 +74,7 @@ Route::post('/store_delivery','delivery_driver@store');
 
 Route::get('/new_dispatch', 'RentRequestController@index');
 
-Route::get('/calendar', 'Calendar_Controller@index');// localhost:8000/
+Route::get('/dispatch_center', 'Calendar_Controller@index');// localhost:8000/
 
 //Route::get('/', 'RentRequestController@index'); // localhost:8000/
 

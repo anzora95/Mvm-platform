@@ -22,12 +22,18 @@
 <br>
 <br>
 <br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container" style="margin: auto">
-<div class="row">
-    <div class="col-sm-3">
+<div class="row ">
+    <div class="col-sm-3 offset-md-3">
         <div class="card">
             <div class="card-header">
-                <a href="/new_dispatch">
+                <a href="/dispatch_center">
                     {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
                 </a>
             </div>
@@ -36,17 +42,17 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-header">
-                {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
-            </div>
-            <div class="card-body">
-                <h5 class="card-title text-center">Project Management</h5>
+{{--    <div class="col-sm-3">--}}
+{{--        <div class="card">--}}
+{{--            <div class="card-header">--}}
+{{--                {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}--}}
+{{--            </div>--}}
+{{--            <div class="card-body">--}}
+{{--                <h5 class="card-title text-center">Project Management</h5>--}}
 
-            </div>
-        </div>
-    </div>
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="col-sm-3">
         <div class="card">
             <div class="card-header">
@@ -58,67 +64,67 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="card">
-            <div class="card-header">
-                {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
-            </div>
-            <div class="card-body">
-                <h5 class="card-title text-center">Square Invoicing</h5>
+{{--    <div class="col-sm-3">--}}
+{{--        <div class="card">--}}
+{{--            <div class="card-header">--}}
+{{--                {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}--}}
+{{--            </div>--}}
+{{--            <div class="card-body">--}}
+{{--                <h5 class="card-title text-center">Square Invoicing</h5>--}}
 
-            </div>
-        </div>
-    </div>
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 {{----------------------------------------------------------------------------------ROW 2---------------------------------------------------------------}}
     <br>
     <br>
-<div class="row">
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Truck Management</h5>
+{{--<div class="row">--}}
+{{--        <div class="col-sm-3">--}}
+{{--            <div class="card">--}}
+{{--                <div class="card-header">--}}
+{{--                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}--}}
+{{--                </div>--}}
+{{--                <div class="card-body">--}}
+{{--                    <h5 class="card-title text-center">Truck Management</h5>--}}
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Contracts</h5>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="col-sm-3">--}}
+{{--            <div class="card">--}}
+{{--                <div class="card-header">--}}
+{{--                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}--}}
+{{--                </div>--}}
+{{--                <div class="card-body">--}}
+{{--                    <h5 class="card-title text-center">Contracts</h5>--}}
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Fleet Management</h5>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="col-sm-3">--}}
+{{--            <div class="card">--}}
+{{--                <div class="card-header">--}}
+{{--                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}--}}
+{{--                </div>--}}
+{{--                <div class="card-body">--}}
+{{--                    <h5 class="card-title text-center">Fleet Management</h5>--}}
 
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">Customers</h5>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="col-sm-3">--}}
+{{--            <div class="card">--}}
+{{--                <div class="card-header">--}}
+{{--                    {{ HTML::image('images/bob_cat.png', 'bob_cat', array('class' => 'card-img')) }}--}}
+{{--                </div>--}}
+{{--                <div class="card-body">--}}
+{{--                    <h5 class="card-title text-center">Customers</h5>--}}
 
-                </div>
-            </div>
-        </div>
-    </div>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 </body>
 </html>
