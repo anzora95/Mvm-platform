@@ -62,8 +62,6 @@ class RentRequestController extends Controller
 
                $like_valid=date("Y-m",strtotime($request->input('start_date')));
 
-//               $date_validation=DB::table('disponibilidads')->where(['date', $start_date])->orWhere('pickup_date',$end_date )->orWhere(['date','>' ,$start_date],['pickup_date', '<',$start_date ])->exists();
-                $filter = DB::table('disponibilidads')->where('date','LIKE','%'.$like_valid.'%')->orderBy('date','asc')->get();
 
 //        $quer=array($filter);
 //        $res=explode("}", $quer[0]);
@@ -156,20 +154,20 @@ class RentRequestController extends Controller
 
 //                             SI LA COMPAÑIA NO SE PONE EN EL FORMULARIO QUE LA GUARDE COMO UN CAMPO NULO
 
-                             $id_fisrt_client = DB::table('clientes')->insertGetId(["Full_name"=>$full, 'Address' => $address_rent, 'Phone_num'=>$phone, 'email'=>$email]);
+                             $id_fisrt_client = DB::table('clients')->insertGetId(["full_name"=>$full, 'client_address' => $address_rent, 'phone_num'=>$phone, 'email'=>$email]);
 
                          }else{
 //                             SI LA COMPAÑIA YA ESTA EN LA BASE DE DATOS QUE SOLO BUSQUE Y SAQUE EL ID
 
-                             $compañia = DB::table('compañias')->where('Name', '=', $compa)->exists();
+                             $compañia = DB::table('machineries')->where('name', '=', $compa)->exists();
 
 
 //                             if(empty($compañia)){
 
-                                 $id_fisrt_comp = DB::table('compañias')->insertGetId(['Name'=>$compa]);
+                                 $id_fisrt_comp = DB::table('companies')->insertGetId(['company_name'=>$compa]);
 
 
-                                 $id_fisrt_client = DB::table('clientes')->insertGetId(["Full_name"=>$full, 'Address' => $address_rent, 'Phone_num'=>$phone, 'email'=>$email, 'id_comp'=>$id_fisrt_comp]);
+                                 $id_fisrt_client = DB::table('clients')->insertGetId(["full_name"=>$full, 'client_address' => $address_rent, 'phone_num'=>$phone, 'email'=>$email, 'id_comp'=>$id_fisrt_comp]);
 
 //                             }
 //
@@ -191,7 +189,7 @@ class RentRequestController extends Controller
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 //                    Busqueda de maquinaria segun nombre
 
-                         $mach_id = DB::table('machinery')->select('id_machinery')->where('name', '=', $machinery)->get();
+                         $mach_id = DB::table('machineries')->select('id_machine')->where('name', '=', $machinery)->get();
 
                          foreach ($mach_id as $post) {
 
@@ -199,36 +197,30 @@ class RentRequestController extends Controller
                          }
 
 //---------------------------------------------------------------------------------------------------------------
-//                          INSERCCION DE LA TABLA DISPONIBILIDADS
-
-//                         $id_renta_first = DB::table('rentas')->insertGetId(["hora_solicitada" =>$start_time,"maquina"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'cliente'=> $id_fisrt_client]);
-//
-//                         $val_rent_disponible= DB::table('disponibilidads')->insert(["maquina"=>$maquina_id,"estado"=>1,'id_renta'=>$id_renta_first, 'date'=>$start_date, 'pickup_date'=>$end_date]);
 
 
 //                     }else{
 
 //                         SI EL CLIENTE YA EXISTE
 
-                         $mach_id = DB::table('machinery')->select('id_machinery')->where('name', '=', $machinery)->get();
+                         $mach_id = DB::table('machineries')->select('id_machine')->where('name', '=', $machinery)->get();
 
                          foreach ($mach_id as $post) {
 
                              $maquina_id = $post->id_machinery;
                          }
 
-                         $user2 = DB::table('clientes')->where('Full_name', '=', $full)->get();
+                         $user2 = DB::table('clients')->where('full_name', '=', $full)->get();
 
                          foreach ($user2 as $us) {
 
                              $user3 = $us->client_id;
                          }
 
-                         $id_renta_first = DB::table('rentas')->insertGetId(["hora_solicitada" =>$start_time,"maquina"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'cliente'=> $user3]);
+                         $id_renta_first = DB::table('rentals')->insertGetId(["hora_solicitada" =>$start_time,"maquina"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'cliente'=> $user3]);
 
 
 
-                         $val_rent_disponible= DB::table('disponibilidads')->insert(["maquina"=>$maquina_id,"estado"=>1,'id_renta'=>$id_renta_first, 'date'=>$start_date, 'pickup_date'=>$end_date]);
 
 
 
