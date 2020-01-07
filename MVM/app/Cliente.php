@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    protected $table = 'clientes';
+    protected $table = 'clients';
 
     public $timestamps= false;
 
-    public $primaryKey= 'client_id';
+    public $primaryKey= 'id_client';
 
     public function renta()
 {

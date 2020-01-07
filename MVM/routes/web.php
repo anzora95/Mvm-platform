@@ -15,9 +15,9 @@
 //    return view('welcome');
 //});
 
-Route::get('saludo', function(){
-    return view('saludo');
-});
+//Route::get('dispatchcenter', function(){
+//    return view('DispachCenter/dispatch_center');
+//});
 
 
 Route::get('example', function(){
@@ -60,6 +60,10 @@ Route::get('/', function(){
     return view('index');
 });
 
+Route::get('/calendar', function(){
+    return view('EquipmentCalendar/equipment_calendar');
+});
+
 //Route::get('table', function(){
 //    return view('dataTable');
 //});
@@ -74,7 +78,7 @@ Route::post('/store_delivery','delivery_driver@store');
 
 Route::get('/new_dispatch', 'RentRequestController@index');
 
-Route::get('/dispatch_center', 'Calendar_Controller@index');// localhost:8000/
+Route::get('/dispatchcenter', 'Calendar_Controller@index');// localhost:8000/
 
 //Route::get('/', 'RentRequestController@index'); // localhost:8000/
 
