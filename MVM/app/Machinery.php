@@ -12,7 +12,7 @@ class Machinery extends Model
 
     public function rentas(){
 
-        return $this->hasOne('App\Renta');
+        return $this->hasMany('App\Renta');
     }
 
     public function disponibilidad(){

@@ -17,8 +17,8 @@ class RentRequestController extends Controller
      */
     public function index()
     {
-        $machi= DB::table('machinery')->get();
-        return View('DispachCenter.rent_requets')->with('equip', $machi);
+        $machi= DB::table('machineries')->get();
+        return View('DispachCenter.new_dispatch')->with('equip', $machi);
 
     }
 
@@ -59,7 +59,7 @@ class RentRequestController extends Controller
                $phone = $request -> input('phone');
                $email = $request -> input('email');
                $compa=$request->input('compa');
-
+               $note=$request->input('note');
                $like_valid=date("Y-m",strtotime($request->input('start_date')));
 
 
@@ -193,7 +193,7 @@ class RentRequestController extends Controller
 
                          foreach ($mach_id as $post) {
 
-                             $maquina_id = $post->id_machinery;
+                             $maquina_id = $post;
                          }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -207,17 +207,17 @@ class RentRequestController extends Controller
 
                          foreach ($mach_id as $post) {
 
-                             $maquina_id = $post->id_machinery;
+                             $maquina_id = $post->id_machine;
                          }
 
                          $user2 = DB::table('clients')->where('full_name', '=', $full)->get();
 
                          foreach ($user2 as $us) {
 
-                             $user3 = $us->client_id;
+                             $user3 = $us->id_client;
                          }
 
-                         $id_renta_first = DB::table('rentals')->insertGetId(["hora_solicitada" =>$start_time,"maquina"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'cliente'=> $user3]);
+                         $id_renta_first = DB::table('rentals')->insertGetId(["machine"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'dispatch_date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'client'=> $user3, 'delivery_note'=> $note]);
 
 
 

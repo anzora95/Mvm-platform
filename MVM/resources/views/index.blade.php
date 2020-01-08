@@ -17,7 +17,7 @@
     <div class="col-sm-3 offset-md-3">
         <div class="card">
             <div class="card-header">
-                <a href="/dispatch_center">
+                <a href="/dispatchcenter">
                     {{ HTML::image('images/dispatch_center.png', 'dispatch', array('class' => 'card-img')) }}
                 </a>
             </div>

@@ -11,8 +11,8 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
+//Route::get('new_dispatch', function () {
+//    return view('DispachCenter/new_dispatch');
 //});
 
 //Route::get('dispatchcenter', function(){
