@@ -22,55 +22,64 @@
 
                 </div>
                 <div class="col text-right">
-                    <div class="btn btn-outline-secondary btn-sm" href='#'>New Dispatch</div>
+                    <a href='new_dispatch'><div class="btn btn-outline-secondary btn-sm" >New Dispatch</div></a>
                 </div>
             </div>
         </div>
 
-        <!-- Dashboard Cards + Bages ////////////////////////////////////////////////////////////////////////////////////// -->
+         <!--Dashboard Cards + Bages ////////////////////////////////////////////////////////////////////////////////////// -->
         <div class="container" style="margin-top: 20px;">
-            <div class="row">
-                <div class="card bg-light col" style="margin: 10px;">
+            <div class="card-group">
+            <!--<div class="col-12">-->
+                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center">
-                        <h5 class="card-title">1</h5>
+                        <h5 class="card-title">{{$size_next}}</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES GOING OUT TOMORROW</p>
 {{--                        <span class="badge badge-warning">262D</span>--}}
+                        @foreach($next_day_rent as $next)
+                            <span class="badge badge-warning"> {{$next}} </span>
+                        @endforeach
                     </div>
                 </div>
-                <div class="card bg-light col" style="margin: 10px;">
+                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center">
-                        <h5 class="card-title">3</h5>
+
+                        <h5 class="card-title">{{$zise_no_rents}}</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES CURRENTLY ON YARD</p>
-{{--                        <span class="badge badge-warning">303E</span>--}}
-{{--                        <span class="badge badge-warning">232D</span>--}}
-{{--                        <span class="badge badge-warning">262D</span>--}}
+
                         @foreach($inyard as $yard)
                             <span class="badge badge-warning"> {{$yard}}</span>
                         @endforeach
                     </div>
                 </div>
-                <div class="card bg-light col" style="margin: 10px;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">1</h5>
+                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
+                    <div class="card-body text-center" >
+                        <h5 class="card-title">{{$size_rent}}</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES OUT ON FIELD</p>
                         @foreach($out as $equip)
-                            <span class="badge badge-danger">{{$equip}}</span>
+                            <span class="badge badge-danger" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">{{$equip}}</span>
                         @endforeach
                     </div>
                 </div>
-                <div class="card bg-light col" style="margin: 10px;">
+                <script >
+                    $(function () {
+                        $('[data-toggle="tooltip"]').tooltip()
+                    })
+                </script>
+                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center">
                         <h5 class="card-title">0</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES DOWN/MAINTENANCE</p>
                     </div>
                 </div>
+                    <!--</div>-->
             </div>
         </div>
 
         <!-- Today's Dispatch ////////////////////////////////////////////////////////////////////////////////////// -->
         <div class="container">
             <div class="row">
-                <div class="card bg-light col-4" style="margin: 10px;">
+                <div class="card bg-light col-md-4 col-sm-12" style="margin: 10px;">
                     <div class="card-body"  style="font-size: 12px;">
 
                         <h5 class="card-title text-center">Dispatch Center</h5>
@@ -113,7 +122,28 @@
                                         <div class="card-header" id="heading{{$rent->machinery->model}}" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/303E.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>
+                                                @switch($rent->machinery->model)
+                                                    @case('303E')
+                                                        <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/303E.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @case('259D')
+                                                         <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @case('262D')
+                                                         <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @case('232D')
+                                                         <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @default
+                                                        <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dt>
+                                                @endswitch
+
+{{--                                                <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/$rent->machinery->model.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>--}}
 
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
                                                     <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a> <span class="badge badge-success">Delivered</span>
@@ -166,10 +196,29 @@
                                         <div class="card-header" id="heading{{$rent->machinery->model}}" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dt>
+                                                @switch($rent->machinery->model)
+                                                    @case('303E')
+                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/303E.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @case('259D')
+                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @case('262D')
+                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @case('232D')
+                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    @break
+
+                                                    @default
+                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dt>
+                                                @endswitch
 
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
-                                                    <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a> <span class="badge badge-success">Pending</span>
+                                                    <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a> <span class="badge badge-secondary">Pending</span>
                                                 </dd>
 
                                             </dl>
@@ -193,11 +242,11 @@
                                                 <dd class="col-sm-8">{{$rent->clientes->full_name}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Notes</dt>
-                                                <dd class="col-sm-8">Include 12" + 18" Buckets / Deliver on Alley</dd>
+                                                <dd class="col-sm-8">{{$rent->delivery_notes}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8" style="font-size: 16px !important;">
-                                                    <span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Click to switch">Pending</span>
+                                                    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Click to switch">Pending</span>
                                                 </dd>
                                             </dl>
                                         </div>
