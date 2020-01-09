@@ -22,7 +22,7 @@
 
                 </div>
                 <div class="col text-right">
-                    <a href='/new_dispatch'><div class="btn btn-outline-secondary btn-sm" >New Dispatch</div></a>
+                    <a href='new_dispatch'><div class="btn btn-outline-secondary btn-sm" >New Dispatch</div></a>
                 </div>
             </div>
         </div>
@@ -44,22 +44,22 @@
                 <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center">
 
-                        <h5 class="card-title">{{$zise_no_rents}}</h5>
+                        <h5 class="card-title">4</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES CURRENTLY ON YARD</p>
 
-                        @foreach($inyard as $yard)
-                            <span class="badge badge-warning"> {{$yard}}</span>
+                        @foreach($machi as $equip)
+                        <span class="badge badge-warning"> {{$equip->model}}</span>
                         @endforeach
                     </div>
                 </div>
                 <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center" >
-                        <h5 class="card-title">{{$size_rent}}</h5>
+                        <h5 class="card-title">0</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES OUT ON FIELD</p>
-                        @foreach($out as $equip)
+    {{--                    @foreach($out as $equip)
                             
                             <span class="badge badge-danger" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">{{$equip}}</span>
-                        @endforeach
+                        @endforeach--}}
                     </div>
                 </div>
                 <script >
@@ -89,7 +89,7 @@
                             <div class="col-2">
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link" href="/date_confirm/+{{$previous}}" aria-label="Previous">
+                                        <a class="page-link" href="/dashboard/public/date_confirm/+{{$previous}}" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
@@ -103,7 +103,7 @@
                             <div class="col-2">
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link" href="/date_confirm/+{{$next}}" aria-label="Next">
+                                        <a class="page-link" href="/dashboard/public/date_confirm/+{{$next}}" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>
                                     </li>
@@ -171,7 +171,7 @@
                                                 <dd class="col-sm-8">{{$rent->clientes->full_name}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Notes</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_note}}</dd>
+                                                <dd class="col-sm-8">{{$rent->delivery_notes}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8" style="font-size: 16px !important;">
@@ -243,7 +243,7 @@
                                                 <dd class="col-sm-8">{{$rent->clientes->full_name}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Notes</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_note}}</dd>
+                                                <dd class="col-sm-8">{{$rent->delivery_notes}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8" style="font-size: 16px !important;">

@@ -61,7 +61,11 @@ class RentRequestController extends Controller
                $compa=$request->input('compa');
                $note=$request->input('note');
                $like_valid=date("Y-m",strtotime($request->input('start_date')));
+                if (empty($request->input('note'))){
+                    
+                    $note='No notes';
 
+                         }
 
 //        $quer=array($filter);
 //        $res=explode("}", $quer[0]);
