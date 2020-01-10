@@ -19,13 +19,15 @@ class Calendar_Controller extends Controller
     {
         $today_format=date('l dS F Y ');
         $today=date("Y-m-d");
+        $like_day=date("Y-m",strtotime($today));
         $next=date("Y-m-d",strtotime($today.' +1 day'));
         $previous=date("Y-m-d",strtotime($today.' -1 day'));
         $re=Renta::with('clientes')->get();
         $machi= DB::table('machineries')->get();
-        $condi_rents = DB::table('rentals')->where('dispatch_date','like','%2020-01%')->get();  // PARA CONDICIONARLO A LAS RENTAS
+        $tomorrow_rents=DB::table('rentals')->where('dispatch_date','like','%'.$next.'%')->get();
+        $condi_rents = DB::table('rentals')->where('dispatch_date','like','%'.$like_day.'%')->get();  // PARA CONDICIONARLO A LAS RENTAS
 
-
+        
 
 
         $rents_today=array();
@@ -55,6 +57,21 @@ class Calendar_Controller extends Controller
 
             }
         }
+        
+        $tomorrow=array();
+        
+        foreach ($tomorrow_rents as $next_day){
+
+                 foreach ($machi as $equi){
+                    if ($next_day->machine==$equi->id_machine){
+
+                        array_push($tomorrow,$equi->model);
+
+                    }
+                }
+
+        }
+
 
         $no_rents_today=array();
         foreach ($machi as $maquin){
@@ -66,11 +83,13 @@ class Calendar_Controller extends Controller
             }
 
         }
-
+        
+       
         $value_no_rent=count($no_rents_today);
         $value_rent=count($rents_today);
+        $value_next=count($tomorrow);
 
-        return View('DispachCenter.dispatch_center')->with('today',$today)->with('today_format',$today_format)->with('next',$next)->with('previous',$previous)->with('machi',$machi)->with('out',$rents_today)->with('rentals',$re)->with('inyard',$no_rents_today)->with('out',$rents_today)->with('zise_no_rents', $value_no_rent)->with('size_rent',$value_rent)->with('date_out',$date_outs);
+        return View('DispachCenter.dispatch_center')->with('today',$today)->with('today_format',$today_format)->with('next',$next)->with('previous',$previous)->with('machi',$machi)->with('out',$rents_today)->with('rentals',$re)->with('inyard',$no_rents_today)->with('out',$rents_today)->with('zise_no_rents', $value_no_rent)->with('size_rent',$value_rent)->with('date_out',$date_outs)->with('next_day_rent',$tomorrow)->with('size_next',$value_next);
 
     }
 
@@ -83,6 +102,7 @@ class Calendar_Controller extends Controller
         $today_format=date('l dS F Y ',strtotime($today));
         $re=Renta::with('clientes')->get();
         $machi= DB::table('machineries')->get();
+        $tomorrow_rents=DB::table('rentals')->where('dispatch_date','like','%'.$next.'%')->get();
         $condi_rents = DB::table('rentals')->where('dispatch_date','like','%'.$like_day.'%')->get();  // PARA CONDICIONARLO A LAS RENTAS
 
 
@@ -110,6 +130,20 @@ class Calendar_Controller extends Controller
 
             }
         }
+        
+        $tomorrow=array();
+        
+        foreach ($tomorrow_rents as $next_day){
+
+                 foreach ($machi as $equi){
+                    if ($next_day->machine==$equi->id_machine){
+
+                        array_push($tomorrow,$equi->model);
+
+                    }
+                }
+
+        }
 
 
         $no_rents_today=array();
@@ -125,8 +159,8 @@ class Calendar_Controller extends Controller
 
         $value_no_rent=count($no_rents_today);
         $value_rent=count($rents_today);
-
-        return View('DispachCenter.dispatch_center')->with('today',$today)->with('today_format',$today_format)->with('next',$next)->with('previous',$previous)->with('machi',$machi)->with('out',$rents_today)->with('rentals',$re)->with('inyard',$no_rents_today)->with('out',$rents_today)->with('zise_no_rents', $value_no_rent)->with('size_rent',$value_rent);
+        $value_next=count($tomorrow);
+        return View('DispachCenter.dispatch_center')->with('today',$today)->with('today_format',$today_format)->with('next',$next)->with('previous',$previous)->with('machi',$machi)->with('out',$rents_today)->with('rentals',$re)->with('inyard',$no_rents_today)->with('out',$rents_today)->with('zise_no_rents', $value_no_rent)->with('size_next',$value_next)->with('next_day_rent',$tomorrow)->with('size_rent',$value_rent);
 //
 
     }

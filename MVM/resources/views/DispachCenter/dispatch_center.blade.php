@@ -78,14 +78,16 @@
         </div>
 
         <!-- Today's Dispatch ////////////////////////////////////////////////////////////////////////////////////// -->
-        <div class="container">
+        <div class="container" >
             <div class="row">
-                <div class="card bg-light col-md-4 col-sm-12" style="margin: 10px;">
+
+                <div class="card bg-light col-sm-12 col-md-12 col-lg-4" style="margin: 10px;">
                     <div class="card-body"  style="font-size: 12px;">
 
                         <h5 class="card-title text-center">Dispatch Center</h5>
+                        <div class="container">
+                        <div class="row" > <!-- Start Row -->
 
-                        <div class="row"> <!-- Start Row -->
                             <div class="col-2">
                                 <ul class="pagination">
                                     <li class="page-item">
@@ -109,6 +111,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            </div>
                         </div> <!-- End Row -->
 
                         <hr style="margin-top: 0px;">
@@ -119,68 +122,75 @@
                         @foreach($rentals as $rent)
                             @if($rent->dispatch_date==$today)
                                 <div class="accordion" id="accordionExample">
-                                    <div class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}">
+                                    <button class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}" style="padding: 0px">
                                         <div class="card-header" id="heading{{$rent->machinery->model}}" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
                                                 @switch($rent->machinery->model)
                                                     @case('303E')
-                                                        <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/303E.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>
+                                                         <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/303E-.jpg', '303', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('259D')
-                                                         <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dt>
+                                                         <dd class="col-md-4 " style="margin-right: -20px; "> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('262D')
-                                                         <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dt>
+                                                         <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('232D')
-                                                         <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dt>
+                                                         <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @default
-                                                        <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dt>
+                                                        <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dd>
                                                 @endswitch
 
 {{--                                                <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/$rent->machinery->model.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>--}}
 
-                                                <dd class="col-sm-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
+                                                <dd class="col-md-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
                                                     <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a> <span class="badge badge-success">Delivered</span>
                                                 </dd>
-
                                             </dl>
                                         </div>
-                                    </div>
+                                    </button>
                                     <div id="collapse{{$rent->machinery->model}}" class="collapse show" aria-labelledby="heading{{$rent->machinery->model}}"  data-parent="#accordionExample">
 
                                         <!-- Delivery Example 1 Exapanded -->
-                                        <div class="card-body" style="padding: 15px !important;">
-                                            <dl class="row">
+                                        <div class="container">
+                                        <div class="card-body" style="padding: 10px !important;">
+                                            <dl class="row" style="margin: auto">
                                                 <!-- <dt class="col-sm-4" style="margin-right: -20px;">Machine(s):</dt>
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <span class="badge badge-warning">303E</span> </dd> -->
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Delivery Address</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_site}}</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Delivery Address</dt>
+                                                <dd class="col-sm-12 col-md-8">{{$rent->delivery_site}}</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Trip Time</dt>
-                                                <dd class="col-sm-8">38 Minutes from yard leaving now</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Trip Time</dt>
+                                                <dd class="col-sm-12 col-md-8">38 Minutes from yard leaving now</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Customer</dt>
-                                                <dd class="col-sm-8">{{$rent->clientes->full_name}}</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Customer</dt>
+                                                <dd class="col-sm-12 col-md-8">{{$rent->clientes->full_name}}</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Notes</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_note}}</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Notes</dt>
+                                                <dd class="col-sm-12 col-md-8">{{$rent->delivery_note}}</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Status</dt>
-                                                <dd class="col-sm-8" style="font-size: 16px !important;">
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Status</dt>
+                                                <dd class="col-sm-12 col-md-8" style="font-size: 16px !important;">
                                                     <span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Click to switch">Delivered</span>
                                                 </dd>
                                             </dl>
                                         </div>
+                                        </div>
                                     </div>
                                 </div> <!-- End Acordion -->
+
+{{--                                <style>--}}
+{{--                                    .row:before, .row:after {--}}
+{{--                                        --}}
+{{--                                    }--}}
+{{--                                </style>--}}
                             @endif
                         @endforeach
 
@@ -193,30 +203,31 @@
                         @foreach($rentals as $rent)
                             @if($rent->pick_up_date==$today)
                                 <div class="accordion" id="accordionExample">
-                                    <div class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}">
+                                    <button class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}" style="padding: 0px">
                                         <div class="card-header" id="heading{{$rent->machinery->model}}" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
                                                 @switch($rent->machinery->model)
                                                     @case('303E')
-                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/303E.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/303E-.jpg', '303', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('259D')
-                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('262D')
-                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('232D')
-                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @default
-                                                    <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dt>
+                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dd>
                                                 @endswitch
+
 
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
                                                     <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a> <span class="badge badge-secondary">Pending</span>
@@ -224,32 +235,34 @@
 
                                             </dl>
                                         </div>
-                                    </div>
+                                    </button>
                                     <div id="collapse{{$rent->machinery->model}}" class="collapse show" aria-labelledby="heading{{$rent->machinery->model}}"  data-parent="#accordionExample">
 
                                         <!-- Delivery Example 1 Exapanded -->
-                                        <div class="card-body" style="padding: 15px !important;">
-                                            <dl class="row">
+                                        <div class="container">
+                                        <div class="card-body" style="padding: 10px !important;">
+                                            <dl class="row"  style="margin: auto">
                                                 <!-- <dt class="col-sm-4" style="margin-right: -20px;">Machine(s):</dt>
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <span class="badge badge-warning">303E</span> </dd> -->
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Delivery Address</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_site}}</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Delivery Address</dt>
+                                                <dd class="col-sm-12 col-md-8">{{$rent->delivery_site}}</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Trip Time</dt>
-                                                <dd class="col-sm-8">38 Minutes from yard leaving now</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Trip Time</dt>
+                                                <dd class="col-sm-12 col-md-8">38 Minutes from yard leaving now</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Customer</dt>
-                                                <dd class="col-sm-8">{{$rent->clientes->full_name}}</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Customer</dt>
+                                                <dd class="col-sm-8 col-md-8">{{$rent->clientes->full_name}}</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Notes</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_note}}</dd>
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Notes</dt>
+                                                <dd class="col-sm-8 col-md-8">{{$rent->delivery_note}}</dd>
 
-                                                <dt class="col-sm-4" style="margin-right: -20px;">Status</dt>
-                                                <dd class="col-sm-8" style="font-size: 16px !important;">
+                                                <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Status</dt>
+                                                <dd class="col-sm-8 col-md-8" style="font-size: 16px !important;">
                                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Click to switch">Pending</span>
                                                 </dd>
                                             </dl>
+                                        </div>
                                         </div>
                                     </div>
                                 </div> <!-- End Acordion -->

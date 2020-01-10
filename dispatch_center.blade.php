@@ -171,7 +171,7 @@
                                                 <dd class="col-sm-8">{{$rent->clientes->full_name}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Notes</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_notes}}</dd>
+                                                <dd class="col-sm-8">{{$rent->delivery_note}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8" style="font-size: 16px !important;">
@@ -243,7 +243,7 @@
                                                 <dd class="col-sm-8">{{$rent->clientes->full_name}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Notes</dt>
-                                                <dd class="col-sm-8">{{$rent->delivery_notes}}</dd>
+                                                <dd class="col-sm-8">{{$rent->delivery_note}}</dd>
 
                                                 <dt class="col-sm-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8" style="font-size: 16px !important;">
