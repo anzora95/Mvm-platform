@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a3974da-319e-4598-8790-0d195b9e22cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Calendar_Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/../Calendar_Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MVM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MVM.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/DispachCenter/dispatch_center.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/DispachCenter/dispatch_center.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dispatch_center.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../dispatch_center.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/DispachCenter/dispatch_center.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="200" column="49" lean-forward="true" selection-start-line="200" selection-start-column="49" selection-end-line="200" selection-end-column="49" />
+            <state relative-caret-position="281">
+              <caret line="238" column="183" selection-start-line="238" selection-start-column="174" selection-end-line="238" selection-end-column="183" />
               <folding>
                 <element signature="e#4361#4385#0#HTML" expanded="true" />
                 <element signature="e#5161#5205#0#HTML" expanded="true" />
@@ -70,6 +64,7 @@
       <find>display</find>
       <find>.row:before, .row:after {display: none !important;}</find>
       <find>-4</find>
+      <find>data-toggle=&quot;col</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,8 +176,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-2108" />
-    <option name="y" value="72" />
+    <option name="x" value="12" />
+    <option name="y" value="-23" />
     <option name="width" value="1400" />
     <option name="height" value="991" />
   </component>
@@ -237,15 +232,15 @@
       <updated>1574800145945</updated>
       <workItem from="1574800149867" duration="7847000" />
       <workItem from="1578668170361" duration="486000" />
-      <workItem from="1578668689538" duration="17099000" />
+      <workItem from="1578668689538" duration="18620000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17585000" />
+    <option name="totallyTimeSpent" value="19106000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="119" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.18017058" />
@@ -284,8 +279,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/DispachCenter/dispatch_center.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="200" column="49" lean-forward="true" selection-start-line="200" selection-start-column="49" selection-end-line="200" selection-end-column="49" />
+        <state relative-caret-position="281">
+          <caret line="238" column="183" selection-start-line="238" selection-start-column="174" selection-end-line="238" selection-end-column="183" />
           <folding>
             <element signature="e#4361#4385#0#HTML" expanded="true" />
             <element signature="e#5161#5205#0#HTML" expanded="true" />

@@ -203,8 +203,8 @@
                         @foreach($rentals as $rent)
                             @if($rent->pick_up_date==$today)
                                 <div class="accordion" id="accordionExample">
-                                    <button class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}" style="padding: 0px">
-                                        <div class="card-header" id="heading{{$rent->machinery->model}}" style="padding: 15px !important;">
+                                    <button class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}P" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}P" style="padding: 0px">
+                                        <div class="card-header" id="heading{{$rent->machinery->model}}P" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
                                                 @switch($rent->machinery->model)
@@ -236,7 +236,7 @@
                                             </dl>
                                         </div>
                                     </button>
-                                    <div id="collapse{{$rent->machinery->model}}" class="collapse show" aria-labelledby="heading{{$rent->machinery->model}}"  data-parent="#accordionExample">
+                                    <div id="collapse{{$rent->machinery->model}}P" class="collapse show" aria-labelledby="heading{{$rent->machinery->model}}P"  data-parent="#accordionExample">
 
                                         <!-- Delivery Example 1 Exapanded -->
                                         <div class="container">
