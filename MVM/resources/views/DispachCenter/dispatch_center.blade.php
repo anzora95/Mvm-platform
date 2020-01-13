@@ -28,10 +28,11 @@
         </div>
 
          <!--Dashboard Cards + Bages ////////////////////////////////////////////////////////////////////////////////////// -->
-        <div class="container" style="margin-top: 20px;">
-            <div class="card-group">
+        <div class="container" style="margin-top: 20px; ">
+            <div class="row">
+            <div class="card-group" style="border:1px !important;margin-right: 10px;">
             <!--<div class="col-12">-->
-                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
+                <div class="card bg-light col-md-6 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{$size_next}}</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES GOING OUT TOMORROW</p>
@@ -41,7 +42,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
+                <div class="card bg-light col-md-6 col-sm-12 col-xs-12" style="margin: 10px; border-left: 1px solid #d9dadb">
                     <div class="card-body text-center">
 
                         <h5 class="card-title">{{$zise_no_rents}}</h5>
@@ -52,10 +53,10 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
-                    <div class="card-body text-center" >
+                <div class="card bg-light col-md-6 col-sm-12 col-xs-12" style="margin: 10px; border-left: 1px solid #d9dadb">
+                    <div class="card-body text-center">
                         <h5 class="card-title">{{$size_rent}}</h5>
-                        <p class="card-text" style="margin-bottom: 0px;">MACHINES OUT ON FIELD</p>
+                        <p class="card-text" style="margin-bottom: 0px; ">MACHINES OUT ON FIELD</p>
                         @foreach($out as $equip)
                             
                             <span class="badge badge-danger" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">{{$equip}}</span>
@@ -67,7 +68,7 @@
                         $('[data-toggle="tooltip"]').tooltip()
                     })
                 </script>
-                <div class="card bg-light col-md-3 col-sm-12 col-xs-12" style="margin: 10px;">
+                <div class="card bg-light col-md-6 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center">
                         <h5 class="card-title">0</h5>
                         <p class="card-text" style="margin-bottom: 0px;">MACHINES DOWN/MAINTENANCE</p>
@@ -75,10 +76,11 @@
                 </div>
                     <!--</div>-->
             </div>
+            </div>
         </div>
 
         <!-- Today's Dispatch ////////////////////////////////////////////////////////////////////////////////////// -->
-        <div class="container" >
+        <div class="container"  >
             <div class="row">
 
                 <div class="card bg-light col-sm-12 col-md-12 col-lg-4" style="margin: 10px;">
@@ -121,8 +123,8 @@
                         <!-- Delivery Example 1 -->
                         @foreach($rentals as $rent)
                             @if($rent->dispatch_date==$today)
-                                <div class="accordion" id="accordionExample">
-                                    <button class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}" style="padding: 0px">
+                                <div class="accordion" id="accordionExample" >
+                                    <button class="card"  data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}" style="padding: 0px; border-bottom: 1px solid #d9dadb;">
                                         <div class="card-header" id="heading{{$rent->machinery->model}}" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
@@ -154,11 +156,11 @@
                                                 </dd>
                                             </dl>
                                         </div>
-                                    </button>
-                                    <div id="collapse{{$rent->machinery->model}}" class="collapse show" aria-labelledby="heading{{$rent->machinery->model}}"  data-parent="#accordionExample">
+
+                                    <div id="collapse{{$rent->machinery->model}}" class="collapse " aria-labelledby="heading{{$rent->machinery->model}}"  data-parent="#accordionExample">
 
                                         <!-- Delivery Example 1 Exapanded -->
-                                        <div class="container">
+                                        <div class="container" style="border-bottom: #000000">
                                         <div class="card-body" style="padding: 10px !important;">
                                             <dl class="row" style="margin: auto">
                                                 <!-- <dt class="col-sm-4" style="margin-right: -20px;">Machine(s):</dt>
@@ -184,13 +186,9 @@
                                         </div>
                                         </div>
                                     </div>
+                                    </button>
                                 </div> <!-- End Acordion -->
 
-{{--                                <style>--}}
-{{--                                    .row:before, .row:after {--}}
-{{--                                        --}}
-{{--                                    }--}}
-{{--                                </style>--}}
                             @endif
                         @endforeach
 
@@ -203,7 +201,7 @@
                         @foreach($rentals as $rent)
                             @if($rent->pick_up_date==$today)
                                 <div class="accordion" id="accordionExample">
-                                    <button class="card" type="button" data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}P" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}P" style="padding: 0px">
+                                    <button class="card"  data-toggle="collapse" data-target="#collapse{{$rent->machinery->model}}P" aria-expanded="true" aria-controls="collapse{{$rent->machinery->model}}P" style="padding: 0px; margin-bottom: 0px; border-bottom: 1px solid #d9dadb; ">
                                         <div class="card-header" id="heading{{$rent->machinery->model}}P" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
@@ -235,11 +233,11 @@
 
                                             </dl>
                                         </div>
-                                    </button>
-                                    <div id="collapse{{$rent->machinery->model}}P" class="collapse show" aria-labelledby="heading{{$rent->machinery->model}}P"  data-parent="#accordionExample">
+
+                                    <div id="collapse{{$rent->machinery->model}}P" class="collapse " aria-labelledby="heading{{$rent->machinery->model}}P"  data-parent="#accordionExample">
 
                                         <!-- Delivery Example 1 Exapanded -->
-                                        <div class="container">
+                                        <div class="container" style="border-bottom: #000000">
                                         <div class="card-body" style="padding: 10px !important;">
                                             <dl class="row"  style="margin: auto">
                                                 <!-- <dt class="col-sm-4" style="margin-right: -20px;">Machine(s):</dt>
@@ -265,6 +263,7 @@
                                         </div>
                                         </div>
                                     </div>
+                                    </button>
                                 </div> <!-- End Acordion -->
                             @endif
                         @endforeach
