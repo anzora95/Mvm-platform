@@ -96,6 +96,7 @@ class Calendar_Controller extends Controller
     public function getAjax ($date_incoming){
 
         $today=date("Y-m-d",strtotime($date_incoming));
+//        return View('DispachCenter.document_contract')->with('like',$today);
         $like_day=date("Y-m",strtotime($date_incoming));
         $next=date("Y-m-d",strtotime($date_incoming.' +1 day'));
         $previous=date("Y-m-d",strtotime($date_incoming.' -1 day'));
@@ -226,8 +227,37 @@ class Calendar_Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$flag)
     {
-        //
+        if ($flag==1){
+
+            $date_row_deleted= DB::table('rentals')->where('id','=',$id)->get();// si viene de su delivery
+
+        }else{
+
+            $date_row_deleted= DB::table('rentals')->where('id','=',$id)->get();// si viene de su pick_up_date
+        }
+
+        $rm_rent=DB::table('rentals')->where('id','=',$id)->delete(); //sacar la fecha de esta row a lemiminar y cuando elim,ine redireccionar a esta fecha
+        if($rm_rent){
+
+
+
+            if ($flag==1){
+                foreach ($date_row_deleted as $reload_date){
+//                    return View('DispachCenter.document_contract')->with('like',$reload_date->dispatch_date);
+                    return $this->getAjax($reload_date->dispatch_date);
+                }
+
+
+            }else{
+
+                foreach ($date_row_deleted as $reload_date){
+//                    return View('DispachCenter.document_contract')->with('like',$reload_date->pick_up_date);
+                    return $this->getAjax($reload_date->pick_up_date);
+                }
+            }
+
+        }
     }
 }

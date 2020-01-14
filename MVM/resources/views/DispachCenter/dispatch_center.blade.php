@@ -128,26 +128,45 @@
                                         <div class="card-header" id="heading{{$rent->machinery->model}}" style="padding: 15px !important;">
                                             <dl class="row"  style="margin-bottom: -15px !important;">
 
+
                                                 @switch($rent->machinery->model)
                                                     @case('303E')
-                                                         <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/303E-.jpg', '303', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/303E-.jpg', '303', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('259D')
-                                                         <dd class="col-md-4 " style="margin-right: -20px; "> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4 " style="margin-right: -20px; "> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('262D')
-                                                         <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('232D')
-                                                         <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @default
-                                                        <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4 " style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dd>
                                                 @endswitch
+                                                    <script>
+
+                                                        function delete_{{$rent->id}}(id_val){
+                                                            var delayInMilliseconds = 1000; //1 second
+
+                                                            var flag =1;
+                                                            var id = id_val;
+
+                                                            alertify.confirm('Delete Dispatch', 'Do you want to delete this dispatch?', function(){alertify.success('Ok');
+                                                                    setTimeout(function() {
+                                                                        window.location.replace('/delete_dispatch/'+id+'/'+flag);
+                                                                    }, delayInMilliseconds)
+                                                                }
+                                                                , function(){ alertify.error('Cancel')});
+                                                        }
+
+                                                    </script>
+
 
 {{--                                                <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/$rent->machinery->model.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>--}}
 
@@ -182,12 +201,30 @@
                                                 <dd class="col-sm-12 col-md-8" style="font-size: 16px !important;">
                                                     <span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Click to switch">Delivered</span>
                                                 </dd>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 offset-sm-3 offset-lg-3 offset-md-3 badge badge-danger" style="font-size: 12px !important;" id={{$rent->id}}  onclick="delete_{{$rent->id}}({{$rent->id}})">Delete</div>
                                             </dl>
                                         </div>
                                         </div>
                                     </div>
                                     </button>
                                 </div> <!-- End Acordion -->
+                                <script>
+
+                                    function delete_{{$rent->id}}(id_val){
+                                        var delayInMilliseconds = 1000; //1 second
+
+                                        var flag =0;
+                                        var id = id_val;
+
+                                        alertify.confirm('Delete Dispatch', 'Do you want to delete this dispatch?', function(){alertify.success('Deleted');
+                                                setTimeout(function() {
+                                                    window.location.replace('/delete_dispatch/'+id+'/'+flag);
+                                                }, delayInMilliseconds)
+                                            }
+                                            , function(){ alertify.error('Cancel')});
+                                    }
+
+                                </script>
 
                             @endif
                         @endforeach
@@ -207,23 +244,23 @@
 
                                                 @switch($rent->machinery->model)
                                                     @case('303E')
-                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/303E-.jpg', '303', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4" style="margin-right: -20px;">{{ HTML::image('images/machines/303E-.jpg', '303', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('259D')
-                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4" style="margin-right: -20px;">{{ HTML::image('images/machines/259D.jpg', '259', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('262D')
-                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4" style="margin-right: -20px;">{{ HTML::image('images/machines/262D.jpg', '262', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @case('232D')
-                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4" style="margin-right: -20px;">{{ HTML::image('images/machines/232D.jpg', '232', array('style' => 'max-width: 100%;')) }}</dd>
                                                     @break
 
                                                     @default
-                                                    <dd class="col-md-4" style="margin-right: -20px;"> {{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dd>
+                                                    <dd class="col-md-4" style="margin-right: -20px;">{{ HTML::image('images/bob_cat.png', 'default', array('style' => 'max-width: 100%;')) }}</dd>
                                                 @endswitch
 
 
@@ -257,14 +294,33 @@
 
                                                 <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8 col-md-8" style="font-size: 16px !important;">
-                                                    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Click to switch">Pending</span>
+
+                                                 <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Click to switch">Pending</span>
                                                 </dd>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 offset-sm-3 offset-lg-3 offset-md-3 badge badge-danger" style="font-size: 12px !important;" id={{$rent->id}}  onclick="delete_{{$rent->id}}({{$rent->id}})"> Delete</div>
                                             </dl>
                                         </div>
                                         </div>
                                     </div>
                                     </button>
                                 </div> <!-- End Acordion -->
+                                <script>
+
+                                    function delete_{{$rent->id}}(id_val){
+                                        var delayInMilliseconds = 1000; //1 second
+
+                                        var flag =0;
+                                        var id = id_val;
+
+                                        alertify.confirm('Delete Dispatch', 'Do you want to delete this dispatch?', function(){alertify.success('Deleted');
+                                                setTimeout(function() {
+                                                    window.location.replace('/delete_dispatch/'+id+'/'+flag);
+                                                }, delayInMilliseconds)
+                                            }
+                                            , function(){ alertify.error('Cancel')});
+                                    }
+
+                                </script>
                             @endif
                         @endforeach
 
@@ -284,6 +340,7 @@
                 $('[data-toggle="tooltip"]').tooltip()
             })
         </script>
+
 
 
 

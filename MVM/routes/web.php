@@ -89,6 +89,8 @@ Route::get('/table','delivery_driver@index');
 //          ROUTES WITH AJAX
 Route::get('date_confirm/{date}','Calendar_Controller@getAjax');
 
+Route::get('/delete_dispatch/{id}/{flag}','Calendar_Controller@destroy');
+
 
 
 
