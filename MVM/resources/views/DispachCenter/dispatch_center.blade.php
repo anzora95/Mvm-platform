@@ -173,11 +173,11 @@
                                                 <dd class="col-md-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
                                                     @if($rent->status==0)
 
-                                                        <span onclick="changestatus()" id="status2" class="badge badge-success">Delivered</span>
+                                                        <span onclick="changestatus{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-success">Delivered</span>
 
                                                     @elseif($rent->status==1)
 
-                                                        <span onclick="changestatus()" id="status2" class="badge badge-secondary">Pending</span>
+                                                        <span onclick="changestatus{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-secondary">Pending</span>
 
                                                     @endif
                                                 </dd>
@@ -209,11 +209,11 @@
                                                 <dd class="col-sm-12 col-md-8" style="font-size: 16px !important;">
                                                     @if($rent->status==0)
 
-                                                        <span class="badge badge-success" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Delivered</span>
+                                                        <span class="badge badge-success" id="status{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus{{$rent->id}}()"  title="Click to switch">Delivered</span>
 
                                                     @elseif($rent->status==1)
 
-                                                        <span class="badge badge-secondary" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Pending</span>
+                                                        <span class="badge badge-secondary" id="status{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus{{$rent->id}}()"  title="Click to switch">Pending</span>
 
                                                     @endif
                                                 </dd>
@@ -223,9 +223,9 @@
                                         </div>
                                     </div>
                                         <script>
-                                            function changestatus(){
-                                                var status = document.getElementById('status');
-                                                var status2 = document.getElementById('status2');
+                                            function changestatus{{$rent->id}}(){
+                                                var status = document.getElementById('status{{$rent->id}}');
+                                                var status2 = document.getElementById('status2{{$rent->id}}');
                                                 var value = status.innerHTML;
                                                 var value2 = "Delivered";
 
@@ -238,7 +238,7 @@
                                                     /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
                                                     var xhttp = new XMLHttpRequest();
 
-                                                    var url = "updatedelivered/";
+                                                    var url = "date_confirm/updatedelivered/{{$rent->id}}";
                                                     console.log(url);
                                                     xhttp.onreadystatechange = function() {
                                                         if (this.readyState == 4 && this.status == 200) {
@@ -326,9 +326,16 @@
 
 
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
-                                                    <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a> <span class="badge badge-secondary">Pending</span>
-                                                </dd>
+                                                    @if($rent->status==0)
 
+                                                        <span onclick="changestatus{{$rent->id}}()" id="status2_p{{$rent->id}}" class="badge badge-success">Delivered</span>
+
+                                                    @elseif($rent->status==1)
+
+                                                        <span onclick="changestatus{{$rent->id}}()" id="status2_p{{$rent->id}}" class="badge badge-secondary">Pending</span>
+
+                                                    @endif
+                                                </dd>
                                             </dl>
                                         </div>
 
@@ -358,11 +365,11 @@
 
                                                     @if($rent->status==0)
 
-                                                        <span class="badge badge-success" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Delivered</span>
+                                                        <span class="badge badge-success" id="status_p{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus{{$rent->id}}()"  title="Click to switch">Delivered</span>
 
                                                     @elseif($rent->status==1)
 
-                                                        <span class="badge badge-secondary" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Pending</span>
+                                                        <span class="badge badge-secondary" id="status_p{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus{{$rent->id}}()"  title="Click to switch">Pending</span>
 
                                                     @endif
                                                 </dd>
@@ -372,9 +379,11 @@
                                         </div>
                                     </div>
                                         <script>
-                                            function changestatus(){
-                                                var status = document.getElementById('status');
-                                                var status2 = document.getElementById('status2');
+                                            function changestatus{{$rent->id}}(){
+                                                var status = document.getElementById('status{{$rent->id}}');
+                                                var status2 = document.getElementById('status{{$rent->id}}');
+                                                var status3 = document.getElementById('status_p{{$rent->id}}');
+                                                var status4 = document.getElementById('status2_p{{$rent->id}}');
                                                 var value = status.innerHTML;
                                                 var value2 = "Delivered";
 
@@ -383,11 +392,15 @@
                                                     status.innerHTML="Pending";
                                                     status2.className = "badge badge-secondary";
                                                     status2.innerHTML="Pending";
+                                                    status3.className = "badge badge-secondary";
+                                                    status3.innerHTML="Pending";
+                                                    status4.className = "badge badge-secondary";
+                                                    status4.innerHTML="Pending";
 
                                                     /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
                                                     var xhttp = new XMLHttpRequest();
 
-                                                    var url = "updatedelivered/";
+                                                    var url = "date_confirm/updatedelivered/{{$rent->id}}";
                                                     console.log(url);
                                                     xhttp.onreadystatechange = function() {
                                                         if (this.readyState == 4 && this.status == 200) {
@@ -403,6 +416,10 @@
                                                     status.innerHTML="Delivered";
                                                     status2.className = "badge badge-success";
                                                     status2.innerHTML="Delivered";
+                                                    status3.className = "badge badge-success";
+                                                    status3.innerHTML="Delivered";
+                                                    status4.className = "badge badge-success";
+                                                    status4.innerHTML="Delivered";
                                                     var xhttp = new XMLHttpRequest();
 
                                                     var url = "date_confirm/updatePending/{{$rent->id}}";

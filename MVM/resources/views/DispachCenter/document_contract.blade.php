@@ -31,20 +31,19 @@
 <button class="btn button-primary" > ok </button>
 
 
-
 <p> this is a date format Y-M</p>
-{{--{{$like}}--}}
+{{$like}}
 <br><br>
 <br><br><br>
 {{--<p>{{$fil}}</p>--}}
 
-@foreach($like as $filter)
-    <p>
-        {{$filter}}
-        <br>
+{{--@foreach($like as $filter)--}}
+{{--    <p>--}}
+{{--        {{$filter}}--}}
+{{--        <br>--}}
 
-    <p>hola mundo</p>
-    </p>
-@endforeach
+{{--    <p>hola mundo</p>--}}
+{{--    </p>--}}
+{{--@endforeach--}}
 </body>
 </html>
