@@ -216,9 +216,17 @@ class Calendar_Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updatedelivered($id)
     {
-        //
+        DB::table('rentals')
+            ->where('id', $id)
+            ->update(['status' => 1]);
+    }
+    public function updatePending($id)
+    {
+        DB::table('rentals')
+            ->where('id', $id)
+            ->update(['status' => 0]);
     }
 
     /**

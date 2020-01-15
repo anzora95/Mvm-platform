@@ -171,7 +171,15 @@
 {{--                                                <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/$rent->machinery->model.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>--}}
 
                                                 <dd class="col-md-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
-                                                    <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a> <span class="badge badge-success">Delivered</span>
+                                                    @if($rent->status==0)
+
+                                                        <span onclick="changestatus()" id="status2" class="badge badge-success">Delivered</span>
+
+                                                    @elseif($rent->status==1)
+
+                                                        <span onclick="changestatus()" id="status2" class="badge badge-secondary">Pending</span>
+
+                                                    @endif
                                                 </dd>
                                             </dl>
                                         </div>
@@ -199,13 +207,67 @@
 
                                                 <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-12 col-md-8" style="font-size: 16px !important;">
-                                                    <span class="badge badge-success" data-toggle="tooltip" data-placement="top" title="Click to switch">Delivered</span>
+                                                    @if($rent->status==0)
+
+                                                        <span class="badge badge-success" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Delivered</span>
+
+                                                    @elseif($rent->status==1)
+
+                                                        <span class="badge badge-secondary" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Pending</span>
+
+                                                    @endif
                                                 </dd>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 offset-sm-3 offset-lg-3 offset-md-3 badge badge-danger" style="font-size: 12px !important;" id={{$rent->id}}  onclick="delete_{{$rent->id}}({{$rent->id}})">Delete</div>
                                             </dl>
                                         </div>
                                         </div>
                                     </div>
+                                        <script>
+                                            function changestatus(){
+                                                var status = document.getElementById('status');
+                                                var status2 = document.getElementById('status2');
+                                                var value = status.innerHTML;
+                                                var value2 = "Delivered";
+
+                                                if(value.localeCompare(value2)==0){
+                                                    status.className = "badge badge-secondary";
+                                                    status.innerHTML="Pending";
+                                                    status2.className = "badge badge-secondary";
+                                                    status2.innerHTML="Pending";
+
+                                                    /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                    var xhttp = new XMLHttpRequest();
+
+                                                    var url = "updatedelivered/";
+                                                    console.log(url);
+                                                    xhttp.onreadystatechange = function() {
+                                                        if (this.readyState == 4 && this.status == 200) {
+                                                        }
+                                                    };
+                                                    xhttp.open("GET", "date_confirm/updatedelivered/{{$rent->id}}", true);
+                                                    xhttp.send();
+                                                    /* FIN AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                }
+                                                else{
+                                                    /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                    status.className = "badge badge-success";
+                                                    status.innerHTML="Delivered";
+                                                    status2.className = "badge badge-success";
+                                                    status2.innerHTML="Delivered";
+                                                    var xhttp = new XMLHttpRequest();
+
+                                                    var url = "date_confirm/updatePending/{{$rent->id}}";
+                                                    xhttp.onreadystatechange = function() {
+                                                        if (this.readyState == 4 && this.status == 200) {
+
+                                                        }
+                                                    };
+                                                    xhttp.open("GET", "date_confirm/updatePending/{{$rent->id}}", true);
+                                                    xhttp.send();
+                                                    /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                }
+                                            }
+                                        </script>
                                     </button>
                                 </div> <!-- End Acordion -->
                                 <script>
@@ -219,13 +281,12 @@
                                         alertify.confirm('Delete Dispatch', 'Do you want to delete this dispatch?', function(){alertify.success('Deleted');
                                                 setTimeout(function() {
                                                     window.location.replace('/delete_dispatch/'+id+'/'+flag);
-                                                }, delayInMilliseconds)
+                                                })
                                             }
                                             , function(){ alertify.error('Cancel')});
                                     }
 
                                 </script>
-
                             @endif
                         @endforeach
 
@@ -295,13 +356,67 @@
                                                 <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8 col-md-8" style="font-size: 16px !important;">
 
-                                                 <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Click to switch">Pending</span>
+                                                    @if($rent->status==0)
+
+                                                        <span class="badge badge-success" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Delivered</span>
+
+                                                    @elseif($rent->status==1)
+
+                                                        <span class="badge badge-secondary" id="status" data-toggle="tooltip" data-placement="top" onclick="changestatus()"  title="Click to switch">Pending</span>
+
+                                                    @endif
                                                 </dd>
                                                 <div class="col-sm-6 col-md-6 col-lg-6 offset-sm-3 offset-lg-3 offset-md-3 badge badge-danger" style="font-size: 12px !important;" id={{$rent->id}}  onclick="delete_{{$rent->id}}({{$rent->id}})"> Delete</div>
                                             </dl>
                                         </div>
                                         </div>
                                     </div>
+                                        <script>
+                                            function changestatus(){
+                                                var status = document.getElementById('status');
+                                                var status2 = document.getElementById('status2');
+                                                var value = status.innerHTML;
+                                                var value2 = "Delivered";
+
+                                                if(value.localeCompare(value2)==0){
+                                                    status.className = "badge badge-secondary";
+                                                    status.innerHTML="Pending";
+                                                    status2.className = "badge badge-secondary";
+                                                    status2.innerHTML="Pending";
+
+                                                    /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                    var xhttp = new XMLHttpRequest();
+
+                                                    var url = "updatedelivered/";
+                                                    console.log(url);
+                                                    xhttp.onreadystatechange = function() {
+                                                        if (this.readyState == 4 && this.status == 200) {
+                                                        }
+                                                    };
+                                                    xhttp.open("GET", "date_confirm/updatedelivered/{{$rent->id}}", true);
+                                                    xhttp.send();
+                                                    /* FIN AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                }
+                                                else{
+                                                    /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                    status.className = "badge badge-success";
+                                                    status.innerHTML="Delivered";
+                                                    status2.className = "badge badge-success";
+                                                    status2.innerHTML="Delivered";
+                                                    var xhttp = new XMLHttpRequest();
+
+                                                    var url = "date_confirm/updatePending/{{$rent->id}}";
+                                                    xhttp.onreadystatechange = function() {
+                                                        if (this.readyState == 4 && this.status == 200) {
+
+                                                        }
+                                                    };
+                                                    xhttp.open("GET", "date_confirm/updatePending/{{$rent->id}}", true);
+                                                    xhttp.send();
+                                                    /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
+                                                }
+                                            }
+                                        </script>
                                     </button>
                                 </div> <!-- End Acordion -->
                                 <script>
@@ -315,7 +430,7 @@
                                         alertify.confirm('Delete Dispatch', 'Do you want to delete this dispatch?', function(){alertify.success('Deleted');
                                                 setTimeout(function() {
                                                     window.location.replace('/delete_dispatch/'+id+'/'+flag);
-                                                }, delayInMilliseconds)
+                                                })
                                             }
                                             , function(){ alertify.error('Cancel')});
                                     }
