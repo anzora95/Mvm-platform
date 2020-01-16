@@ -63,11 +63,7 @@
                         @endforeach
                     </div>
                 </div>
-                <script >
-                    $(function () {
-                        $('[data-toggle="tooltip"]').tooltip()
-                    })
-                </script>
+
                 <div class="card bg-light col-md-6 col-sm-12 col-xs-12" style="margin: 10px;">
                     <div class="card-body text-center">
                         <h5 class="card-title">0</h5>
@@ -78,6 +74,11 @@
             </div>
             </div>
         </div>
+
+        <script>
+            var mobile = (/iphone|ipad|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+            if (mobile) {$('.card-group').hide();}
+        </script>
 
         <!-- Today's Dispatch ////////////////////////////////////////////////////////////////////////////////////// -->
         <div class="container"  >
@@ -171,6 +172,7 @@
 {{--                                                <dt class="col-sm-4" style="margin-right: -20px;"> {{ HTML::image('images/machines/$rent->machinery->model.jpg', '303', array('style' => 'max-width: 100%;')) }}</dt>--}}
 
                                                 <dd class="col-md-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
+                                                    <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a>
                                                     @if($rent->status==0)
 
                                                         <span onclick="changestatus{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-success">Delivered</span>
@@ -326,13 +328,14 @@
 
 
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
+                                                    <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a>
                                                     @if($rent->status==0)
 
-                                                        <span onclick="changestatus{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-success">Delivered</span>
+                                                        <span onclick="changestatus_P{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-success">Delivered</span>
 
                                                     @elseif($rent->status==1)
 
-                                                        <span onclick="changestatus{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-secondary">Pending</span>
+                                                        <span onclick="changestatus_P{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-secondary">Pending</span>
 
                                                     @endif
                                                 </dd>

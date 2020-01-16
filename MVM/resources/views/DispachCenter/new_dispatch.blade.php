@@ -32,7 +32,7 @@
 
             </div>
             <div class="col text-right">
-                <div class="btn btn-outline-secondary btn-sm" href='/'>Go Back</div>
+                <a href="/"><div class="btn btn-outline-secondary btn-sm" >Go Back</div></a>
                 <button type="button" class="btn btn-outline-secondary btn-sm" hidden>Dispatch Calendar</button> <!-- Hidden -->
             </div>
         </div>
