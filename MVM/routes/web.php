@@ -91,8 +91,8 @@ Route::get('date_confirm/{date}','Calendar_Controller@getAjax');
 
 Route::get('/delete_dispatch/{id}/{flag}','Calendar_Controller@destroy');
 
-Route::get('date_confirm/updatedelivered/{id}','Calendar_Controller@updatedelivered');
-Route::get('date_confirm/updatePending/{id}','Calendar_Controller@updatePending');
+Route::get('/updatedelivered/{id}','Calendar_Controller@updatedelivered');
+Route::get('/updatePending/{id}','Calendar_Controller@updatePending');
 
 
 
