@@ -18,8 +18,9 @@ class Rental_Agreement_Controller extends Controller
 {
     public function rental_customer_data(){
 
-        $re= DB::table('rentals')->get(); //se usuara un where par filtrar la busqueda
+//        $re= DB::table('rentals')->get(); se usuara un where par filtrar la busqueda
         $pdf=new Fpdi();
+        $ren=Renta::with('clientes','machine')->where('id','=',5)->first();
 
         $pdf->AddPage();
         $pdf->setSourceFile('C:\Users\josep\php_proyect\mvmplatform\MVM\public\documents\base\Rental_agreement_2020.pdf');
@@ -43,17 +44,17 @@ class Rental_Agreement_Controller extends Controller
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
         $pdf->SetXY(46, 61.4);
-        $pdf->Write(11,"Marvin Vigil");
+        $pdf->Write(11,$ren->clientes->full_name);
 // COMPANY TEXT
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
         $pdf->SetXY(46, 67.5);
-        $pdf->Write(11,"MV AGENCY");
+        $pdf->Write(11,$ren->clientes->id_comp);
 // ADDRESS TEXT
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
         $pdf->SetXY(46, 73.5);
-        $pdf->Write(11,"5790 Groove Str 1243");
+        $pdf->Write(11,$ren->delivery_site);
 // JOBSITE TEXT
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
@@ -63,13 +64,13 @@ class Rental_Agreement_Controller extends Controller
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
         $pdf->SetXY(46, 85.7);
-        $pdf->Write(11,"123-123-1234");
+        $pdf->Write(11,$ren->clientes->phone_num);
 //--------------------DATE&TIME TEXT-----------------
 // DATE OUT TEXT
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
         $pdf->SetXY(157, 61.1);
-        $pdf->Write(11,"2/12/2020");
+        $pdf->Write(11,date("m/d/Y",strtotime($ren->dispatch_date)));
 // DATE OUT->TIME TEXT
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
@@ -96,7 +97,7 @@ class Rental_Agreement_Controller extends Controller
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
         $pdf->SetXY(57, 110);
-        $pdf->Write(11,"Mini Excavator 303-E");
+        $pdf->Write(11,$ren->machinery->name);
 // DAY
         $pdf->SetFont('Helvetica');
         $pdf->SetTextColor(2, 4, 7);
@@ -112,34 +113,34 @@ class Rental_Agreement_Controller extends Controller
         $pdf->SetTextColor(2, 4, 7);
         $pdf->SetXY(182, 110);
         $pdf->Write(11,"$400");
-// QTY
-        $pdf->SetFont('Helvetica');
-        $pdf->SetTextColor(2, 4, 7);
-        $pdf->SetXY(25, 115);
-        $pdf->Write(11,"1");
-// DESCRIPTION
-        $pdf->SetFont('Helvetica');
-        $pdf->SetTextColor(2, 4, 7);
-        $pdf->SetXY(57, 115);
-        $pdf->Write(11,"Skid Steer Loader 262-D");
-// DAY
-        $pdf->SetFont('Helvetica');
-        $pdf->SetTextColor(2, 4, 7);
-        $pdf->SetXY(145, 115);
-        $pdf->Write(11,"2");
-// PRICE
-        $pdf->SetFont('Helvetica');
-        $pdf->SetTextColor(2, 4, 7);
-        $pdf->SetXY(163, 115);
-        $pdf->Write(11,"$150");
-// Total
-        $pdf->SetFont('Helvetica');
-        $pdf->SetTextColor(2, 4, 7);
-        $pdf->SetXY(182, 115);
-        $pdf->Write(11,"$300");
+//// QTY
+//        $pdf->SetFont('Helvetica');
+//        $pdf->SetTextColor(2, 4, 7);
+//        $pdf->SetXY(25, 115);
+//        $pdf->Write(11,"1");
+//// DESCRIPTION
+//        $pdf->SetFont('Helvetica');
+//        $pdf->SetTextColor(2, 4, 7);
+//        $pdf->SetXY(57, 115);
+//        $pdf->Write(11,"Skid Steer Loader 262-D");
+//// DAY
+//        $pdf->SetFont('Helvetica');
+//        $pdf->SetTextColor(2, 4, 7);
+//        $pdf->SetXY(145, 115);
+//        $pdf->Write(11,"2");
+//// PRICE
+//        $pdf->SetFont('Helvetica');
+//        $pdf->SetTextColor(2, 4, 7);
+//        $pdf->SetXY(163, 115);
+//        $pdf->Write(11,"$150");
+//// Total
+//        $pdf->SetFont('Helvetica');
+//        $pdf->SetTextColor(2, 4, 7);
+//        $pdf->SetXY(182, 115);
+//        $pdf->Write(11,"$300");
 
         $filePath='C:\Users\josep\php_proyect\mvmplatform\MVM\public\documents\signed\MVRENT.pdf';
-        $pdf->Output($filePath,'F');
+        $pdf->Output();
 
 
 
