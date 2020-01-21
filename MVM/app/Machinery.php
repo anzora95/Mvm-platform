@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Machinery extends Model
 {
-    protected $table ='machinery';
+    protected $table ='machineries';
 
-    public $primaryKey='id_machinery';
+    public $primaryKey='id_machine';
 
     public function rentas(){
 

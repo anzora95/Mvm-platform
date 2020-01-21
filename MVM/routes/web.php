@@ -11,13 +11,13 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
+//Route::get('new_dispatch', function () {
+//    return view('DispachCenter/new_dispatch');
 //});
 
-Route::get('saludo', function(){
-    return view('saludo');
-});
+//Route::get('dispatchcenter', function(){
+//    return view('DispachCenter/dispatch_center');
+//});
 
 
 Route::get('example', function(){
@@ -60,6 +60,10 @@ Route::get('/', function(){
     return view('index');
 });
 
+Route::get('/calendar', function(){
+    return view('EquipmentCalendar/equipment_calendar');
+});
+
 //Route::get('table', function(){
 //    return view('dataTable');
 //});
@@ -74,7 +78,7 @@ Route::post('/store_delivery','delivery_driver@store');
 
 Route::get('/new_dispatch', 'RentRequestController@index');
 
-Route::get('/dispatch_center', 'Calendar_Controller@index');// localhost:8000/
+Route::get('/dispatchcenter', 'Calendar_Controller@index');// localhost:8000/
 
 //Route::get('/', 'RentRequestController@index'); // localhost:8000/
 
@@ -85,7 +89,17 @@ Route::get('/table','delivery_driver@index');
 //          ROUTES WITH AJAX
 Route::get('date_confirm/{date}','Calendar_Controller@getAjax');
 
+Route::get('/delete_dispatch/{id}/{flag}','Calendar_Controller@destroy');
 
+//      DELIVER
+Route::get('/updatedelivered/{id}','Calendar_Controller@updatedelivered');
+Route::get('/updatePending/{id}','Calendar_Controller@updatePending');
+
+//  PICKUP
+Route::get('/update_pickup/{id}','Calendar_Controller@updatePickup');
+Route::get('/pending_pickup/{id}','Calendar_Controller@updatePending_pickup');
+
+Route::get('/agreement','Rental_Agreement_Controller@rental_customer_data');
 
 
 

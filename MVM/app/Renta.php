@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Renta extends Model
 {
-    protected $table = 'rentas';
+    protected $table = 'rentals';
     // public $timestamps= false;
 
     const CREATED_AT = 'creation_date';
@@ -16,7 +16,13 @@ class Renta extends Model
 
     public function clientes(){
 
-        return $this->belongsTo('App\Cliente', 'cliente');
+        return $this->belongsTo('App\Cliente', 'client');
+    }
+    
+    public function machine(){
+        
+        return $this->belongsTo('App\Machinery', 'machine');
+        
     }
 
     public function entregas(){
@@ -24,7 +30,7 @@ class Renta extends Model
     }
 
     public function machinery(){
-        return $this->belongsTo('App\Machinery', 'maquina');
+        return $this->belongsTo('App\Machinery', 'machine');
     }
 
     public function disponibilidads(){

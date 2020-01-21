@@ -27,27 +27,28 @@
 </head>
 <body>
 
+<div class="container">
+
 <div class="limiter">
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="table">
 
                 <div class="row header">
-                    <div class="cell"><center>
-                        Direccion</center>
+                    <div class="cell">
+                        Direccion
                     </div>
-                    <div class="cell" ><center>
-                        Phone Number</center>
+                    <div class="cell text-center" >
+                        Phone Number
                     </div>
-                    <div class="cell"><center>
-                        Nombre</center>
+                    <div class="cell text-center">
+                        Nombre
                     </div>
-                    <div class="cell" ><center>
-                        Maquina</center>
+                    <div class="cell text-center" >
+                        Maquina
                     </div>
-
-                    <div class="cell" ><center>
-                        Empezar</center>
+                    <div class="cell text-center" >
+                        Empezar
                     </div>
 
                 </div>
@@ -58,13 +59,13 @@
                         {{$renta->clientes->Address}}
                         </div>
                     <div class="cell" data-title="Cliente">
-                        {{$renta->clientes->Phone_num}}
+                        {{$renta->clientes->phone_num}}
                     </div>
                     <div class="cell" data-title="Job Title">
-                        {{$renta->clientes->First_name}} {{$renta->clientes->Last_name}}
+                        {{$renta->clientes->full_name}}
                     </div>
                     <div class="cell" data-title="Location">
-                        {{$renta->maquina}}
+                        {{$renta->machine}}
                     </div>
 
                     <div class="cell" data-title="Location">
@@ -107,6 +108,8 @@
 
         </div>
     </div>
+</div>
+
 </div>
 
 

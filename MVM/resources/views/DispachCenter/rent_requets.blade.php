@@ -33,8 +33,7 @@
 
 
 {{HTML::style('css/main.css')}}
-{{HTML::style('css/gmap.css')}}
-{{HTML::script('js/gmap.js')}}
+
 
 {{--BOWER CSS--}}
 {{HTML::style('bower_components/bootstrap/dist/css/bootstrap.min.css')}}
@@ -277,7 +276,7 @@
     <script type="text/javascript">
         $(function () {
             $('#datetimepicker2').datetimepicker({
-                format: 'DD-MM-YYYY'
+                format: 'MM-DD-YYYY'
             });
             // $("#datetimepicker2").on("dp.change", function (e) {
             //     $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);

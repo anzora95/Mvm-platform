@@ -31,19 +31,20 @@
 <button class="btn button-primary" > ok </button>
 
 
-
 <p> this is a date format Y-M</p>
 {{--{{$like}}--}}
 <br><br>
 <br><br><br>
-{{--<p>{{$fil}}</p>--}}
+{{--usada para objetos no iterables y string--}}
+{{--<p>{{$like}}</p>--}}
+
+{{--Usado para arrays iterables--}}
 
 @foreach($like as $filter)
     <p>
-        {{$filter}}
+        {{$filter->client}}
         <br>
 
-    <p>hola mundo</p>
     </p>
 @endforeach
 </body>
