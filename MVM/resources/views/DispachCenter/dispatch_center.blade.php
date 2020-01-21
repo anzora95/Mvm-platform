@@ -80,6 +80,30 @@
             if (mobile) {$('.card-group').hide();}
         </script>
 
+        <div class="container">
+
+            <div class="row">
+
+                <div class="card bg-light col-sm-12 col-md-12 col-lg-4" style="margin: 10px; padding: 0px">
+                    <a href="/">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-8" style="">
+                                Dispatch list
+                            </div>
+                            <div class="col-lg-4">
+                                <span aria-hidden="true"> icon list</span>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+            </div>
+
+
+        </div>
+
         <!-- Today's Dispatch ////////////////////////////////////////////////////////////////////////////////////// -->
         <div class="container"  >
             <div class="row">
@@ -173,11 +197,11 @@
 
                                                 <dd class="col-md-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
                                                     <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a>
-                                                    @if($rent->status==0)
+                                                    @if($rent->status_deliver==1)
 
                                                         <span onclick="changestatus{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-success">Delivered</span>
 
-                                                    @elseif($rent->status==1)
+                                                    @elseif($rent->status_deliver==0)
 
                                                         <span onclick="changestatus{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-secondary">Pending</span>
 
@@ -209,11 +233,11 @@
 
                                                 <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-12 col-md-8" style="font-size: 16px !important;">
-                                                    @if($rent->status==0)
+                                                    @if($rent->status_deliver==1)
 
                                                         <span class="badge badge-success" id="status{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus{{$rent->id}}()"  title="Click to switch">Delivered</span>
 
-                                                    @elseif($rent->status==1)
+                                                    @elseif($rent->status_deliver==0)
 
                                                         <span class="badge badge-secondary" id="status{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus{{$rent->id}}()"  title="Click to switch">Pending</span>
 
@@ -329,13 +353,13 @@
 
                                                 <dd class="col-sm-8" style="font-size: 16px !important;"> <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Machine(s):</a> <span class="badge badge-warning">{{$rent->machinery->model}}</span> </br>
                                                     <a style="font-size: 12px; text-decoration: none; font-color: #000 !important; font-weight: 700;">Status:</a>
-                                                    @if($rent->status==0)
+                                                    @if($rent->status_pickup==1)
 
-                                                        <span onclick="changestatus_P{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-success">Delivered</span>
+                                                        <span onclick="changestatus_P{{$rent->id}}()" id="status2_P{{$rent->id}}" class="badge badge-success">Pickup</span>
 
-                                                    @elseif($rent->status==1)
+                                                    @elseif($rent->status_pickup==0)
 
-                                                        <span onclick="changestatus_P{{$rent->id}}()" id="status2{{$rent->id}}" class="badge badge-secondary">Pending</span>
+                                                        <span onclick="changestatus_P{{$rent->id}}()" id="status2_P{{$rent->id}}" class="badge badge-secondary">Pending</span>
 
                                                     @endif
                                                 </dd>
@@ -366,13 +390,13 @@
                                                 <dt class="col-sm-12 col-md-4" style="margin-right: -20px;">Status</dt>
                                                 <dd class="col-sm-8 col-md-8" style="font-size: 16px !important;">
 
-                                                    @if($rent->status==0)
+                                                    @if($rent->status_pickup==1)
 
-                                                        <span class="badge badge-success" id="status{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus_P{{$rent->id}}()"  title="Click to switch">Delivered</span>
+                                                        <span class="badge badge-success" id="status_P{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus_P{{$rent->id}}()"  title="Click to switch">Delivered</span>
 
-                                                    @elseif($rent->status==1)
+                                                    @elseif($rent->status_pickup==0)
 
-                                                        <span class="badge badge-secondary" id="status{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus_P{{$rent->id}}()"  title="Click to switch">Pending</span>
+                                                        <span class="badge badge-secondary" id="status_P{{$rent->id}}" data-toggle="tooltip" data-placement="top" onclick="changestatus_P{{$rent->id}}()"  title="Click to switch">Pending</span>
 
                                                     @endif
                                                 </dd>
@@ -383,11 +407,11 @@
                                     </div>
                                         <script>
                                             function changestatus_P{{$rent->id}}(){
-                                                var status = document.getElementById('status{{$rent->id}}');
-                                                var status2 = document.getElementById('status2{{$rent->id}}');
+                                                var status = document.getElementById('status_P{{$rent->id}}');
+                                                var status2 = document.getElementById('status2_P{{$rent->id}}');
 
                                                 var value = status.innerHTML;
-                                                var value2 = "Delivered";
+                                                var value2 = "Pickup";
 
                                                 if(value.localeCompare(value2)==0){
                                                     status.className = "badge badge-secondary";
@@ -399,32 +423,32 @@
                                                     /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
                                                     var xhttp = new XMLHttpRequest();
 
-                                                    var url = "/updatedelivered/{{$rent->id}}";
+                                                    var url = "/update_pickup/{{$rent->id}}";
                                                     console.log(url);
                                                     xhttp.onreadystatechange = function() {
                                                         if (this.readyState == 4 && this.status == 200) {
                                                         }
                                                     };
-                                                    xhttp.open("GET", "/updatedelivered/{{$rent->id}}", true);
+                                                    xhttp.open("GET", "/update_pickup/{{$rent->id}}", true);
                                                     xhttp.send();
                                                     /* FIN AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
                                                 }
                                                 else{
                                                     /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
                                                     status.className = "badge badge-success";
-                                                    status.innerHTML="Delivered";
+                                                    status.innerHTML="Pickup";
                                                     status2.className = "badge badge-success";
-                                                    status2.innerHTML="Delivered";
+                                                    status2.innerHTML="Pickup";
 
                                                     var xhttp = new XMLHttpRequest();
 
-                                                    var url = "/updatePending/{{$rent->id}}";
+                                                    var url = "/pending_pickup/{{$rent->id}}";
                                                     xhttp.onreadystatechange = function() {
                                                         if (this.readyState == 4 && this.status == 200) {
 
                                                         }
                                                     };
-                                                    xhttp.open("GET", "/updatePending/{{$rent->id}}", true);
+                                                    xhttp.open("GET", "/pending_pickup/{{$rent->id}}", true);
                                                     xhttp.send();
                                                     /* INICIO AJAX PARA CAMBIAR ESTADO EN EL BACKEND */
                                                 }

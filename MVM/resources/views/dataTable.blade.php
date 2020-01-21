@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<div class="container"></div>
+<div class="container">
 
 <table id="myTable" class="display">
     <thead>
@@ -39,15 +39,17 @@
 
 {{--        address row--}}
         <td>{{$renta->delivery_site}}</td>
-        <td>{{$renta->clientes->Phone_num}}</td>
-        <td>{{$renta->clientes->Full_name}}</td>
-        <td> {{$renta->maquina}}</td>
+        <td>{{$renta->clientes->phone_num}}</td>
+        <td>{{$renta->clientes->full_name}}</td>
+        <td> {{$renta->machine}}</td>
         <td> {{$renta->date}}</td>
 
     </tr>
     @endforeach
     </tbody>
 </table>
+
+</div>
 
 <script >
     $(document).ready( function () {

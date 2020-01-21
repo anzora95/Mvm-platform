@@ -91,8 +91,15 @@ Route::get('date_confirm/{date}','Calendar_Controller@getAjax');
 
 Route::get('/delete_dispatch/{id}/{flag}','Calendar_Controller@destroy');
 
+//      DELIVER
 Route::get('/updatedelivered/{id}','Calendar_Controller@updatedelivered');
 Route::get('/updatePending/{id}','Calendar_Controller@updatePending');
+
+//  PICKUP
+Route::get('/update_pickup/{id}','Calendar_Controller@updatePickup');
+Route::get('/pending_pickup/{id}','Calendar_Controller@updatePending_pickup');
+
+Route::get('/agreement','Rental_Agreement_Controller@rental_customer_data');
 
 
 

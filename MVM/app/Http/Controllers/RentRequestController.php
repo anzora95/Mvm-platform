@@ -61,7 +61,8 @@ class RentRequestController extends Controller
                $compa=$request->input('compa');
                $note=$request->input('note');
                $like_valid=date("Y-m",strtotime($request->input('start_date')));
-               $status=1;
+               $status=0;
+               $pick_status=0;
                 if (empty($request->input('note'))){
                     
                     $note='No notes';
@@ -222,10 +223,10 @@ class RentRequestController extends Controller
                              $user3 = $us->id_client;
                          }
 
-                         $id_renta_first = DB::table('rentals')->insertGetId(["machine"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'dispatch_date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'client'=> $user3, 'delivery_note'=> $note, 'status'=>$status]);
+                         $id_renta_first = DB::table('rentals')->insertGetId(["machine"=>$maquina_id, "driver" => $driver, 'rental_cost'=>$rental_cost,'dispatch_date'=>$start_date,'pick_up_date'=>$end_date,'delivery_site'=>$address_rent,'client'=> $user3, 'delivery_note'=> $note, 'status_deliver'=>$status, 'status_pickup'=>$pick_status]);
 
 
-
+//                         action(Rental_Agreement_Controller::);
 
 
 

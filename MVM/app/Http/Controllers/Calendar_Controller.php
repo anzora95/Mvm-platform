@@ -220,14 +220,28 @@ class Calendar_Controller extends Controller
     {
         DB::table('rentals')
             ->where('id', $id)
-            ->update(['status' => 1]);
+            ->update(['status_deliver' => 0]);
     }
     public function updatePending($id)
     {
         DB::table('rentals')
             ->where('id', $id)
-            ->update(['status' => 0]);
+            ->update(['status_deliver' => 1]);
     }
+
+    public function updatePickup($id)
+    {
+        DB::table('rentals')
+            ->where('id', $id)
+            ->update(['status_pickup' => 0]);
+    }
+    public function updatePending_pickup($id)
+    {
+        DB::table('rentals')
+            ->where('id', $id)
+            ->update(['status_pickup' => 1]);
+    }
+
 
     /**
      * Remove the specified resource from storage.

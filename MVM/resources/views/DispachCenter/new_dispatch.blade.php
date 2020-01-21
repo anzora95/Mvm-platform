@@ -45,7 +45,7 @@
                 <div class="row">
                     <div id="form1" class="card-body">
                         <h5 class="card-title text-center">New Dispatch Form</h5>
-                        <form action='/save' method="post" class="well form-horizontal">
+                        <form action='/save' method="post" class="well form-horizontal" onsubmit="sub_butt.disabled = true; return true;">
                             @csrf
                             <fieldset>
                             <div class="form-group">
@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-secondary btn-sm">Submit Dispatch</button>
+                                <button type="submit" id="sub_butt" class="btn btn-secondary btn-sm" >Submit Dispatch</button>
                             </div>
                             </fieldset>
 
